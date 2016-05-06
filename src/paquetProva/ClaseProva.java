@@ -10,5 +10,6 @@ package paquetProva;
  * @author DRAKUL
  */
 public class ClaseProva {
+	System.out.println("Aixo pareix que funka");
 
 }
