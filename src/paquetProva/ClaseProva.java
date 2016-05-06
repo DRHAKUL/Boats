@@ -10,6 +10,8 @@ package paquetProva;
  * @author DRAKUL
  */
 public class ClaseProva {
-	System.out.println("Aixo pareix que funka");
-
+    
+  public void escriure(){
+      System.out.println("Ara si, armat amb net beans ^^ ");
+  }  
 }
