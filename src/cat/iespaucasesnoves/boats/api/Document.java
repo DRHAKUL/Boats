@@ -10,5 +10,5 @@ package cat.iespaucasesnoves.boats.api;
  * @author jorge
  */
 public enum Document {
-    
+    DNI,NIE,PASSAPORT
 }

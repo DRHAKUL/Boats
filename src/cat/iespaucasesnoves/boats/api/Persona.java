@@ -10,6 +10,8 @@ package cat.iespaucasesnoves.boats.api;
  * @author jorge
  */
 public class Persona {
-    
+    protected String nom;
+    protected String cognom;
+    protected 
     
 }
