@@ -9,6 +9,20 @@ package cat.iespaucasesnoves.boats.api;
  *
  * @author jorge
  */
-public class Compte implements Pagable{
-    
+public class Compte implements Pagable {
+
+    private String iban;
+
+    public Compte(String iban) {
+        this.iban = iban;
+    }
+
+    public String getIban() {
+        return iban;
+    }
+
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
+
 }

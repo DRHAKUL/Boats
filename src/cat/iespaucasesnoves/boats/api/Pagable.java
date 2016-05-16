@@ -11,4 +11,5 @@ package cat.iespaucasesnoves.boats.api;
  */
 public interface Pagable {
     
+    
 }
