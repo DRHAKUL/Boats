@@ -9,6 +9,6 @@ package cat.iespaucasesnoves.boats.api;
  *
  * @author jorge
  */
-public class Client extends Persona{
-    
+public class Client extends Persona {
+
 }
