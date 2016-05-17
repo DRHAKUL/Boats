@@ -6,6 +6,8 @@
 package cat.iespaucasesnoves.boats.api;
 
 import java.util.ArrayList;
+import cat.iespaucasesnoves.boats.api.Pagable;
+import cat.iespaucasesnoves.boats.api.Targeta;
 
 /**
  *
@@ -22,19 +24,23 @@ public class Client extends Persona {
     }
 
     public void crearPagamentTargeta(int numero, String caducitat, int verificacio) {
+        Targeta targeta = new Targeta(numero, caducitat, verificacio);
+        pagament.add(targeta);
 
     }
 
     public void eliminarPagamentTargeta(int numero) {
+        pagament.remove(numero);
 
     }
 
     public void crearPagamentcompte(String iban) {
-
+        Compte compte=new Compte(iban);
+        pagament.add(compte);
     }
 
     public void eliminarPagamentCompte(String iban) {
-
+        pagament.remove(iban);
     }
 
     public ArrayList<Pagable> getPagament() {
