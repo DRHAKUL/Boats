@@ -6,6 +6,8 @@
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.api.Persona;
+import java.util.Date;
+import javax.media.j3d.View;
 
 /**
  *
@@ -13,8 +15,34 @@ import cat.iespaucasesnoves.boats.api.Persona;
  */
 public class Empleat extends Persona {
 
-    public Empleat(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
+    protected Date dataAlta;
+    protected double sou;
+
+    public Empleat(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
         super(nom, cognom, tipusDocument, adreca, telefon, correu);
+        this.dataAlta = dataAlta;
+        this.sou = sou;
+    }
+
+    public Date getDataAlta() {
+        return dataAlta;
+    }
+
+    public void setDataAlta(Date dataAlta) {
+        this.dataAlta = dataAlta;
+    }
+
+    public double getSou() {
+        return sou;
+    }
+
+    public void setSou(double sou) {
+        this.sou = sou;
+    }
+
+    public String generarNomina() {
+        String nomina = "La nomina del " + getClass() + " suma un total de " + sou + " euros.";
+        return nomina;
     }
 
 }
