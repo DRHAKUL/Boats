@@ -5,14 +5,21 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import java.util.Date;
+
 /**
  *
  * @author DRAKUL
  */
 public class Patro extends Empleat {
 
-    public Patro(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu);
+    private String titulacio;
+    private double preuDia;
+
+    public Patro(String titulacio, double preuDia, String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+        super(nom, cognom, tipusDocument, adreca, telefon, correu, dataAlta, sou);
+        this.titulacio = titulacio;
+        this.preuDia = preuDia;
     }
 
 }

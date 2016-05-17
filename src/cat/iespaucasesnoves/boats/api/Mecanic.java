@@ -5,14 +5,19 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import java.util.Date;
+
 /**
  *
  * @author DRAKUL
  */
 public class Mecanic extends Empleat {
 
-    public Mecanic(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu);
+    private Habilitat habilitat;
+
+    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+        super(nom, cognom, tipusDocument, adreca, telefon, correu, dataAlta, sou);
+        this.habilitat = habilitat;
     }
 
 }
