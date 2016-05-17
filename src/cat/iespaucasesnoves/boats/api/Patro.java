@@ -11,4 +11,8 @@ package cat.iespaucasesnoves.boats.api;
  */
 public class Patro extends Empleat {
 
+    public Patro(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
+        super(nom, cognom, tipusDocument, adreca, telefon, correu);
+    }
+
 }

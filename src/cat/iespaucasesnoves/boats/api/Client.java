@@ -15,8 +15,10 @@ public class Client extends Persona {
 
     private ArrayList<Pagable> pagament;
 
-    public Client() {
+    public Client(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
+        super(nom, cognom, tipusDocument, adreca, telefon, correu);
         pagament = new ArrayList<>();
+
     }
 
     public void crearPagamentTargeta(int numero, String caducitat, int verificacio) {
