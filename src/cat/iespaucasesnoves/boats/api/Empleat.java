@@ -5,9 +5,7 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
-import cat.iespaucasesnoves.boats.api.Persona;
 import java.util.Date;
-import javax.media.j3d.View;
 
 /**
  *
