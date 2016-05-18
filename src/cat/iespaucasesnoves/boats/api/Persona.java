@@ -44,6 +44,10 @@ public class Persona {
         this.tipusDocument = tipusDocument;
     }
 
+    public String getNumeroDocument() {
+        return numeroDocument;
+    }
+
     public String getAdreca() {
         return adreca;
     }
@@ -66,6 +70,10 @@ public class Persona {
 
     public void setCorreu(String correu) {
         this.correu = correu;
+    }
+
+    public void setNumeroDocument(String numeroDocument) {
+        this.numeroDocument = numeroDocument;
     }
 
 }
