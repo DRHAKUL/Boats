@@ -6,6 +6,8 @@
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -17,7 +19,7 @@ public class Mecanic extends Empleat {
 
     private ArrayList<Habilitat> habilitat;
 
-    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException {
+    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException, PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
         this.habilitat = new ArrayList<>();
         this.habilitat.add(habilitat);

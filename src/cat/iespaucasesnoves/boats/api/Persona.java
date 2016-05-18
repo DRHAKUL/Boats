@@ -1,6 +1,7 @@
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 
 public class Persona {
 
@@ -12,14 +13,14 @@ public class Persona {
     protected String telefon;
     protected String correu;
 
-    public Persona(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, String numeroDocument) throws DadesIncorrectesException {
+    public Persona(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, String numeroDocument) throws PersonaException {
         if ("".equals(nom)) {
-            throw new DadesIncorrectesException();
+            throw new PersonaException();
         } else {
             this.nom = nom;
         }
         if ("".equals(cognom)) {
-            throw new DadesIncorrectesException();
+            throw new PersonaException();
         } else {
             this.cognom = cognom;
         }
@@ -27,14 +28,14 @@ public class Persona {
         this.adreca = adreca;
         this.telefon = telefon;
         if ("".equals(numeroDocument)) {
-            throw new DadesIncorrectesException();
+            throw new PersonaException();
         } else {
             this.numeroDocument = numeroDocument;
         }
         if (correu.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$;")) {
             this.correu = correu;
         } else {
-            throw new DadesIncorrectesException();
+            throw new PersonaException();
         }
     }
 
