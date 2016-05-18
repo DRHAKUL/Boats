@@ -16,8 +16,8 @@ public class Empleat extends Persona {
     protected Date dataAlta;
     protected double sou;
 
-    public Empleat(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu);
+    public Empleat(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+        super(nom, cognom, tipusDocument, adreca, telefon, correu, numeroDocument);
         this.dataAlta = dataAlta;
         this.sou = sou;
     }

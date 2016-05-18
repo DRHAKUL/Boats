@@ -17,8 +17,8 @@ public class Client extends Persona {
 
     private ArrayList<Pagable> pagament;
 
-    public Client(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu);
+    public Client(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu) {
+        super(nom, cognom, tipusDocument, adreca, telefon, correu, numeroDocument);
         pagament = new ArrayList<>();
 
     }
@@ -35,7 +35,7 @@ public class Client extends Persona {
     }
 
     public void crearPagamentcompte(String iban) {
-        Compte compte=new Compte(iban);
+        Compte compte = new Compte(iban);
         pagament.add(compte);
     }
 

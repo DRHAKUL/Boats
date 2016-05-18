@@ -15,9 +15,10 @@ public class Mecanic extends Empleat {
 
     private Habilitat habilitat;
 
-    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu, dataAlta, sou);
+    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+        super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
         this.habilitat = habilitat;
+
     }
 
 }
