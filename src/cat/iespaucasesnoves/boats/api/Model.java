@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cat.iespaucasesnoves.boats.api;
+import cat.iespaucasesnoves.boats.exepcions.ModelException;
 
 /**
  *
@@ -20,7 +21,24 @@ public class Model {
     protected double calat;
     protected double preu;
     
-    public Model (String referencia,String marca,String model,double manega,double eslora,double calat,double preu){
+    public Model (String referencia,String marca,String model,double manega,double eslora,double calat,double preu)throws ModelException{
+        if(referencia == ""){
+            throw new ModelException();
+        }else if(marca == ""){
+            throw new ModelException();
+        }else if(model == ""){
+            throw new ModelException();
+        }else if(tipus == ""){
+            throw new ModelException();
+        }else if(manega < 1 || manega > 300){
+            throw new ModelException();
+        }else if (eslora <1 || eslora > 300){
+            throw new ModelException();
+        }else if (calat <1 || calat > 300){
+            throw new ModelException();
+        }else if (preu <1){
+            throw new ModelException();
+        }
         this.referencia = referencia;
         this.marca = marca;
         this.model = model;
