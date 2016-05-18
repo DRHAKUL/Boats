@@ -39,8 +39,8 @@ public class Empleat extends Persona {
     }
 
     public String generarNomina() {
-        String nomina = "La nomina del " + getClass() + " suma un total de " + sou + " euros.";
-        return nomina;
+        
+        return null;
     }
 
 }

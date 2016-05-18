@@ -92,10 +92,8 @@ public class Model {
     }
     
     public String tornarInformacioGeneral(){
-        String json = "";
-        
-        
-        return json;
+             
+        return "{referencia:" + referencia + ",marca:" + marca + ",model:" + model + ",tipus:" + tipus + ",manega:"+manega+",eslora:"+eslora+",calat:"+calat+",preu:"+preu+"}";
     }
 
     @Override
