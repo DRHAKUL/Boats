@@ -7,8 +7,8 @@ package cat.iespaucasesnoves.boats.exepcions;
 
 /**
  *
- * @author jorge
+ * @author DRAKUL
  */
-public class DadesPersonalsIncorrectesException extends PersonaException{
-    
+public class DadesIncorrectesException extends BoatException {
+
 }

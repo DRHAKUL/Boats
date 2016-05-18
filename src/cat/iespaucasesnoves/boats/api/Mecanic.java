@@ -35,4 +35,8 @@ public class Mecanic extends Empleat {
         return habilitat;
     }
 
+    public String getNomina() {
+        return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + "}";
+    }
+
 }
