@@ -14,6 +14,7 @@ public class Model {
     protected String referencia;
     protected String marca;
     protected String model;
+    protected String tipus;
     protected double manega;
     protected double eslora;
     protected double calat;
@@ -29,6 +30,11 @@ public class Model {
         this.preu = preu;
     }
 
+    public String getTipus(){
+        return tipus;
+    }
+    
+    
     public String getReferencia() {
         return referencia;
     }

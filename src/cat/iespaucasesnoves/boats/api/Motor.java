@@ -9,8 +9,8 @@ package cat.iespaucasesnoves.boats.api;
  *
  * @author Carlos
  */
-public class Motor extends Model{
-    
+public class Motor extends Model {
+
     private int potencia;
     private double capDeposit;
     private boolean motAuxiliar;
@@ -20,6 +20,7 @@ public class Motor extends Model{
         this.potencia = potencia;
         this.capDeposit = capDeposit;
         this.motAuxiliar = motAuxiliar;
+        this.tipus = "Motor";
     }
 
     public int getPotencia() {
@@ -45,11 +46,10 @@ public class Motor extends Model{
     public void setMotAuxiliar(boolean motAuxiliar) {
         this.motAuxiliar = motAuxiliar;
     }
-    
-    public String tornarInformaciodetallada(){
+
+    public String tornarInformaciodetallada() {
         String json = "";
-        
-        
+
         return tornarInformacioGeneral() + json;
     }
 
@@ -57,7 +57,5 @@ public class Motor extends Model{
     public String toString() {
         return "Motor{" + "potencia=" + potencia + ", capDeposit=" + capDeposit + ", motAuxiliar=" + motAuxiliar + '}';
     }
-    
-    
-    
+
 }
