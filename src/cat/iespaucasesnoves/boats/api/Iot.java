@@ -5,6 +5,7 @@
  */
 package cat.iespaucasesnoves.boats.api;
 import cat.iespaucasesnoves.boats.exepcions.IotException;
+import cat.iespaucasesnoves.boats.exepcions.ModelException;
 
 /**
  *
@@ -17,7 +18,7 @@ public class Iot extends Model {
     private double autonomia;
     private boolean bodega;
 
-    public Iot(int camarots, int potencia, double autonomia, boolean bodega, String referencia, String marca, String model, double manega, double eslora, double calat, double preu)throws IotException {
+    public Iot(int camarots, int potencia, double autonomia, boolean bodega, String referencia, String marca, String model, double manega, double eslora, double calat, double preu)throws IotException, ModelException {
         super(referencia, marca, model, manega, eslora, calat, preu);
         if(camarots < 1 || camarots > 20){
             throw new IotException();

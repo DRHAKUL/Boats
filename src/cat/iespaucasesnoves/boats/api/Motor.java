@@ -5,6 +5,7 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.ModelException;
 import cat.iespaucasesnoves.boats.exepcions.MotorException;
 
 /**
@@ -17,7 +18,7 @@ public class Motor extends Model {
     private double capDeposit;
     private boolean motAuxiliar;
 
-    public Motor(int potencia, double capDeposit, boolean motAuxiliar, String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws MotorException {
+    public Motor(int potencia, double capDeposit, boolean motAuxiliar, String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws MotorException, ModelException {
         super(referencia, marca, model, manega, eslora, calat, preu);
         if (potencia < 1 || potencia > 2000) {
             throw new MotorException();
