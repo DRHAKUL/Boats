@@ -22,4 +22,20 @@ public class Patro extends Empleat {
         this.preuDia = preuDia;
     }
 
+    public String getTitulacio() {
+        return titulacio;
+    }
+
+    public double getPreuDia() {
+        return preuDia;
+    }
+
+    public void setTitulacio(String titulacio) {
+        this.titulacio = titulacio;
+    }
+
+    public void setPreuDia(double preuDia) {
+        this.preuDia = preuDia;
+    }
+
 }
