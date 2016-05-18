@@ -5,6 +5,7 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -13,11 +14,25 @@ import java.util.Date;
  */
 public class Mecanic extends Empleat {
 
-    private Habilitat habilitat;
+    private ArrayList<Habilitat> habilitat;
 
-    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu, dataAlta, sou);
-        this.habilitat = habilitat;
+    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+        super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
+        this.habilitat = new ArrayList<>();
+        this.habilitat.add(habilitat);
+
+    }
+
+    public void afegirHabilitat(Habilitat h) {
+        habilitat.add(h);
+    }
+
+    public void borrarHabilitat(Habilitat h) {
+        habilitat.remove(h);
+    }
+
+    public ArrayList tornarHabilitats() {
+        return habilitat;
     }
 
 }

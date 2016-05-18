@@ -5,17 +5,19 @@ public class Persona {
     protected String nom;
     protected String cognom;
     protected Document tipusDocument;
+    protected String numeroDocument;
     protected String adreca;
     protected String telefon;
     protected String correu;
 
-    public Persona(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu) {
+    public Persona(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, String numeroDocument) {
         this.nom = nom;
         this.cognom = cognom;
         this.tipusDocument = tipusDocument;
         this.adreca = adreca;
         this.telefon = telefon;
         this.correu = correu;
+        this.numeroDocument = numeroDocument;
     }
 
     public String getNom() {
@@ -42,6 +44,10 @@ public class Persona {
         this.tipusDocument = tipusDocument;
     }
 
+    public String getNumeroDocument() {
+        return numeroDocument;
+    }
+
     public String getAdreca() {
         return adreca;
     }
@@ -64,6 +70,10 @@ public class Persona {
 
     public void setCorreu(String correu) {
         this.correu = correu;
+    }
+
+    public void setNumeroDocument(String numeroDocument) {
+        this.numeroDocument = numeroDocument;
     }
 
 }

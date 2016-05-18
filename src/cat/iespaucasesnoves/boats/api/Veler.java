@@ -9,8 +9,8 @@ package cat.iespaucasesnoves.boats.api;
  *
  * @author Carlos
  */
-public class Veler extends Model{
-    
+public class Veler extends Model {
+
     private int cascs;
     private int mastils;
     private int cabines;
@@ -20,6 +20,7 @@ public class Veler extends Model{
         this.cascs = cascs;
         this.mastils = mastils;
         this.cabines = cabines;
+        this.tipus = "Veler";
     }
 
     public int getCascs() {
@@ -45,11 +46,10 @@ public class Veler extends Model{
     public void setCabines(int cabines) {
         this.cabines = cabines;
     }
-    
-    public String tornarInformaciodetallada(){
+
+    public String tornarInformaciodetallada() {
         String json = "";
-        
-        
+
         return tornarInformacioGeneral() + json;
     }
 
@@ -57,7 +57,5 @@ public class Veler extends Model{
     public String toString() {
         return "Veler{" + "cascs=" + cascs + ", mastils=" + mastils + ", cabines=" + cabines + '}';
     }
-    
-    
-    
+
 }
