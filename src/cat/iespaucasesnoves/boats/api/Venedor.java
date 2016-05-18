@@ -4,6 +4,7 @@ import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import cat.iespaucasesnoves.boats.exepcions.VenedorException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -37,23 +38,38 @@ public class Venedor extends Empleat {
         }
     }
 
-    public void setSouTotal() {
+    public ArrayList llistarVendes() {
+        ArrayList llistatVendes = new ArrayList();
         Iterator it = llistaVendes.entrySet().iterator();
-        double totalVendes = 0;
         while (it.hasNext()) {
             Venda nova = (Venda) it.next();
-            Venedor mostra = nova.getVenedor();
-            if (mostra.getNumeroDocument().equals(this.getNumeroDocument())) {
-                totalVendes = totalVendes + nova.getPreu();
+            llistatVendes.add(nova);
+        }
+        return llistatVendes;
+    }
 
-            }
+    public void setSouTotal() {
+        ArrayList vendes = llistarVendes();
+        double totalVendes = 0;
+        for (int i = 0; i < vendes.size(); i++) {
+            Venda v = (Venda) vendes.get(i);
+            totalVendes = totalVendes + v.getPreu();
         }
 
         souTotal = sou + (totalVendes * 100 / comissio);
+
     }
 
     public String getNomina() {
         return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + ",comissio:" + comissio + ",souTotal:" + souTotal + "}";
+    }
+
+    public void afegirVenda(Venda v) {
+        llistaVendes.put(v.getId(), v);
+    }
+
+    public void eliminarVenda(int id) {
+        llistaVendes.remove(id);
     }
 
 }
