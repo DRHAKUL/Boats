@@ -48,9 +48,8 @@ public class Veler extends Model {
     }
 
     public String tornarInformaciodetallada() {
-        String json = "";
-
-        return tornarInformacioGeneral() + json;
+        
+        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu +", cascs:"+cascs+", mastils:"+mastils+", cabines:"+cabines+"}";
     }
 
     @Override
