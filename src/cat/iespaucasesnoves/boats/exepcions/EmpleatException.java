@@ -9,6 +9,6 @@ package cat.iespaucasesnoves.boats.exepcions;
  *
  * @author jorge
  */
-public class DadesModelIncorrectesException extends ModelException{
+public class EmpleatException extends ModelException{
     
 }
