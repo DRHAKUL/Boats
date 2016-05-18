@@ -20,7 +20,13 @@ public class Motor extends Model{
         this.potencia = potencia;
         this.capDeposit = capDeposit;
         this.motAuxiliar = motAuxiliar;
+        this.tipus = "Motor";
     }
+
+    public String getTipus(){
+        return tipus;
+    }
+    
 
     public int getPotencia() {
         return potencia;

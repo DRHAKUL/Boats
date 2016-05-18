@@ -22,8 +22,15 @@ public class Iot extends Model {
         this.potencia = potencia;
         this.autonomia = autonomia;
         this.bodega = bodega;
+        this.tipus = "Iot";
     }
 
+    public String getTipus(){
+        return tipus;
+    }
+    
+    
+    
     public int getCamarots() {
         return camarots;
     }

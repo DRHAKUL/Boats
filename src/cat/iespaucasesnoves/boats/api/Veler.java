@@ -20,6 +20,11 @@ public class Veler extends Model{
         this.cascs = cascs;
         this.mastils = mastils;
         this.cabines = cabines;
+        this.tipus = "Veler";
+    }
+
+    public String getTipus(){
+        return tipus;
     }
 
     public int getCascs() {
