@@ -5,6 +5,8 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -16,18 +18,31 @@ public class Empleat extends Persona {
     protected Date dataAlta;
     protected double sou;
 
-    public Empleat(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+    public Empleat(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException {
         super(nom, cognom, tipusDocument, adreca, telefon, correu, numeroDocument);
-        this.dataAlta = dataAlta;
-        this.sou = sou;
+        if (dataAlta.equals("")) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.dataAlta = dataAlta;
+        }
+        if (sou <= 0) {
+            throw new DadesIncorrectesException();
+
+        } else {
+            this.sou = sou;
+        }
     }
 
     public Date getDataAlta() {
         return dataAlta;
     }
 
-    public void setDataAlta(Date dataAlta) {
-        this.dataAlta = dataAlta;
+    public void setDataAlta(Date dataAlta) throws DadesIncorrectesException {
+        if (dataAlta.equals("")) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.dataAlta = dataAlta;
+        }
     }
 
     public double getSou() {
@@ -39,7 +54,7 @@ public class Empleat extends Persona {
     }
 
     public String generarNomina() {
-        
+
         return null;
     }
 
