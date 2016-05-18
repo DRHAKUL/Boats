@@ -5,6 +5,7 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.ModelException;
 import cat.iespaucasesnoves.boats.exepcions.VelerException;
 
 /**
@@ -17,7 +18,7 @@ public class Veler extends Model {
     private int mastils;
     private int cabines;
 
-    public Veler(int cascs, int mastils, int cabines, String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws VelerException {
+    public Veler(int cascs, int mastils, int cabines, String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws VelerException, ModelException {
         super(referencia, marca, model, manega, eslora, calat, preu);
         if (cascs < 1 || cascs > 3) {
             throw new VelerException();
