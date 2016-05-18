@@ -48,9 +48,8 @@ public class Motor extends Model {
     }
 
     public String tornarInformaciodetallada() {
-        String json = "";
 
-        return tornarInformacioGeneral() + json;
+        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu+", potencia:"+potencia+",capDeposit:"+capDeposit+", motorAuxiliar:"+motAuxiliar+"}";
     }
 
     @Override

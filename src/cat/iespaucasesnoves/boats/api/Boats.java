@@ -62,45 +62,62 @@ public class Boats {
     }
 
     public void afegirModelCataleg(Model model) {
+        modelsCataleg.put(model.getReferencia(), model);
     }
 
     public void eliminarModelCataleg(String referencia) {
+        modelsCataleg.remove(referencia);
     }
 
     public void afegirVaixell(Vaixell vaixell) {
+        vaixells.put(vaixell.getMatricula(), vaixell);
+    
     }
 
     public void eliminarVaixell(String matricula) {
+        vaixells.remove(matricula);
     }
 
     public void afegirClient(Client client) {
+        clients.put(client.getNumeroDocument(), client);
     }
 
     public void eliminarClient(String numeroDocument) {
+        clients.remove(numeroDocument);
     }
 
     public void afegirEmpleat(Empleat empleat) {
+        empleats.put(empleat.getNumeroDocument(), empleat);
+    
     }
 
     public void eliminarEmpleat(String numeroDocument) {
+        empleats.remove(numeroDocument);
     }
 
     public void afegirLloguer(Lloguer lloguer) {
+        lloguers.put(lloguer.getId(), lloguer);
     }
 
     public void eliminarLloguer(int idOperacio) {
+        lloguers.remove(idOperacio);
     }
 
     public void afegirVenda(Venda venda) {
+        vendes.put(venda.getId(), venda);
     }
 
     public void eliminarVenda(int idOperacio) {
+        vendes.remove(idOperacio);
     }
 
     public void afegirReparacio(Reparacio reparacio) {
+        reparacions.put(reparacio.getId(), reparacio);
+    
     }
 
     public void eliminarReparacio(int idOperacio) {
+        reparacions.remove(idOperacio);
     }
 
     public HashMap<String, Model> llistarModelsDisponibles() {
