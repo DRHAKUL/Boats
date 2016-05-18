@@ -6,8 +6,8 @@ public class Venedor extends Empleat {
 
     private double comissio;
 
-    public Venedor(double comissio, String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
-        super(nom, cognom, tipusDocument, adreca, telefon, correu, dataAlta, sou);
+    public Venedor(double comissio, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) {
+        super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
         this.comissio = comissio;
     }
 
@@ -17,6 +17,10 @@ public class Venedor extends Empleat {
 
     public void setComissio(double comissio) {
         this.comissio = comissio;
+    }
+
+    public String getNomina() {
+        return "{" + "nom:" + nom + "," + "cognoms:" + cognom + "," + "tipusDocument:" + tipusDocument + "numeroDocument" + adreca + "}";
     }
 
 }
