@@ -25,12 +25,6 @@ public class Iot extends Model {
         this.tipus = "Iot";
     }
 
-    public String getTipus(){
-        return tipus;
-    }
-    
-    
-    
     public int getCamarots() {
         return camarots;
     }
