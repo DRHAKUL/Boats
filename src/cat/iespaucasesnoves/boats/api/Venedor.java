@@ -3,13 +3,16 @@ package cat.iespaucasesnoves.boats.api;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.VenedorException;
 import java.util.Date;
+import java.util.HashMap;
 
 public class Venedor extends Empleat {
 
     private double comissio;
+    private HashMap<Integer, Venda> llistaVendes;
 
-    public Venedor(double comissio, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws VenedorException {
+    public Venedor(double comissio, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws VenedorException, DadesIncorrectesException {
         super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
+        llistaVendes = new HashMap<>();
         if (comissio < 0 || comissio >= 50) {
             throw new VenedorException();
         } else {
