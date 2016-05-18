@@ -92,4 +92,12 @@ public class Reparacio extends Operacio {
         this.notes = notes;
     }
 
+    private void assignarMecanic(Mecanic m) {
+        mecanics.add(m);
+    }
+
+    private void eliminarMecanic(Mecanic m) {
+        mecanics.remove(m);
+    }
+
 }
