@@ -6,7 +6,6 @@
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
