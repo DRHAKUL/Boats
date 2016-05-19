@@ -22,13 +22,11 @@ public class Model {
     protected double preu;
     
     public Model (String referencia,String marca,String model,double manega,double eslora,double calat,double preu)throws ModelException{
-        if(referencia == ""){
+        if(referencia.equals("")){
             throw new ModelException();
-        }else if(marca == ""){
+        }else if(marca.equals("")){
             throw new ModelException();
-        }else if(model == ""){
-            throw new ModelException();
-        }else if(tipus == ""){
+        }else if( model.equals("")){
             throw new ModelException();
         }else if(manega < 1 || manega > 300){
             throw new ModelException();
