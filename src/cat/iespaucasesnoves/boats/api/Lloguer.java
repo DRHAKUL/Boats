@@ -20,6 +20,7 @@ public class Lloguer extends Operacio {
     private Vaixell vaixell;
     private double preuDia;
     private Patro patro;
+    private double preuTotalLloguer;
 
     public Lloguer(boolean ambPatro, Date iniciLloguer, Date fiLloguer, Client client, Vaixell vaixell, double preuDia, Patro patro, Estat estat) {
         super(estat);
@@ -30,6 +31,7 @@ public class Lloguer extends Operacio {
         this.vaixell = vaixell;
         this.preuDia = preuDia;
         this.patro = patro;
+        preuTotalLloguer = 0;
     }
 
     public Lloguer(Date iniciLloguer, Date fiLloguer, Client client, Vaixell vaixell, double preuDia, Estat estat) {
@@ -74,6 +76,26 @@ public class Lloguer extends Operacio {
 
     public void setPreuDia(double preuDia) {
         this.preuDia = preuDia;
+    }
+
+    /**
+     * Calcula el preu total del lloguer amb patro i sense patro segons el
+     * numero de dies.
+     */
+    public void calcularPreuLloguer() {
+        double data1 = iniciLloguer.getTime();
+        double data2 = fiLloguer.getTime();
+        double diferencia = data1 - data2;
+        double dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        if (ambPatro) {
+            preuTotalLloguer = dias * (preuDia + patro.getPreuDia());
+        } else {
+            preuTotalLloguer = dias * preuDia;
+        }
+    }
+
+    public double getPreuTotalLloguer() {
+        return preuTotalLloguer;
     }
 
 }
