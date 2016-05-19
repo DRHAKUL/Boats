@@ -7,7 +7,6 @@ package cat.iespaucasesnoves.boats.proves;
 
 import cat.iespaucasesnoves.boats.api.Boats;
 import cat.iespaucasesnoves.boats.api.Document;
-import cat.iespaucasesnoves.boats.api.Empleat;
 import cat.iespaucasesnoves.boats.api.Habilitat;
 import cat.iespaucasesnoves.boats.api.Mecanic;
 import cat.iespaucasesnoves.boats.api.Venedor;
@@ -17,8 +16,6 @@ import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
