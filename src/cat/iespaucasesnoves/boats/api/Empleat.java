@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * @author DRAKUL
  */
-public class Empleat extends Persona {
+public abstract class Empleat extends Persona {
 
     protected Date dataAlta;
     protected double sou;

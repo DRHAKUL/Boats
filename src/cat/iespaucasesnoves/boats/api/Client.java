@@ -8,6 +8,7 @@ package cat.iespaucasesnoves.boats.api;
 import java.util.ArrayList;
 import cat.iespaucasesnoves.boats.api.Pagable;
 import cat.iespaucasesnoves.boats.api.Targeta;
+import java.util.HashMap;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 
 /**
@@ -24,7 +25,7 @@ public class Client extends Persona {
 
     }
 
-    public void crearPagamentTargeta(int numero, String caducitat, int verificacio) {
+    public void crearPagamentTargeta(int numero, String caducitat, String verificacio) {
         Targeta targeta = new Targeta(numero, caducitat, verificacio);
         pagament.add(targeta);
 
@@ -34,8 +35,12 @@ public class Client extends Persona {
         pagament.remove(numero);
 
     }
-
-    public void crearPagamentcompte(String iban) {
+    
+    public ArrayList<Pagable> llistarPagament() {
+        return pagament;
+    }
+    
+    public void crearPagamentCompte(String iban) {
         Compte compte = new Compte(iban);
         pagament.add(compte);
     }
