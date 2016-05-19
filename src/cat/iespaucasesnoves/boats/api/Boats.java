@@ -7,6 +7,7 @@ package cat.iespaucasesnoves.boats.api;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 
 /**
  *
@@ -61,12 +62,14 @@ public class Boats {
         return lloguers;
     }
 
-    public void afegirModelCataleg(Model model) {
+    public void afegirModelCataleg(Model model){
         modelsCataleg.put(model.getReferencia(), model);
     }
 
-    public void eliminarModelCataleg(String referencia) {
-        modelsCataleg.remove(referencia);
+    public void eliminarModelCataleg(String referencia)throws DadesIncorrectesException {
+        if(modelsCataleg.remove(referencia) == null){
+         throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirVaixell(Vaixell vaixell) {
@@ -74,16 +77,20 @@ public class Boats {
     
     }
 
-    public void eliminarVaixell(String matricula) {
-        vaixells.remove(matricula);
+    public void eliminarVaixell(String matricula) throws DadesIncorrectesException {
+        if(vaixells.remove(matricula)== null){
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirClient(Client client) {
         clients.put(client.getNumeroDocument(), client);
     }
 
-    public void eliminarClient(String numeroDocument) {
-        clients.remove(numeroDocument);
+    public void eliminarClient(String numeroDocument) throws DadesIncorrectesException{ 
+        if(clients.remove(numeroDocument) == null){
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirEmpleat(Empleat empleat) {
@@ -91,24 +98,33 @@ public class Boats {
     
     }
 
-    public void eliminarEmpleat(String numeroDocument) {
-        empleats.remove(numeroDocument);
+    public void eliminarEmpleat(String numeroDocument) throws DadesIncorrectesException{
+        if (empleats.remove(numeroDocument)== null){
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirLloguer(Lloguer lloguer) {
         lloguers.put(lloguer.getId(), lloguer);
     }
 
-    public void eliminarLloguer(int idOperacio) {
-        lloguers.remove(idOperacio);
+    public void eliminarLloguer(int idOperacio) throws DadesIncorrectesException{
+        if(lloguers.remove(idOperacio) == null){
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirVenda(Venda venda) {
         vendes.put(venda.getId(), venda);
+        
+        
+        
     }
 
-    public void eliminarVenda(int idOperacio) {
-        vendes.remove(idOperacio);
+    public void eliminarVenda(int idOperacio) throws DadesIncorrectesException {
+        if(vendes.remove(idOperacio)==null){
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirReparacio(Reparacio reparacio) {
@@ -116,8 +132,10 @@ public class Boats {
     
     }
 
-    public void eliminarReparacio(int idOperacio) {
-        reparacions.remove(idOperacio);
+    public void eliminarReparacio(int idOperacio) throws DadesIncorrectesException{
+        if(reparacions.remove(idOperacio)==null){
+            throw new DadesIncorrectesException();
+        }
     }
 
     public HashMap<String, Model> llistarModelsDisponibles() {
@@ -152,8 +170,10 @@ public class Boats {
         return filtrats;
     }
 
-    public Model tornaModel(String referencia) {
-
+    public Model tornaModel(String referencia) throws DadesIncorrectesException {
+        if (modelsCataleg.containsKey(referencia)){
+            throw new DadesIncorrectesException();
+        }
         return modelsCataleg.get(referencia);
 
     }
