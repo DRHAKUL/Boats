@@ -1,5 +1,8 @@
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
+
 public class Persona {
 
     protected String nom;
@@ -10,30 +13,54 @@ public class Persona {
     protected String telefon;
     protected String correu;
 
-    public Persona(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, String numeroDocument) {
-        this.nom = nom;
-        this.cognom = cognom;
+    public Persona(String nom, String cognom, Document tipusDocument, String adreca, String telefon, String correu, String numeroDocument) throws PersonaException {
+        if ("".equals(nom)) {
+            throw new PersonaException();
+        } else {
+            this.nom = nom;
+        }
+        if ("".equals(cognom)) {
+            throw new PersonaException();
+        } else {
+            this.cognom = cognom;
+        }
         this.tipusDocument = tipusDocument;
         this.adreca = adreca;
         this.telefon = telefon;
-        this.correu = correu;
-        this.numeroDocument = numeroDocument;
+        if ("".equals(numeroDocument)) {
+            throw new PersonaException();
+        } else {
+            this.numeroDocument = numeroDocument;
+        }
+        if (correu.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$;")) {
+            this.correu = correu;
+        } else {
+            throw new PersonaException();
+        }
     }
 
     public String getNom() {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNom(String nom) throws DadesIncorrectesException {
+        if ("".equals(nom)) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.nom = nom;
+        }
     }
 
     public String getCognom() {
         return cognom;
     }
 
-    public void setCognom(String cognom) {
-        this.cognom = cognom;
+    public void setCognom(String cognom) throws DadesIncorrectesException {
+        if ("".equals(cognom)) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.cognom = cognom;
+        }
     }
 
     public Document getTipusDocument() {
@@ -68,12 +95,20 @@ public class Persona {
         return correu;
     }
 
-    public void setCorreu(String correu) {
-        this.correu = correu;
+    public void setCorreu(String correu) throws DadesIncorrectesException {
+        if (correu.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$;")) {
+            this.correu = correu;
+        } else {
+            throw new DadesIncorrectesException();
+        }
     }
 
-    public void setNumeroDocument(String numeroDocument) {
-        this.numeroDocument = numeroDocument;
+    public void setNumeroDocument(String numeroDocument) throws DadesIncorrectesException {
+        if ("".equals(numeroDocument)) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.numeroDocument = numeroDocument;
+        }
     }
 
 }

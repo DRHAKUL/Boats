@@ -35,7 +35,7 @@ public class BoatsTest {
         Boats llamada = new Boats();
     }
 
-    @Test
+    /*@Test
     public void afegirVaixeill() {
         Boats llamada = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
@@ -64,7 +64,7 @@ public class BoatsTest {
             System.out.println("Se ha eliminado");
         }
     }
-    
+*/    
     @Test
     public void llistarTipusEmbarcacio(){
         
