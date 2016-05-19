@@ -68,7 +68,7 @@ public class BoatsTest {
             System.out.println("S'ha eliminat.");
         }
     }
-    
+*/    
     @Test
     public void afegirModelCataleg() throws ModelException{
         Boats trucar = new Boats();

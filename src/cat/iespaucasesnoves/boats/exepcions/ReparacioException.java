@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cat.iespaucasesnoves.boats.api;
+package cat.iespaucasesnoves.boats.exepcions;
 
 /**
  *
  * @author DRAKUL
  */
-public class NewClass {
+public class ReparacioException extends OperacioException {
 
 }

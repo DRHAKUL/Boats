@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.api;
 import cat.iespaucasesnoves.boats.exepcions.ModelException;
 
@@ -11,7 +6,7 @@ import cat.iespaucasesnoves.boats.exepcions.ModelException;
  * @author Carlos
  */
 public class Model {
-    
+
     protected String referencia;
     protected String marca;
     protected String model;
@@ -20,23 +15,20 @@ public class Model {
     protected double eslora;
     protected double calat;
     protected double preu;
-    
     public Model (String referencia,String marca,String model,double manega,double eslora,double calat,double preu)throws ModelException{
-        if(referencia == ""){
+        if(referencia.equals("")){
             throw new ModelException();
-        }else if(marca == ""){
+        }else if(marca.equals("")){
             throw new ModelException();
-        }else if(model == ""){
+        }else if(model.equals("")){
             throw new ModelException();
-        }else if(tipus == ""){
+        }else if (manega < 1 || manega > 300) {
             throw new ModelException();
-        }else if(manega < 1 || manega > 300){
+        } else if (eslora < 1 || eslora > 300) {
             throw new ModelException();
-        }else if (eslora <1 || eslora > 300){
+        } else if (calat < 1 || calat > 300) {
             throw new ModelException();
-        }else if (calat <1 || calat > 300){
-            throw new ModelException();
-        }else if (preu <1){
+        } else if (preu < 1) {
             throw new ModelException();
         }
         this.referencia = referencia;
@@ -48,11 +40,10 @@ public class Model {
         this.preu = preu;
     }
 
-    public String getTipus(){
+    public String getTipus() {
         return tipus;
     }
-    
-    
+
     public String getReferencia() {
         return referencia;
     }
@@ -108,15 +99,15 @@ public class Model {
     public void setPreu(double preu) {
         this.preu = preu;
     }
-    
-    public String tornarInformacioGeneral(){
-             
-        return "{referencia:" + referencia + ",marca:" + marca + ",model:" + model + ",tipus:" + tipus + ",manega:"+manega+",eslora:"+eslora+",calat:"+calat+",preu:"+preu+"}";
+
+    public String tornarInformacioGeneral() {
+
+        return "{referencia:" + referencia + ",marca:" + marca + ",model:" + model + ",tipus:" + tipus + ",manega:" + manega + ",eslora:" + eslora + ",calat:" + calat + ",preu:" + preu + "}";
     }
 
     @Override
     public String toString() {
         return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu + '}';
     }
-    
+
 }

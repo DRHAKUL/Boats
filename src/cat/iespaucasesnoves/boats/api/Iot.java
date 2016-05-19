@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cat.iespaucasesnoves.boats.api;
+
 import cat.iespaucasesnoves.boats.exepcions.IotException;
 import cat.iespaucasesnoves.boats.exepcions.ModelException;
 
@@ -18,15 +19,15 @@ public class Iot extends Model {
     private double autonomia;
     private boolean bodega;
 
-    public Iot(int camarots, int potencia, double autonomia, boolean bodega, String referencia, String marca, String model, double manega, double eslora, double calat, double preu)throws IotException, ModelException {
+    public Iot(int camarots, int potencia, double autonomia, boolean bodega, String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws IotException, ModelException {
         super(referencia, marca, model, manega, eslora, calat, preu);
-        if(camarots < 1 || camarots > 20){
+        if (camarots < 1 || camarots > 20) {
             throw new IotException();
-        }else if(potencia < 1 || potencia > 5000){
+        } else if (potencia < 1 || potencia > 5000) {
             throw new IotException();
-        }else if(autonomia < 1 || autonomia > 2000){
+        } else if (autonomia < 1 || autonomia > 2000) {
             throw new IotException();
-        }else if (bodega != true || bodega != false){
+        } else if (bodega != true || bodega != false) {
             throw new IotException();
         }
         this.camarots = camarots;
@@ -40,8 +41,8 @@ public class Iot extends Model {
         return camarots;
     }
 
-    public void setCamarots(int camarots)throws IotException {
-        if(camarots < 1 || camarots > 20){
+    public void setCamarots(int camarots) throws IotException {
+        if (camarots < 1 || camarots > 20) {
             throw new IotException();
         }
         this.camarots = camarots;
@@ -51,8 +52,8 @@ public class Iot extends Model {
         return potencia;
     }
 
-    public void setPotencia(int potencia)throws IotException {
-        if(potencia < 1 || potencia > 5000){
+    public void setPotencia(int potencia) throws IotException {
+        if (potencia < 1 || potencia > 5000) {
             throw new IotException();
         }
         this.potencia = potencia;
@@ -62,8 +63,8 @@ public class Iot extends Model {
         return autonomia;
     }
 
-    public void setAutonomia(double autonomia)throws IotException {
-        if(autonomia < 1 || autonomia > 2000){
+    public void setAutonomia(double autonomia) throws IotException {
+        if (autonomia < 1 || autonomia > 2000) {
             throw new IotException();
         }
         this.autonomia = autonomia;
@@ -73,17 +74,16 @@ public class Iot extends Model {
         return bodega;
     }
 
-    public void setBodega(boolean bodega)throws IotException {
-        if (bodega != true || bodega != false){
+    public void setBodega(boolean bodega) throws IotException {
+        if (bodega != true || bodega != false) {
             throw new IotException();
         }
         this.bodega = bodega;
     }
 
     public String tornarInformaciodetallada() {
-        
 
-        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu +", camarots:"+camarots+", potencia:"+potencia+", autonomia:"+autonomia+", bodega:"+bodega+"}";
+        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu + ", camarots:" + camarots + ", potencia:" + potencia + ", autonomia:" + autonomia + ", bodega:" + bodega + "}";
     }
 
     @Override

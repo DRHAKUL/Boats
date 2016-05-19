@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.api;
 
 /**
@@ -23,8 +18,8 @@ public class Vaixell {
         this.model = model;
         this.perLloguar = perLloguar;
         this.preuDia = 0;
-    }    
-    
+    }
+
     public Vaixell(String matricula, Client propietari, Model model, boolean perLloguar, double preuDia) {
         this.matricula = matricula;
         this.propietari = propietari;
@@ -53,7 +48,7 @@ public class Vaixell {
         return perLloguar;
     }
 
-    public void setPerLloguar(boolean perLloguar,double preuDia) {
+    public void setPerLloguar(boolean perLloguar, double preuDia) {
         this.perLloguar = perLloguar;
         this.preuDia = preuDia;
     }
@@ -65,7 +60,5 @@ public class Vaixell {
     public void setPreuDia(double preuDia) {
         this.preuDia = preuDia;
     }
-    
-    
 
 }
