@@ -18,7 +18,12 @@ import cat.iespaucasesnoves.boats.api.Vaixell;
 import cat.iespaucasesnoves.boats.api.Document;
 import cat.iespaucasesnoves.boats.api.Empleat;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
+import cat.iespaucasesnoves.boats.exepcions.LloguerExeption;
 import cat.iespaucasesnoves.boats.exepcions.ModelException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
+import cat.iespaucasesnoves.boats.exepcions.ReparacioException;
+import cat.iespaucasesnoves.boats.exepcions.VendaException;
 import cat.iespaucasesnoves.boats.exepcions.VenedorException;
 import java.util.HashMap;
 import org.junit.Assert;
@@ -38,9 +43,10 @@ public class BoatsTest {
     public static void setUpBeforeClass() {
         Boats trucar = new Boats();
     }
+// Hacer los try y catch dentro de la propia clase.
 
     @Test
-    public void afegirVaixeill() throws ModelException {
+    public void afegirVaixeill() throws ModelException, PersonaException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
@@ -55,7 +61,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarVaixell() throws ModelException {
+    public void eliminarVaixell() throws ModelException, PersonaException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
@@ -68,185 +74,186 @@ public class BoatsTest {
             System.out.println("S'ha eliminat.");
         }
     }
-*/    
+
+    */    
     @Test
-    public void afegirModelCataleg() throws ModelException{
+    public void afegirModelCataleg() throws ModelException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         trucar.afegirModelCataleg(model);
-        if (trucar.getModelsCataleg().containsKey(model)){
+        if (trucar.getModelsCataleg().containsKey(model)) {
             System.out.println("S'ha afegit.");
-        }else{
+        } else {
             System.out.println("No s'ha afegit.");
         }
-}
-    
+    }
+
     @Test
-    public void eliminarModelCataleg() throws ModelException{
+    public void eliminarModelCataleg() throws ModelException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         trucar.eliminarModelCataleg("1");
-        if(trucar.getModelsCataleg().containsKey(model)){
+        if (trucar.getModelsCataleg().containsKey(model)) {
             System.out.println("No s'ha eliminat.");
-        }else{
+        } else {
             System.err.println("s'ha eliminat");
         }
     }
-    
+
     @Test
-    public void afegirClient() throws ModelException{
+    public void afegirClient() throws ModelException, PersonaException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         trucar.afegirClient(propietari);
-        if (trucar.getClients().containsKey(propietari)){
+        if (trucar.getClients().containsKey(propietari)) {
             System.out.println("S'ha afegit.");
-        }else{
+        } else {
             System.err.println("No s'ha afegit.");
         }
     }
-    
+
     @Test
-    public void eliminarClient() throws ModelException{
+    public void eliminarClient() throws ModelException, PersonaException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         trucar.eliminarClient("43186404T");
-        if (trucar.getClients().containsKey(propietari)){
+        if (trucar.getClients().containsKey(propietari)) {
             System.out.println("No s'ha eliminat.");
-        }else{
+        } else {
             System.out.println("S'ha eliminat");
         }
     }
-    
+
     @Test
-    public void afegirEmpleat() throws DadesIncorrectesException{
-        Boats trucar=new Boats();
-        java.util.Date data = new java.util.Date(); 
-        Empleat empleat= new Empleat("Antonio","Machín",Document.NIE,"432898898","Carrer Blanc","971435261","antonio@gmail.com",data,1499.50);
+    public void afegirEmpleat() throws DadesIncorrectesException, PersonaException, EmpleatException {
+        Boats trucar = new Boats();
+        java.util.Date data = new java.util.Date();
+        Empleat empleat = new Empleat("Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
         trucar.afegirEmpleat(empleat);
-        if (trucar.getEmpleats().containsKey(empleat)){
+        if (trucar.getEmpleats().containsKey(empleat)) {
             System.out.println("S'ha afegit.");
-        }else{
-            System.out.println("No s'ha afegit.");
-        } 
-    }
-    
-    @Test
-    public void eliminarEmpleat() throws DadesIncorrectesException{
-        Boats trucar=new Boats();
-        java.util.Date data = new java.util.Date(); 
-        Empleat empleat= new Empleat("Antonio","Machín",Document.NIE,"432898898","Carrer Blanc","971435261","antonio@gmail.com",data,1499.50);
-        trucar.eliminarEmpleat("432898898");
-        if (trucar.getEmpleats().containsKey(empleat)){
-            System.out.println("No s'ha eliminat.");
-        }else{
-            System.out.println("S'ha eliminat.");
-        } 
-    }
-    
-    @Test
-    public void afegirLloguer() throws ModelException{
-        Boats trucar=new Boats();
-        java.util.Date dataInici = new java.util.Date();
-        java.util.Date dataFi = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
-        Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
-        Vaixell vaixell = new Vaixell("X330", client, model, true);
-        Lloguer lloguer= new Lloguer(dataInici,dataFi,client,vaixell,349.90,Estat.TRAMITANT);
-        trucar.afegirLloguer(lloguer);
-        if(trucar.getLloguers().containsKey(lloguer)){
-            System.out.println("S'ha afegit.");
-        }else{
+        } else {
             System.out.println("No s'ha afegit.");
         }
-    }
-    
-    @Test
-    public void eliminarLloguer() throws ModelException{
-        Boats trucar=new Boats();
-        java.util.Date dataInici = new java.util.Date();
-        java.util.Date dataFi = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
-        Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
-        Vaixell vaixell = new Vaixell("X330", client, model, true);
-        Lloguer lloguer= new Lloguer(dataInici,dataFi,client,vaixell,349.90,Estat.TRAMITANT);
-        trucar.eliminarLloguer(1);
-        if(trucar.getLloguers().containsKey(lloguer)){
-            System.out.println("No s'ha eliminat.");
-        }else{
-            System.out.println("S'ha eliminat.");
-        }
-    }
-    
-    @Test
-    public void afegirVenda() throws ModelException, DadesIncorrectesException, VenedorException{
-        Boats trucar=new Boats();
-        java.util.Date dataVenda = new java.util.Date();
-        java.util.Date dataAlta = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
-        Client comprador = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
-        Vaixell vaixell = new Vaixell("X330", comprador, model, true);
-        Venedor venedor= new Venedor(4.5,"Miguel","Hernandez",Document.DNI,"43176453T","Avinguda Palou","971546347","miguel@gmail.com",dataAlta,1358.37);
-        Venda venda= new Venda(vaixell,dataVenda,45979.99,comprador,venedor,Estat.TRAMITANT);
-        trucar.afegirVenda(venda);
-        if(trucar.getVendes().containsKey(venda)){
-            System.out.println("S'ha afegit.");
-        }else{
-            System.out.println("No s'ha afegit.");
-        }
-    }
-    
-    @Test
-    public void eliminarVenda() throws ModelException, DadesIncorrectesException, VenedorException{
-        Boats trucar=new Boats();
-        java.util.Date dataVenda = new java.util.Date();
-        java.util.Date dataAlta = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
-        Client comprador = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
-        Vaixell vaixell = new Vaixell("X330", comprador, model, true);
-        Venedor venedor= new Venedor(4.5,"Miguel","Hernandez",Document.DNI,"43176453T","Avinguda Palou","971546347","miguel@gmail.com",dataAlta,1358.37);
-        Venda venda= new Venda(vaixell,dataVenda,45979.99,comprador,venedor,Estat.TRAMITANT);
-        trucar.eliminarVenda(1);
-        if(trucar.getVendes().containsKey(venda)){
-            System.out.println("No s'ha eliminat.");
-        }else{
-            System.out.println("S'ha eliminat.");
-        }    
     }
 
     @Test
-    public void afegirReparacio() throws ModelException{
-        Boats trucar=new Boats();
+    public void eliminarEmpleat() throws DadesIncorrectesException, PersonaException, EmpleatException {
+        Boats trucar = new Boats();
+        java.util.Date data = new java.util.Date();
+        Empleat empleat = new Empleat("Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
+        trucar.eliminarEmpleat("432898898");
+        if (trucar.getEmpleats().containsKey(empleat)) {
+            System.out.println("No s'ha eliminat.");
+        } else {
+            System.out.println("S'ha eliminat.");
+        }
+    }
+
+    @Test
+    public void afegirLloguer() throws ModelException, PersonaException, LloguerExeption {
+        Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
-        java.util.Date dataPrevFinal = new java.util.Date();
+        java.util.Date dataFi = new java.util.Date();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", client, model, true);
-        Reparacio reparacio= new Reparacio(client,vaixell,"Hangar 5",dataInici, dataPrevFinal,"Falla motor", 1499.99,Estat.FINALITZAT);
-        trucar.afegirReparacio(reparacio);
-        if(trucar.getReparacions().containsKey(reparacio)){
+        Lloguer lloguer = new Lloguer(dataInici, dataFi, client, vaixell, 349.90, Estat.TRAMITANT);
+        trucar.afegirLloguer(lloguer);
+        if (trucar.getLloguers().containsKey(lloguer)) {
             System.out.println("S'ha afegit.");
-        }else{
+        } else {
             System.out.println("No s'ha afegit.");
         }
     }
-    
+
     @Test
-    public void eliminarReparacio() throws ModelException{
-        Boats trucar=new Boats();
+    public void eliminarLloguer() throws ModelException, PersonaException, LloguerExeption {
+        Boats trucar = new Boats();
+        java.util.Date dataInici = new java.util.Date();
+        java.util.Date dataFi = new java.util.Date();
+        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
+        Vaixell vaixell = new Vaixell("X330", client, model, true);
+        Lloguer lloguer = new Lloguer(dataInici, dataFi, client, vaixell, 349.90, Estat.TRAMITANT);
+        trucar.eliminarLloguer(1);
+        if (trucar.getLloguers().containsKey(lloguer)) {
+            System.out.println("No s'ha eliminat.");
+        } else {
+            System.out.println("S'ha eliminat.");
+        }
+    }
+
+    @Test
+    public void afegirVenda() throws ModelException, DadesIncorrectesException, VenedorException, PersonaException, VendaException {
+        Boats trucar = new Boats();
+        java.util.Date dataVenda = new java.util.Date();
+        java.util.Date dataAlta = new java.util.Date();
+        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Client comprador = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
+        Vaixell vaixell = new Vaixell("X330", comprador, model, true);
+        Venedor venedor = new Venedor(4.5, "Miguel", "Hernandez", Document.DNI, "43176453T", "Avinguda Palou", "971546347", "miguel@gmail.com", dataAlta, 1358.37);
+        Venda venda = new Venda(vaixell, dataVenda, 45979.99, comprador, venedor, Estat.TRAMITANT);
+        trucar.afegirVenda(venda);
+        if (trucar.getVendes().containsKey(venda)) {
+            System.out.println("S'ha afegit.");
+        } else {
+            System.out.println("No s'ha afegit.");
+        }
+    }
+
+    @Test
+    public void eliminarVenda() throws ModelException, DadesIncorrectesException, VenedorException, PersonaException, VendaException {
+        Boats trucar = new Boats();
+        java.util.Date dataVenda = new java.util.Date();
+        java.util.Date dataAlta = new java.util.Date();
+        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Client comprador = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
+        Vaixell vaixell = new Vaixell("X330", comprador, model, true);
+        Venedor venedor = new Venedor(4.5, "Miguel", "Hernandez", Document.DNI, "43176453T", "Avinguda Palou", "971546347", "miguel@gmail.com", dataAlta, 1358.37);
+        Venda venda = new Venda(vaixell, dataVenda, 45979.99, comprador, venedor, Estat.TRAMITANT);
+        trucar.eliminarVenda(1);
+        if (trucar.getVendes().containsKey(venda)) {
+            System.out.println("No s'ha eliminat.");
+        } else {
+            System.out.println("S'ha eliminat.");
+        }
+    }
+
+    @Test
+    public void afegirReparacio() throws ModelException, PersonaException, ReparacioException {
+        Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataPrevFinal = new java.util.Date();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", client, model, true);
-        Reparacio reparacio= new Reparacio(client,vaixell,"Hangar 5",dataInici, dataPrevFinal,"Falla motor", 1499.99,Estat.FINALITZAT);
+        Reparacio reparacio = new Reparacio(client, vaixell, "Hangar 5", dataInici, dataPrevFinal, "Falla motor", 1499.99, Estat.FINALITZAT);
+        trucar.afegirReparacio(reparacio);
+        if (trucar.getReparacions().containsKey(reparacio)) {
+            System.out.println("S'ha afegit.");
+        } else {
+            System.out.println("No s'ha afegit.");
+        }
+    }
+
+    @Test
+    public void eliminarReparacio() throws ModelException, PersonaException, ReparacioException {
+        Boats trucar = new Boats();
+        java.util.Date dataInici = new java.util.Date();
+        java.util.Date dataPrevFinal = new java.util.Date();
+        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
+        Vaixell vaixell = new Vaixell("X330", client, model, true);
+        Reparacio reparacio = new Reparacio(client, vaixell, "Hangar 5", dataInici, dataPrevFinal, "Falla motor", 1499.99, Estat.FINALITZAT);
         trucar.eliminarReparacio(1);
-        if(trucar.getReparacions().containsKey(reparacio)){
+        if (trucar.getReparacions().containsKey(reparacio)) {
             System.out.println("No s'ha eliminat.");
-        }else{
+        } else {
             System.out.println("'ha eliminat.");
         }
     }
-    
+
 }
