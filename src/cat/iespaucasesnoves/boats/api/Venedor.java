@@ -38,6 +38,11 @@ public class Venedor extends Empleat {
         }
     }
 
+    /**
+     * Torna un array amb les vendes
+     *
+     * @return
+     */
     public ArrayList llistarVendes() {
         ArrayList llistatVendes = new ArrayList();
         Iterator it = llistaVendes.entrySet().iterator();
@@ -48,6 +53,9 @@ public class Venedor extends Empleat {
         return llistatVendes;
     }
 
+    /**
+     * Calcula es sou total sumant sou + comisio sobre totes les seves vendes.
+     */
     public void setSouTotal() {
         ArrayList vendes = llistarVendes();
         double totalVendes = 0;
