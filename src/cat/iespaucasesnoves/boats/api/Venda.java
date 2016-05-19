@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.VendaException;
 import java.util.Date;
 
 /**
@@ -13,17 +10,25 @@ import java.util.Date;
  */
 public class Venda extends Operacio {
 
-    private Vaixell vaixell;
+    private final Vaixell vaixell;
     private Date dataVenda;
     private double preu;
-    private Client comprador;
-    private Venedor venedor;
+    private final Client comprador;
+    private final Venedor venedor;
 
-    public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Venedor venedor, Estat estat) {
+    public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Venedor venedor, Estat estat) throws VendaException {
         super(estat);
         this.vaixell = vaixell;
-        this.dataVenda = dataVenda;
-        this.preu = preu;
+        if (dataVenda == null) {
+            throw new VendaException();
+        } else {
+            this.dataVenda = dataVenda;
+        }
+        if (preu <= 0) {
+            throw new VendaException();
+        } else {
+            this.preu = preu;
+        }
         this.comprador = comprador;
         this.venedor = venedor;
     }
@@ -48,12 +53,20 @@ public class Venda extends Operacio {
         return venedor;
     }
 
-    public void setDataVenda(Date dataVenda) {
-        this.dataVenda = dataVenda;
+    public void setDataVenda(Date dataVenda) throws DadesIncorrectesException {
+        if (dataVenda == null) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.dataVenda = dataVenda;
+        }
     }
 
-    public void setPreu(double preu) {
-        this.preu = preu;
+    public void setPreu(double preu) throws DadesIncorrectesException {
+        if (preu <= 0) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.preu = preu;
+        }
     }
 
 }

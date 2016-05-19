@@ -1,29 +1,41 @@
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.ReparacioException;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Reparacio extends Operacio {
 
-    private Client propietari;
-    private Vaixell vaixell;
-    private ArrayList<Mecanic> mecanics;
+    private final Client propietari;
+    private final Vaixell vaixell;
+    private final ArrayList<Mecanic> mecanics;
     private String llocReparacio;
-    private Date dataInici;
+    private final Date dataInici;
     private Date dataPrevFinal;
-    private String descAveria;
-    private double preuPresupost;
-    private double preuExtras;
+    private final String descAveria;
+    private final double preuPresupost;
+    private final double preuExtras;
     private double preuFinal;
     private String notes;
 
-    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, Date dataPrevFinal, String descAveria, double preuPresupost, Estat estat) {
+    public Reparacio(Client propietari, Vaixell vaixell, String llocReparacio, Date dataInici, Date dataPrevFinal, String descAveria, double preuPresupost, Estat estat) throws ReparacioException {
         super(estat);
         this.propietari = propietari;
         this.vaixell = vaixell;
         this.llocReparacio = llocReparacio;
-        this.dataInici = dataInici;
-        this.dataPrevFinal = dataPrevFinal;
+        if (dataInici == null) {
+            throw new ReparacioException();
+        } else {
+            this.dataInici = dataInici;
+        }
+        if (dataPrevFinal == null) {
+            throw new ReparacioException();
+        } else {
+            this.dataPrevFinal = dataPrevFinal;
+        }
+        if (dataInici.after(dataPrevFinal)) {
+            throw new ReparacioException();
+        }
         this.descAveria = descAveria;
         this.preuPresupost = preuPresupost;
         mecanics = new ArrayList<>();
@@ -80,12 +92,16 @@ public class Reparacio extends Operacio {
         this.llocReparacio = llocReparacio;
     }
 
-    public void setDataPrevFinal(Date dataPrevFinal) {
-        this.dataPrevFinal = dataPrevFinal;
+    public void setDataPrevFinal(Date dataPrevFinal) throws ReparacioException {
+        if (dataInici.after(dataPrevFinal)) {
+            throw new ReparacioException();
+        } else {
+            this.dataPrevFinal = dataPrevFinal;
+        }
     }
 
     public void setPreuFinal(double preuFinal) {
-        this.preuFinal = preuFinal;
+        this.preuFinal = preuFinal + preuExtras;
     }
 
     public void setNotes(String notes) {

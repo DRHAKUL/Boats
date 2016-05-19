@@ -6,6 +6,8 @@
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import java.util.Date;
 
 /**
@@ -17,15 +19,15 @@ public class Empleat extends Persona {
     protected Date dataAlta;
     protected double sou;
 
-    public Empleat(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException {
+    public Empleat(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, adreca, telefon, correu, numeroDocument);
-        if (dataAlta.equals("")) {
-            throw new DadesIncorrectesException();
+        if (dataAlta == null) {
+            throw new EmpleatException();
         } else {
             this.dataAlta = dataAlta;
         }
         if (sou <= 0) {
-            throw new DadesIncorrectesException();
+            throw new EmpleatException();
 
         } else {
             this.sou = sou;
@@ -37,7 +39,7 @@ public class Empleat extends Persona {
     }
 
     public void setDataAlta(Date dataAlta) throws DadesIncorrectesException {
-        if (dataAlta.equals("")) {
+        if (dataAlta == null) {
             throw new DadesIncorrectesException();
         } else {
             this.dataAlta = dataAlta;

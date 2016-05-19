@@ -1,6 +1,3 @@
-/*
-
- */
 package cat.iespaucasesnoves.boats.api;
 
 public class Web {

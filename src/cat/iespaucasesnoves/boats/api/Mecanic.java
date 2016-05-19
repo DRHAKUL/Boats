@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,9 +12,9 @@ import java.util.Date;
  */
 public class Mecanic extends Empleat {
 
-    private ArrayList<Habilitat> habilitat;
+    private final ArrayList<Habilitat> habilitat;
 
-    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException {
+    public Mecanic(Habilitat habilitat, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException, PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
         this.habilitat = new ArrayList<>();
         this.habilitat.add(habilitat);
@@ -43,7 +40,8 @@ public class Mecanic extends Empleat {
         return habilitat;
     }
 
-    public String getNomina() {
+    @Override
+    public String generarNomina() {
         return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + "}";
     }
 

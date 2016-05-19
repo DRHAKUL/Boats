@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
 import cat.iespaucasesnoves.boats.exepcions.PatroException;
+import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import java.util.Date;
 
 /**
@@ -18,7 +15,7 @@ public class Patro extends Empleat {
     private String titulacio;
     private double preuDia;
 
-    public Patro(String titulacio, double preuDia, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException, PatroException {
+    public Patro(String titulacio, double preuDia, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws DadesIncorrectesException, PatroException, PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
         this.titulacio = titulacio;
         if (preuDia <= 0) {
@@ -48,7 +45,8 @@ public class Patro extends Empleat {
         }
     }
 
-    public String getNomina() {
+    @Override
+    public String generarNomina() {
         return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + ",preuDia" + preuDia + "}";
     }
 
