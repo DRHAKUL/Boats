@@ -75,7 +75,7 @@ public class BoatsTest {
         }
     }
 
-    */    
+    
     @Test
     public void afegirModelCataleg() throws ModelException {
         Boats trucar = new Boats();
