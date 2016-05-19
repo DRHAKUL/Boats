@@ -8,6 +8,7 @@ package cat.iespaucasesnoves.boats.api;
 import java.util.ArrayList;
 import cat.iespaucasesnoves.boats.api.Pagable;
 import cat.iespaucasesnoves.boats.api.Targeta;
+import java.util.HashMap;
 
 /**
  *
@@ -33,8 +34,12 @@ public class Client extends Persona {
         pagament.remove(numero);
 
     }
-
-    public void crearPagamentcompte(String iban) {
+    
+    public ArrayList<Pagable> llistarPagament() {
+        return pagament;
+    }
+    
+    public void crearPagamentCompte(String iban) {
         Compte compte = new Compte(iban);
         pagament.add(compte);
     }
