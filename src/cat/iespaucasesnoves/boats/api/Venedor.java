@@ -41,7 +41,6 @@ public class Venedor extends Empleat {
     /**
      * Torna un array amb les vendes
      *
-     * @return
      */
     public ArrayList llistarVendes() {
         ArrayList llistatVendes = new ArrayList();
