@@ -6,4 +6,5 @@ package cat.iespaucasesnoves.boats.api;
  */
 public enum Habilitat {
 
+    FUSTERIA, MECANICA, FONTANERIA, ELECTRICITAT, FIBRAVIDRE, VELES;
 }
