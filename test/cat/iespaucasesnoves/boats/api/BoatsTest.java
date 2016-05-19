@@ -61,7 +61,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarVaixell() throws ModelException, PersonaException {
+    public void eliminarVaixell() throws ModelException, PersonaException, DadesIncorrectesException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
@@ -89,7 +89,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarModelCataleg() throws ModelException {
+    public void eliminarModelCataleg() throws ModelException, DadesIncorrectesException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         trucar.eliminarModelCataleg("1");
@@ -114,7 +114,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarClient() throws ModelException, PersonaException {
+    public void eliminarClient() throws ModelException, PersonaException, DadesIncorrectesException {
         Boats trucar = new Boats();
         Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
@@ -170,7 +170,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarLloguer() throws ModelException, PersonaException, LloguerExeption {
+    public void eliminarLloguer() throws ModelException, PersonaException, LloguerExeption, DadesIncorrectesException {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataFi = new java.util.Date();
@@ -240,7 +240,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarReparacio() throws ModelException, PersonaException, ReparacioException {
+    public void eliminarReparacio() throws ModelException, PersonaException, ReparacioException, DadesIncorrectesException {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataPrevFinal = new java.util.Date();
