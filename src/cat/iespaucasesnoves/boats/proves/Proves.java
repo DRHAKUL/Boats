@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.proves;
 
 import cat.iespaucasesnoves.boats.api.Boats;
 import cat.iespaucasesnoves.boats.api.Document;
 import cat.iespaucasesnoves.boats.api.Habilitat;
 import cat.iespaucasesnoves.boats.api.Mecanic;
+import cat.iespaucasesnoves.boats.api.Patro;
 import cat.iespaucasesnoves.boats.api.Venedor;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
@@ -49,6 +45,9 @@ public class Proves {
             Mecanic mecanic3 = new Mecanic(Habilitat.MECANICA, "Tomas", "Coll", Document.DNI, "C\\Marina 4", "971112211", "coll@gmai.com", "111111441111", data3, 310.00);
             Mecanic mecanic4 = new Mecanic(Habilitat.VELES, "Jacobo", "Salva", Document.DNI, "C\\Marina 4", "971112211", "coll@gmai.com", "111111441111", data3, 310.00);
 
+            Patro patro1 = new Patro("PER", 40, "John", "Smith", Document.DNI, "C\\Marina 4", "971112211", "coll@gmai.com", "111111441111", data3, 1.00);
+            Patro patro2 = new Patro("Titulin", 43, "Maria", "Lopez", Document.DNI, "C\\Marina 8", "973112211", "coll@gmai.com", "112111441111", data3, 1.00);
+
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
         } catch (EmpleatException ex) {
@@ -67,7 +66,7 @@ public class Proves {
     }
 
     public static void main(String[] args) {
-        // TODO code application logic here
+
     }
 
 }

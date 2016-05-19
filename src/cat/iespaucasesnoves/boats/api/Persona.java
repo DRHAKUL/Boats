@@ -3,7 +3,7 @@ package cat.iespaucasesnoves.boats.api;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 
-public class Persona {
+public abstract class Persona {
 
     protected String nom;
     protected String cognom;
