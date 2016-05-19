@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.LloguerExeption;
 import java.util.Date;
 
 /**
@@ -22,19 +19,34 @@ public class Lloguer extends Operacio {
     private Patro patro;
     private double preuTotalLloguer;
 
-    public Lloguer(boolean ambPatro, Date iniciLloguer, Date fiLloguer, Client client, Vaixell vaixell, double preuDia, Patro patro, Estat estat) {
+    /**
+     * Constructor amb Patro.
+     */
+    public Lloguer(boolean ambPatro, Date iniciLloguer, Date fiLloguer, Client client, Vaixell vaixell, double preuDia, Patro patro, Estat estat) throws LloguerExeption {
         super(estat);
         this.ambPatro = ambPatro;
-        this.iniciLloguer = iniciLloguer;
-        this.fiLloguer = fiLloguer;
+        if (iniciLloguer.after(fiLloguer) || (iniciLloguer.equals(fiLloguer))) {
+            throw new LloguerExeption();
+        } else {
+            this.iniciLloguer = iniciLloguer;
+            this.fiLloguer = fiLloguer;
+        }
         this.client = client;
         this.vaixell = vaixell;
-        this.preuDia = preuDia;
+        if (preuDia <= 0) {
+            throw new LloguerExeption();
+
+        } else {
+            this.preuDia = preuDia;
+        }
         this.patro = patro;
         preuTotalLloguer = 0;
     }
 
-    public Lloguer(Date iniciLloguer, Date fiLloguer, Client client, Vaixell vaixell, double preuDia, Estat estat) {
+    /**
+     * Constructor sense Patro.
+     */
+    public Lloguer(Date iniciLloguer, Date fiLloguer, Client client, Vaixell vaixell, double preuDia, Estat estat) throws LloguerExeption {
         this(false, iniciLloguer, fiLloguer, client, vaixell, preuDia, null, estat);
     }
 
@@ -66,16 +78,33 @@ public class Lloguer extends Operacio {
         return patro;
     }
 
-    public void setIniciLloguer(Date iniciLloguer) {
-        this.iniciLloguer = iniciLloguer;
+    /**
+     * Comproba que les data de fi sigui major que la de inici.
+     *
+     */
+    public void setIniciLloguer(Date iniciLloguer) throws DadesIncorrectesException {
+        if (iniciLloguer.after(fiLloguer) || (iniciLloguer.equals(fiLloguer))) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.iniciLloguer = iniciLloguer;
+        }
     }
 
-    public void setFiLloguer(Date fiLloguer) {
-        this.fiLloguer = fiLloguer;
+    public void setFiLloguer(Date fiLloguer) throws DadesIncorrectesException {
+        if (iniciLloguer.after(fiLloguer) || (iniciLloguer.equals(fiLloguer))) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.fiLloguer = fiLloguer;
+        }
     }
 
-    public void setPreuDia(double preuDia) {
-        this.preuDia = preuDia;
+    public void setPreuDia(double preuDia) throws DadesIncorrectesException {
+        if (preuDia <= 0) {
+            throw new DadesIncorrectesException();
+
+        } else {
+            this.preuDia = preuDia;
+        }
     }
 
     /**

@@ -21,7 +21,7 @@ public class Empleat extends Persona {
 
     public Empleat(String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, adreca, telefon, correu, numeroDocument);
-        if (dataAlta.equals("")) {
+        if (dataAlta == null) {
             throw new EmpleatException();
         } else {
             this.dataAlta = dataAlta;
@@ -39,7 +39,7 @@ public class Empleat extends Persona {
     }
 
     public void setDataAlta(Date dataAlta) throws DadesIncorrectesException {
-        if (dataAlta.equals("")) {
+        if (dataAlta == null) {
             throw new DadesIncorrectesException();
         } else {
             this.dataAlta = dataAlta;

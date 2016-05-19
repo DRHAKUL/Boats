@@ -13,7 +13,7 @@ public class Venedor extends Empleat {
 
     private double comissio;
     private double souTotal;
-    private HashMap<Integer, Venda> llistaVendes;
+    private final HashMap<Integer, Venda> llistaVendes;
 
     public Venedor(double comissio, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws VenedorException, DadesIncorrectesException, PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
@@ -68,7 +68,8 @@ public class Venedor extends Empleat {
 
     }
 
-    public String getNomina() {
+    @Override
+    public String generarNomina() {
         return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + ",comissio:" + comissio + ",souTotal:" + souTotal + "}";
     }
 
