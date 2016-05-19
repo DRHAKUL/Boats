@@ -24,7 +24,7 @@ public class Client extends Persona {
 
     }
 
-    public void crearPagamentTargeta(int numero, String caducitat, int verificacio) {
+    public void crearPagamentTargeta(int numero, String caducitat, String verificacio) {
         Targeta targeta = new Targeta(numero, caducitat, verificacio);
         pagament.add(targeta);
 

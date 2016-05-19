@@ -30,7 +30,9 @@ public class Venda extends Operacio {
             this.preu = preu;
         }
         this.comprador = comprador;
+
         this.venedor = venedor;
+
     }
 
     public Vaixell getVaixell() {
