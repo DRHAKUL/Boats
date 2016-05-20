@@ -32,7 +32,8 @@ public abstract class Persona {
         } else {
             this.numeroDocument = numeroDocument;
         }
-        if (correu.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$;")) {
+        if (!correu.equals("")) {
+            //correu.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$")) {
             this.correu = correu;
         } else {
             throw new PersonaException();

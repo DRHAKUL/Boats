@@ -32,7 +32,7 @@ public class Proves {
     Boats principal;
     Venedor venedor1;
 
-    public void inicialitzarProves() {
+    public void inicialitzarBoats() {
         principal = new Boats();
 
         SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
@@ -48,10 +48,10 @@ public class Proves {
             Date dataLloguer4 = plantilla.parse("19-08-2016");
 
             // --- Venedors
-            Venedor venedor1 = new Venedor(5, "Miquel", "Coll", Document.DNI, "11113199111", "C/rosa 2", "971111111", "coll@gmail.com", data1, 430.00);
-            Venedor venedor2 = new Venedor(5, "Juan", "Perez", Document.PASSAPORT, "111117711111", "C/rosa 2", "971133111", "rosa@gmail.com", data2, 350.40);
-            Venedor venedor3 = new Venedor(5, "Pere", "Villa", Document.NIE, "111131153311", "C/Agua 7", "9711133111", "villa@gmail.com", data3, 280.25);
-            Venedor venedor4 = new Venedor(5, "Jordi", "Cardell", Document.DNI, "111311164411", "C/ Marga 2", "97112111", "cardell@gmail.com", data4, 310.00);
+            Venedor venedor1 = new Venedor(5.00, "Miquel", "Coll", Document.DNI, "11113199111", "C/rosa 2", "971111111", "coll@gmail.com", data1, 430.00);
+            Venedor venedor2 = new Venedor(7.00, "Juan", "Perez", Document.PASSAPORT, "111117711111", "C/rosa 2", "971133111", "rosa@gmail.com", data2, 350.40);
+            Venedor venedor3 = new Venedor(10.00, "Pere", "Villa", Document.NIE, "111131153311", "C/Agua 7", "9711133111", "villa@gmail.com", data3, 280.25);
+            Venedor venedor4 = new Venedor(6.00, "Jordi", "Cardell", Document.DNI, "111311164411", "C/ Marga 2", "97112111", "cardell@gmail.com", data4, 310.00);
             principal.afegirVenedor(venedor1);
             principal.afegirVenedor(venedor2);
             principal.afegirVenedor(venedor3);
@@ -68,35 +68,42 @@ public class Proves {
             principal.afegirMecanic(mecanic4);
 
             // -- Patrons
-            Patro patro1 = new Patro("PER", 40, "John", "Smith", Document.DNI, "C\\Mayor 4", "9711212211", "coll@gmail.com", "111111441111", data3, 1.00);
-            Patro patro2 = new Patro("Titulin", 43, "Maria", "Costa", Document.DNI, "C\\Arcora 77", "9731122141", "kaka@gmail.com", "112111441111", data3, 1.00);
-            Patro patro3 = new Patro("PER", 36, "Juana", "Llull", Document.DNI, "C\\Costa 10", "973112211", "llull@gmail.com", "112111441111", data3, 1.00);
-            Patro patro4 = new Patro("PER", 34, "Pep", "Zolla", Document.DNI, "C\\Uno 1", "9731122131", "adri@gmai.com", "112111441111", data3, 1.00);
+            Patro patro1 = new Patro("PER", 40.00, "John", "Smith", Document.DNI, "C\\Mayor 4", "9711212211", "coll@gmail.com", "111111441111", data3, 1.00);
+            Patro patro2 = new Patro("Titulin", 43.50, "Maria", "Costa", Document.DNI, "C\\Arcora 77", "9731122141", "kaka@gmail.com", "112111441111", data3, 1.00);
+            Patro patro3 = new Patro("PER", 36.00, "Juana", "Llull", Document.DNI, "C\\Costa 10", "973112211", "llull@gmail.com", "112111441111", data3, 1.00);
+            Patro patro4 = new Patro("PER", 34.10, "Pep", "Zolla", Document.DNI, "C\\Uno 1", "9731122131", "adri@gmai.com", "112111441111", data3, 1.00);
             principal.afegirPatro(patro1);
             principal.afegirPatro(patro2);
             principal.afegirPatro(patro3);
             principal.afegirPatro(patro4);
 
             // -- Clients
-            Client client1 = new Client("Pablo", "Perez", Document.PASSAPORT, "243423423521", "Miro 23", "871334455", "perez@yahoo.com");
-            Client client2 = new Client("Oscar", "Massanet", Document.DNI, "44423423521", "Del mar 56", "971335475", "mas@yahoo.com");
+            Client client1 = new Client("Pablo", "Perez", Document.PASSAPORT, "143423423521", "Miro 23", "871334455", "perez@yahoo.com");
+            Client client2 = new Client("Oscar", "Calafat", Document.DNI, "24423423521", "Del riu 56", "971335475", "cala@yahoo.com");
+            Client client3 = new Client("Marcos", "Pons", Document.NIE, "34323423526", "Del pou 56", "971635475", "maso@yahoo.com");
+            Client client4 = new Client("Teresa", "Pou", Document.DNI, "44423423521", "Del mar 6", "871335475", "pou@yahoo.com");
             principal.afegirClient(client1);
             principal.afegirClient(client2);
+            principal.afegirClient(client3);
+            principal.afegirClient(client4);
 
             // -- Models 
-            Veler veler1 = new Veler(2, 2, 3, "J898987", "Super surf", "", 23, 12, 5, 235000);
+            Veler veler1 = new Veler(2, 1, 1, "A28987", "Copino", "Super surf", 24, 12, 15, 235000);
+            Veler veler2 = new Veler(1, 2, 3, "B894487", "Altair", "2000", 26, 12, 16, 300000);
+            Veler veler3 = new Veler(2, 1, 2, "C892987", "Ferretti", "J-123", 24, 15, 15, 400000);
+            Veler veler4 = new Veler(1, 3, 1, "D228987", "Rodman", "Barracuda", 23, 11, 25, 350000);
             principal.afegirModelCataleg(veler1);
 
             // -- Vaixells obtenint els objectes del seu respectiu llistat
-            Vaixell vaixell1 = new Vaixell("34345-B", principal.tornaClient("44423423521"), principal.tornaModel("J898987"), true, 150);
+            Vaixell vaixell1 = new Vaixell("14345-B", principal.tornaClient("143423423521"), principal.tornaModel("A898987"), true, 150.00);
             principal.afegirVaixell(vaixell1);
 
             // -- Lloguer obtenint els objectes del seu respectiu llistat.
-            Lloguer lloger1 = new Lloguer(true, dataLloguer1, dataLloguer2, principal.tornaClient("243423423521"), principal.tornaVaixell("34345-B"), 0, patro1, Estat.INICIAT);
+            Lloguer lloger1 = new Lloguer(true, dataLloguer1, dataLloguer2, principal.tornaClient("24423423521"), principal.tornaVaixell("34345-B"), 0, patro1, Estat.INICIAT);
             principal.afegirLloguer(lloger1);
 
             // -- Venda obtenint els objectes del seu respectiu llistat.
-            Venda venda1 = new Venda(principal.tornaVaixell("34345-B"), data4, 200000, principal.tornaClient("44423423521"), principal.tornaVenedor("111117711111"), Estat.INICIAT);
+            Venda venda1 = new Venda(principal.tornaVaixell("14345-B"), data4, 200000, principal.tornaClient("34323423526"), principal.tornaVenedor("111117711111"), Estat.INICIAT);
             principal.afegirVenda(venda1);
 
         } catch (DadesIncorrectesException ex) {
@@ -104,6 +111,7 @@ public class Proves {
         } catch (EmpleatException ex) {
             System.out.println("Dades empleat incorrectes");
         } catch (PersonaException ex) {
+            ex.printStackTrace();
             System.out.println("Dades persona incorrectes");
         } catch (VelerException ex) {
             System.out.println("Dades veler incorrectes");
@@ -111,6 +119,8 @@ public class Proves {
             System.out.println("Dades model incorrectes");
         } catch (LloguerExeption ex) {
             System.out.println("Dades lloguer incorrectes");
+            ex.printStackTrace();
+
         } catch (VendaException ex) {
             System.out.println("Dades venda incorrectes");
         } catch (ParseException ex) {
@@ -124,8 +134,13 @@ public class Proves {
 
     }
 
-    public static void main(String[] args) {
+    public void lletgirFitxer() {
 
+    }
+
+    public static void main(String[] args) {
+        Proves p = new Proves();
+        p.inicialitzarBoats();
     }
 
 }

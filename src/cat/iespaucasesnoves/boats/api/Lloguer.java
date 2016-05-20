@@ -33,7 +33,7 @@ public class Lloguer extends Operacio {
         }
         this.client = client;
         this.vaixell = vaixell;
-        if (preuDia <= 0) {
+        if (preuDia < 0) {
             throw new LloguerExeption();
 
         } else {
