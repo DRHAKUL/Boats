@@ -8,7 +8,6 @@ package cat.iespaucasesnoves.boats.api;
 import java.util.HashMap;
 import java.util.Iterator;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
-import java.util.ArrayList;
 
 /**
  *
@@ -222,7 +221,7 @@ public class Boats {
 
     public Client tornaClient(String numeroDocument) throws DadesIncorrectesException {
         if (clients.containsKey(numeroDocument) == false) {
-                throw new DadesIncorrectesException();
+            throw new DadesIncorrectesException();
         }
         return clients.get(numeroDocument);
 
@@ -246,26 +245,26 @@ public class Boats {
 
     }
 
-    public Reparacio tornaReparacio(int id)throws DadesIncorrectesException {
-        if(reparacions.containsKey(id)==false){
+    public Reparacio tornaReparacio(int id) throws DadesIncorrectesException {
+        if (reparacions.containsKey(id) == false) {
             throw new DadesIncorrectesException();
         }
         return reparacions.get(id);
 
     }
 
-    public Lloguer tornaLloguer(int id)throws DadesIncorrectesException {
-           if(lloguers.containsKey(id)==false){
-               throw new DadesIncorrectesException();
-           }
+    public Lloguer tornaLloguer(int id) throws DadesIncorrectesException {
+        if (lloguers.containsKey(id) == false) {
+            throw new DadesIncorrectesException();
+        }
         return lloguers.get(id);
 
     }
 
-    public Venda tornaVenda(int id)throws DadesIncorrectesException {
-            if (vendes.containsKey(id)==false){
-                throw new DadesIncorrectesException();
-            }
+    public Venda tornaVenda(int id) throws DadesIncorrectesException {
+        if (vendes.containsKey(id) == false) {
+            throw new DadesIncorrectesException();
+        }
         return vendes.get(id);
 
     }

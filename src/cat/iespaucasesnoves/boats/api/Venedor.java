@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ *
+ * @author DRAKUL
+ */
 public class Venedor extends Empleat {
 
     private double comissio;

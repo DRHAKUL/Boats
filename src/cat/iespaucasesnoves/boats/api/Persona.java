@@ -3,6 +3,10 @@ package cat.iespaucasesnoves.boats.api;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 
+/**
+ *
+ * @author DRAKUL
+ */
 public abstract class Persona {
 
     protected String nom;

@@ -4,6 +4,10 @@ import cat.iespaucasesnoves.boats.exepcions.ReparacioException;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ *
+ * @author DRAKUL
+ */
 public class Reparacio extends Operacio {
 
     private final Client propietari;
