@@ -205,21 +205,25 @@ public class Boats {
     }
 
     public Model tornaModel(String referencia) throws DadesIncorrectesException {
-        if (modelsCataleg.containsKey(referencia)) {
+        if (modelsCataleg.containsKey(referencia) == false) {
             throw new DadesIncorrectesException();
         }
         return modelsCataleg.get(referencia);
 
     }
 
-    public Vaixell tornaVaixell(String matricula) {
-
+    public Vaixell tornaVaixell(String matricula) throws DadesIncorrectesException {
+        if (vaixells.containsKey(matricula) == false) {
+            throw new DadesIncorrectesException();
+        }
         return vaixells.get(matricula);
 
     }
 
-    public Client tornaClient(String numeroDocument) {
-
+    public Client tornaClient(String numeroDocument) throws DadesIncorrectesException {
+        if (clients.containsKey(numeroDocument) == false) {
+                throw new DadesIncorrectesException();
+        }
         return clients.get(numeroDocument);
 
     }
@@ -242,20 +246,26 @@ public class Boats {
 
     }
 
-    public Reparacio tornaReparacio(int id) {
-
+    public Reparacio tornaReparacio(int id)throws DadesIncorrectesException {
+        if(reparacions.containsKey(id)==false){
+            throw new DadesIncorrectesException();
+        }
         return reparacions.get(id);
 
     }
 
-    public Lloguer tornaLloguer(int id) {
-
+    public Lloguer tornaLloguer(int id)throws DadesIncorrectesException {
+           if(lloguers.containsKey(id)==false){
+               throw new DadesIncorrectesException();
+           }
         return lloguers.get(id);
 
     }
 
-    public Venda tornaVenda(int id) {
-
+    public Venda tornaVenda(int id)throws DadesIncorrectesException {
+            if (vendes.containsKey(id)==false){
+                throw new DadesIncorrectesException();
+            }
         return vendes.get(id);
 
     }
