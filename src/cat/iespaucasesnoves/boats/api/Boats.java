@@ -62,23 +62,23 @@ public class Boats {
         return lloguers;
     }
 
-    public void afegirModelCataleg(Model model){
+    public void afegirModelCataleg(Model model) {
         modelsCataleg.put(model.getReferencia(), model);
     }
 
-    public void eliminarModelCataleg(String referencia)throws DadesIncorrectesException {
-        if(modelsCataleg.remove(referencia) == null){
-         throw new DadesIncorrectesException();
+    public void eliminarModelCataleg(String referencia) throws DadesIncorrectesException {
+        if (modelsCataleg.remove(referencia) == null) {
+            throw new DadesIncorrectesException();
         }
     }
 
     public void afegirVaixell(Vaixell vaixell) {
         vaixells.put(vaixell.getMatricula(), vaixell);
-    
+
     }
 
     public void eliminarVaixell(String matricula) throws DadesIncorrectesException {
-        if(vaixells.remove(matricula)== null){
+        if (vaixells.remove(matricula) == null) {
             throw new DadesIncorrectesException();
         }
     }
@@ -87,19 +87,19 @@ public class Boats {
         clients.put(client.getNumeroDocument(), client);
     }
 
-    public void eliminarClient(String numeroDocument) throws DadesIncorrectesException{ 
-        if(clients.remove(numeroDocument) == null){
+    public void eliminarClient(String numeroDocument) throws DadesIncorrectesException {
+        if (clients.remove(numeroDocument) == null) {
             throw new DadesIncorrectesException();
         }
     }
 
     public void afegirEmpleat(Empleat empleat) {
         empleats.put(empleat.getNumeroDocument(), empleat);
-    
+
     }
 
-    public void eliminarEmpleat(String numeroDocument) throws DadesIncorrectesException{
-        if (empleats.remove(numeroDocument)== null){
+    public void eliminarEmpleat(String numeroDocument) throws DadesIncorrectesException {
+        if (empleats.remove(numeroDocument) == null) {
             throw new DadesIncorrectesException();
         }
     }
@@ -108,32 +108,30 @@ public class Boats {
         lloguers.put(lloguer.getId(), lloguer);
     }
 
-    public void eliminarLloguer(int idOperacio) throws DadesIncorrectesException{
-        if(lloguers.remove(idOperacio) == null){
+    public void eliminarLloguer(int idOperacio) throws DadesIncorrectesException {
+        if (lloguers.remove(idOperacio) == null) {
             throw new DadesIncorrectesException();
         }
     }
 
     public void afegirVenda(Venda venda) {
         vendes.put(venda.getId(), venda);
-        
-        
-        
+
     }
 
     public void eliminarVenda(int idOperacio) throws DadesIncorrectesException {
-        if(vendes.remove(idOperacio)==null){
+        if (vendes.remove(idOperacio) == null) {
             throw new DadesIncorrectesException();
         }
     }
 
     public void afegirReparacio(Reparacio reparacio) {
         reparacions.put(reparacio.getId(), reparacio);
-    
+
     }
 
-    public void eliminarReparacio(int idOperacio) throws DadesIncorrectesException{
-        if(reparacions.remove(idOperacio)==null){
+    public void eliminarReparacio(int idOperacio) throws DadesIncorrectesException {
+        if (reparacions.remove(idOperacio) == null) {
             throw new DadesIncorrectesException();
         }
     }
@@ -171,45 +169,57 @@ public class Boats {
     }
 
     public Model tornaModel(String referencia) throws DadesIncorrectesException {
-        if (modelsCataleg.containsKey(referencia)){
+        if (modelsCataleg.containsKey(referencia) == false) {
             throw new DadesIncorrectesException();
         }
         return modelsCataleg.get(referencia);
 
     }
 
-    public Vaixell tornaVaixell(String matricula) {
-
+    public Vaixell tornaVaixell(String matricula) throws DadesIncorrectesException {
+        if (vaixells.containsKey(matricula) == false) {
+            throw new DadesIncorrectesException();
+        }
         return vaixells.get(matricula);
 
     }
 
-    public Client tornaClient(String numeroDocument) {
-
+    public Client tornaClient(String numeroDocument) throws DadesIncorrectesException {
+        if (clients.containsKey(numeroDocument) == false) {
+                throw new DadesIncorrectesException();
+        }
         return clients.get(numeroDocument);
 
     }
 
-    public Empleat tornaEmpleat(String numeroDocument) {
-
+    public Empleat tornaEmpleat(String numeroDocument) throws DadesIncorrectesException {
+        if(empleats.containsKey(numeroDocument)==false){
+            throw new DadesIncorrectesException();
+        }
         return empleats.get(numeroDocument);
 
     }
 
-    public Reparacio tornaReparacio(int id) {
-
+    public Reparacio tornaReparacio(int id)throws DadesIncorrectesException {
+        if(reparacions.containsKey(id)==false){
+            throw new DadesIncorrectesException();
+        }
         return reparacions.get(id);
 
     }
 
-    public Lloguer tornaLloguer(int id) {
-
+    public Lloguer tornaLloguer(int id)throws DadesIncorrectesException {
+           if(lloguers.containsKey(id)==false){
+               throw new DadesIncorrectesException();
+           }
         return lloguers.get(id);
 
     }
 
-    public Venda tornaVenda(int id) {
-
+    public Venda tornaVenda(int id)throws DadesIncorrectesException {
+            if (vendes.containsKey(id)==false){
+                throw new DadesIncorrectesException();
+            }
         return vendes.get(id);
 
     }
