@@ -127,20 +127,17 @@ public class Proves {
         }
 
     }
-
-    public void gestionarBoats() {
-        principal = lletgirFitxer();
-        // -- Vaixells obtenint els objectes del seu respectiu llistat
-        Vaixell vaixell1 = new Vaixell("14345-B", principal.tornaClient("143423423521"), principal.tornaModel("A898987"), true, 150.00);
-        principal.afegirVaixell(vaixell1);
-
-        // -- Lloguer obtenint els objectes del seu respectiu llistat.
-        Lloguer lloger1 = new Lloguer(true, dataLloguer1, dataLloguer2, principal.tornaClient("24423423521"), principal.tornaVaixell("34345-B"), 0, patro1, Estat.INICIAT);
-        principal.afegirLloguer(lloger1);
-
-        // -- Venda obtenint els objectes del seu respectiu llistat.
-        Venda venda1 = new Venda(principal.tornaVaixell("14345-B"), data4, 200000, principal.tornaClient("34323423526"), principal.tornaVenedor("111117711111"), Estat.INICIAT);
-        principal.afegirVenda(venda1);
+    
+    public void gestionarBoats(){
+        try {
+            principal = lletgirFitxer();
+            // -- Vaixells obtenint els objectes del seu respectiu llistat
+            Vaixell vaixell1 = new Vaixell("14345-B", principal.tornaClient("143423423521"), principal.tornaModel("A898987"), true, 150.00);
+            principal.afegirVaixell(vaixell1);
+            principal.tornaVaixell("14345-B");
+        } catch (DadesIncorrectesException ex) {
+            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void crearFitxer() {
