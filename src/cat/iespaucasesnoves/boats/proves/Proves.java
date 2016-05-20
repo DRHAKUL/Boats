@@ -22,6 +22,16 @@ import cat.iespaucasesnoves.boats.exepcions.VendaException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,11 +40,9 @@ import java.util.Date;
 public class Proves {
 
     Boats principal;
-    Venedor venedor1;
-
+    
     public void inicialitzarBoats() {
         principal = new Boats();
-
         SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
 
         try {
@@ -93,19 +101,9 @@ public class Proves {
             Veler veler3 = new Veler(2, 1, 2, "C892987", "Ferretti", "J-123", 24, 15, 15, 400000);
             Veler veler4 = new Veler(1, 3, 1, "D228987", "Rodman", "Barracuda", 23, 11, 25, 350000);
             principal.afegirModelCataleg(veler1);
-
-            // -- Vaixells obtenint els objectes del seu respectiu llistat
-            Vaixell vaixell1 = new Vaixell("14345-B", principal.tornaClient("143423423521"), principal.tornaModel("A898987"), true, 150.00);
-            principal.afegirVaixell(vaixell1);
-
-            // -- Lloguer obtenint els objectes del seu respectiu llistat.
-            Lloguer lloger1 = new Lloguer(true, dataLloguer1, dataLloguer2, principal.tornaClient("24423423521"), principal.tornaVaixell("34345-B"), 0, patro1, Estat.INICIAT);
-            principal.afegirLloguer(lloger1);
-
-            // -- Venda obtenint els objectes del seu respectiu llistat.
-            Venda venda1 = new Venda(principal.tornaVaixell("14345-B"), data4, 200000, principal.tornaClient("34323423526"), principal.tornaVenedor("111117711111"), Estat.INICIAT);
-            principal.afegirVenda(venda1);
-
+            
+            crearFitxer();
+            gestionarBoats();
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
         } catch (EmpleatException ex) {
@@ -117,30 +115,65 @@ public class Proves {
             System.out.println("Dades veler incorrectes");
         } catch (ModelException ex) {
             System.out.println("Dades model incorrectes");
-        } catch (LloguerExeption ex) {
+        }/* catch (LloguerExeption ex) {
             System.out.println("Dades lloguer incorrectes");
             ex.printStackTrace();
 
         } catch (VendaException ex) {
             System.out.println("Dades venda incorrectes");
-        } catch (ParseException ex) {
+        } */catch (ParseException ex) {
             System.out.println("Format Data incorrecte");
 
         }
 
     }
+    
+    public void gestionarBoats(){
+            principal = lletgirFitxer();
+            // -- Vaixells obtenint els objectes del seu respectiu llistat
+            Vaixell vaixell1 = new Vaixell("14345-B", principal.tornaClient("143423423521"), principal.tornaModel("A898987"), true, 150.00);
+            principal.afegirVaixell(vaixell1);
 
-    public void crearFitxer() {
+            // -- Lloguer obtenint els objectes del seu respectiu llistat.
+            Lloguer lloger1 = new Lloguer(true, dataLloguer1, dataLloguer2, principal.tornaClient("24423423521"), principal.tornaVaixell("34345-B"), 0, patro1, Estat.INICIAT);
+            principal.afegirLloguer(lloger1);
 
+            // -- Venda obtenint els objectes del seu respectiu llistat.
+            Venda venda1 = new Venda(principal.tornaVaixell("14345-B"), data4, 200000, principal.tornaClient("34323423526"), principal.tornaVenedor("111117711111"), Estat.INICIAT);
+            principal.afegirVenda(venda1);
     }
 
-    public void lletgirFitxer() {
+    public void crearFitxer() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("Boats.boa")))){
+            out.writeObject(principal);
+        }catch (FileNotFoundException e) {
+		System.out.println("No es troba l'arxiu");
+		} catch (IOException e){
+		System.out.println("Error d'entrada o sortida de dades");
+		}
+    }
 
+    public Boats lletgirFitxer() {
+        Boats dessat;
+        try(ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("Boats.boa")))){
+            dessat = (Boats) in.readObject();
+            return dessat;
+        } catch (FileNotFoundException e) {
+		System.out.println("No es troba l'arxiu");
+	} catch (IOException e) {
+		System.out.println("Error d'entrada o sortida de dades");
+	} catch (ClassNotFoundException e) {
+		System.out.println("No es troba la classe");
+	}      
+        return null;
     }
 
     public static void main(String[] args) {
         Proves p = new Proves();
+        if(p.lletgirFitxer()== null){
         p.inicialitzarBoats();
+        }else{
+        p.gestionarBoats();
+        }    
     }
-
 }
