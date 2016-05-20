@@ -4,7 +4,7 @@ package cat.iespaucasesnoves.boats.api;
  *
  * @author DRAKUL
  */
-public class Operacio {
+public abstract class Operacio {
 
     protected int id;
     protected Estat estat;

@@ -33,7 +33,7 @@ public class Lloguer extends Operacio {
         }
         this.client = client;
         this.vaixell = vaixell;
-        if (preuDia <= 0) {
+        if (preuDia < 0) {
             throw new LloguerExeption();
 
         } else {
@@ -107,15 +107,23 @@ public class Lloguer extends Operacio {
         }
     }
 
+    /*
+     * Calcula els dies a partir de dues date.
+     */
+    public int calcularDies(Date inci, Date fi) {
+        double data1 = inci.getTime();
+        double data2 = fi.getTime();
+        double diferencia = data1 - data2;
+        int dias = (int) Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        return dias;
+    }
+
     /**
      * Calcula el preu total del lloguer amb patro i sense patro segons el
      * numero de dies.
      */
     public void calcularPreuLloguer() {
-        double data1 = iniciLloguer.getTime();
-        double data2 = fiLloguer.getTime();
-        double diferencia = data1 - data2;
-        double dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        double dias = calcularDies(iniciLloguer, fiLloguer);
         if (ambPatro) {
             preuTotalLloguer = dias * (preuDia + patro.getPreuDia());
         } else {

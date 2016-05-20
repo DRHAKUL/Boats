@@ -8,6 +8,7 @@ package cat.iespaucasesnoves.boats.api;
 import java.util.HashMap;
 import java.util.Iterator;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,20 +19,24 @@ public class Boats {
     private HashMap<String, Model> modelsCataleg;
     private HashMap<String, Vaixell> vaixells;
     private HashMap<String, Client> clients;
-    private HashMap<String, Empleat> empleats;
+    private HashMap<String, Venedor> llistatVenedors;
+    private HashMap<String, Mecanic> llistatMecanics;
+    private HashMap<String, Patro> llistatPatrons;
     private HashMap<Integer, Reparacio> reparacions;
     private HashMap<Integer, Venda> vendes;
     private HashMap<Integer, Lloguer> lloguers;
 
     public Boats() {
 
-        this.modelsCataleg = new HashMap<>();
-        this.vaixells = new HashMap<>();
-        this.clients = new HashMap<>();
-        this.empleats = new HashMap<>();
-        this.reparacions = new HashMap<>();
-        this.vendes = new HashMap<>();
-        this.lloguers = new HashMap<>();
+        modelsCataleg = new HashMap<>();
+        vaixells = new HashMap<>();
+        clients = new HashMap<>();
+        llistatVenedors = new HashMap<>();
+        llistatMecanics = new HashMap<>();
+        llistatPatrons = new HashMap<>();
+        reparacions = new HashMap<>();
+        vendes = new HashMap<>();
+        lloguers = new HashMap<>();
     }
 
     public HashMap<String, Model> getModelsCataleg() {
@@ -46,8 +51,16 @@ public class Boats {
         return clients;
     }
 
-    public HashMap<String, Empleat> getEmpleats() {
-        return empleats;
+    public HashMap<String, Venedor> getLlistatVenedors() {
+        return llistatVenedors;
+    }
+
+    public HashMap<String, Mecanic> getLlistatMecanics() {
+        return llistatMecanics;
+    }
+
+    public HashMap<String, Patro> getLlistatPatrons() {
+        return llistatPatrons;
     }
 
     public HashMap<Integer, Reparacio> getReparacions() {
@@ -93,19 +106,42 @@ public class Boats {
         }
     }
 
-    public void afegirEmpleat(Empleat empleat) {
-        empleats.put(empleat.getNumeroDocument(), empleat);
+    public void afegirVenedor(Venedor v) {
+        llistatVenedors.put(v.getNumeroDocument(), v);
 
     }
 
-    public void eliminarEmpleat(String numeroDocument) throws DadesIncorrectesException {
-        if (empleats.remove(numeroDocument) == null) {
+    public void eliminarVenedor(String numeroDocument) throws DadesIncorrectesException {
+        if (llistatVenedors.remove(numeroDocument) == null) {
+            throw new DadesIncorrectesException();
+        }
+    }
+
+    public void afegirMecanic(Mecanic m) {
+        llistatMecanics.put(m.getNumeroDocument(), m);
+
+    }
+
+    public void eliminarMecanic(String numeroDocument) throws DadesIncorrectesException {
+        if (llistatMecanics.remove(numeroDocument) == null) {
+            throw new DadesIncorrectesException();
+        }
+    }
+
+    public void afegirPatro(Patro p) {
+        llistatPatrons.put(p.getNumeroDocument(), p);
+
+    }
+
+    public void eliminarPatro(String numeroDocument) throws DadesIncorrectesException {
+        if (llistatPatrons.remove(numeroDocument) == null) {
             throw new DadesIncorrectesException();
         }
     }
 
     public void afegirLloguer(Lloguer lloguer) {
         lloguers.put(lloguer.getId(), lloguer);
+        lloguer.getPatro().afegirLloguer(lloguer);
     }
 
     public void eliminarLloguer(int idOperacio) throws DadesIncorrectesException {
@@ -192,11 +228,21 @@ public class Boats {
 
     }
 
-    public Empleat tornaEmpleat(String numeroDocument) throws DadesIncorrectesException {
-        if(empleats.containsKey(numeroDocument)==false){
-            throw new DadesIncorrectesException();
-        }
-        return empleats.get(numeroDocument);
+    public Venedor tornaVenedor(String numeroDocument) {
+
+        return llistatVenedors.get(numeroDocument);
+
+    }
+
+    public Mecanic tornaMecanic(String numeroDocument) {
+
+        return llistatMecanics.get(numeroDocument);
+
+    }
+
+    public Patro tornaPatro(String numeroDocument) {
+
+        return llistatPatrons.get(numeroDocument);
 
     }
 
