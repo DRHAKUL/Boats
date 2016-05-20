@@ -127,8 +127,8 @@ public class Proves {
         }
 
     }
-    
-    public void gestionarBoats(){
+
+    public void gestionarBoats() {
         try {
             principal = lletgirFitxer();
             // -- Vaixells obtenint els objectes del seu respectiu llistat
@@ -136,7 +136,7 @@ public class Proves {
             principal.afegirVaixell(vaixell1);
             principal.tornaVaixell("14345-B");
         } catch (DadesIncorrectesException ex) {
-            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println("Dades incorrectes");
         }
     }
 

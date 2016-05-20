@@ -8,6 +8,8 @@ package cat.iespaucasesnoves.boats.api;
 import java.util.HashMap;
 import java.util.Iterator;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -171,6 +173,11 @@ public class Boats {
         }
     }
 
+    /*
+    Per el catàleg web necessitam tornar una llista amb tots els models que tenim disponible, 
+    una altra filtrada per tipus d'embarcació i un altre per interval de preu.
+
+     */
     public HashMap<String, Model> llistarModelsDisponibles() {
         return this.modelsCataleg;
     }
@@ -201,6 +208,61 @@ public class Boats {
             }
         }
         return filtrats;
+    }
+
+    /*
+    Per a la gestió del taller ha de poder tornar una llista de les reparacions pendents, 
+    una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
+    les reparacions que ha sofert una determinada embarcació.
+     */
+    public ArrayList tornarLlistaReparacionsPendents() {
+        ArrayList<Reparacio> pendents = new ArrayList<>();
+        Iterator it = reparacions.entrySet().iterator();
+        while (it.hasNext()) {
+            Reparacio nova = (Reparacio) it.next();
+            if (nova.getEstat().equals(Estat.TRAMITANT)) {
+                pendents.add(nova);
+            }
+        }
+        return pendents;
+    }
+
+    public ArrayList tornarLlistaReparacionsAturades() {
+        ArrayList<Reparacio> aturades = new ArrayList<>();
+        Iterator it = reparacions.entrySet().iterator();
+        while (it.hasNext()) {
+            Reparacio nova = (Reparacio) it.next();
+            if (!nova.getEstat().equals(Estat.FINALITZAT)) {
+                aturades.add(nova);
+            }
+        }
+        return aturades;
+    }
+
+    public ArrayList tornarLlistaReparacionsVaixell(Vaixell v) {
+        ArrayList<Reparacio> reparacionsVaixell = new ArrayList<>();
+        Iterator it = reparacions.entrySet().iterator();
+        while (it.hasNext()) {
+            Reparacio nova = (Reparacio) it.next();
+            if (nova.getVaixell().equals(v)) {
+                reparacionsVaixell.add(nova);
+            }
+        }
+        return reparacionsVaixell;
+    }
+
+    /*
+    Per els lloguers necessitam que el sistema ens torni les embarcacions 
+    disponibles entre unes determinades dates.
+     */
+    public ArrayList embarcacionsDisponiblesDates(Date data1, Date data2) {
+        ArrayList<Vaixell> disponibles = new ArrayList<>();
+        Iterator it = lloguers.entrySet().iterator();
+        while (it.hasNext()) {
+            Lloguer l = (Lloguer) it.next();
+
+        }
+        return disponibles;
     }
 
     public Model tornaModel(String referencia) throws DadesIncorrectesException {
