@@ -134,7 +134,7 @@ public class Proves {
         } catch (ReparacioException ex) {
             System.out.println("Dades Reparacio incorrectes");
         }
-
+     
     }
 
     public void gestionarBoats() {
@@ -158,8 +158,9 @@ public class Proves {
         
         //Tornam llistes d'elements
             //System.out.println(principal.getClients());
-           System.out.println(principal.getLlistatMecanics());
-            
+            //System.out.println(principal.getLlistatMecanics());
+            //System.out.println(principal.getLlistatVenedors()); 
+            System.out.println(principal.getLloguers());        
            
             
             
@@ -167,10 +168,10 @@ public class Proves {
             //System.out.println(principal.llistarModelsDisponibles());
             //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
             //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-        
+            
         
             // guardam tots els canvis
-            guardarFitxer();
+            //guardarFitxer();
         
 
     }
