@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ *
+ * @author DRAKUL
+ */
 public class Venedor extends Empleat {
 
     private double comissio;
@@ -41,7 +45,6 @@ public class Venedor extends Empleat {
     /**
      * Torna un array amb les vendes
      *
-     * @return
      */
     public ArrayList llistarVendes() {
         ArrayList llistatVendes = new ArrayList();

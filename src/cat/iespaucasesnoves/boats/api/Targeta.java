@@ -2,6 +2,7 @@ package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.TargetaException;
+import java.util.zip.DataFormatException;
 
 /**
  *
@@ -55,12 +56,12 @@ public class Targeta implements Pagable {
         }
     }
 
-    public void setCaducitat(String caducitat) throws DadesIncorrectesException {
-        this.caducitat = caducitat;
-        if (caducitat == null) {
-            throw new DadesIncorrectesException();
-        } else {
+    public void setCaducitat(String caducitat) throws DataFormatException {
+        if (caducitat.matches("^[0-1]{1}[0-9]{1}/[0-2]{1}[0-9]{1}")) {
             this.caducitat = caducitat;
+
+        } else {
+            throw new DataFormatException();
         }
     }
 

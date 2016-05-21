@@ -7,6 +7,9 @@ package cat.iespaucasesnoves.boats.api;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -17,20 +20,24 @@ public class Boats {
     private HashMap<String, Model> modelsCataleg;
     private HashMap<String, Vaixell> vaixells;
     private HashMap<String, Client> clients;
-    private HashMap<String, Empleat> empleats;
+    private HashMap<String, Venedor> llistatVenedors;
+    private HashMap<String, Mecanic> llistatMecanics;
+    private HashMap<String, Patro> llistatPatrons;
     private HashMap<Integer, Reparacio> reparacions;
     private HashMap<Integer, Venda> vendes;
     private HashMap<Integer, Lloguer> lloguers;
 
     public Boats() {
 
-        this.modelsCataleg = new HashMap<>();
-        this.vaixells = new HashMap<>();
-        this.clients = new HashMap<>();
-        this.empleats = new HashMap<>();
-        this.reparacions = new HashMap<>();
-        this.vendes = new HashMap<>();
-        this.lloguers = new HashMap<>();
+        modelsCataleg = new HashMap<>();
+        vaixells = new HashMap<>();
+        clients = new HashMap<>();
+        llistatVenedors = new HashMap<>();
+        llistatMecanics = new HashMap<>();
+        llistatPatrons = new HashMap<>();
+        reparacions = new HashMap<>();
+        vendes = new HashMap<>();
+        lloguers = new HashMap<>();
     }
 
     public HashMap<String, Model> getModelsCataleg() {
@@ -45,8 +52,16 @@ public class Boats {
         return clients;
     }
 
-    public HashMap<String, Empleat> getEmpleats() {
-        return empleats;
+    public HashMap<String, Venedor> getLlistatVenedors() {
+        return llistatVenedors;
+    }
+
+    public HashMap<String, Mecanic> getLlistatMecanics() {
+        return llistatMecanics;
+    }
+
+    public HashMap<String, Patro> getLlistatPatrons() {
+        return llistatPatrons;
     }
 
     public HashMap<Integer, Reparacio> getReparacions() {
@@ -65,61 +80,104 @@ public class Boats {
         modelsCataleg.put(model.getReferencia(), model);
     }
 
-    public void eliminarModelCataleg(String referencia) {
-        modelsCataleg.remove(referencia);
+    public void eliminarModelCataleg(String referencia) throws DadesIncorrectesException {
+        if (modelsCataleg.remove(referencia) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirVaixell(Vaixell vaixell) {
         vaixells.put(vaixell.getMatricula(), vaixell);
-    
+
     }
 
-    public void eliminarVaixell(String matricula) {
-        vaixells.remove(matricula);
+    public void eliminarVaixell(String matricula) throws DadesIncorrectesException {
+        if (vaixells.remove(matricula) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirClient(Client client) {
         clients.put(client.getNumeroDocument(), client);
     }
 
-    public void eliminarClient(String numeroDocument) {
-        clients.remove(numeroDocument);
+    public void eliminarClient(String numeroDocument) throws DadesIncorrectesException {
+        if (clients.remove(numeroDocument) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
-    public void afegirEmpleat(Empleat empleat) {
-        empleats.put(empleat.getNumeroDocument(), empleat);
-    
+    public void afegirVenedor(Venedor v) {
+        llistatVenedors.put(v.getNumeroDocument(), v);
+
     }
 
-    public void eliminarEmpleat(String numeroDocument) {
-        empleats.remove(numeroDocument);
+    public void eliminarVenedor(String numeroDocument) throws DadesIncorrectesException {
+        if (llistatVenedors.remove(numeroDocument) == null) {
+            throw new DadesIncorrectesException();
+        }
+    }
+
+    public void afegirMecanic(Mecanic m) {
+        llistatMecanics.put(m.getNumeroDocument(), m);
+
+    }
+
+    public void eliminarMecanic(String numeroDocument) throws DadesIncorrectesException {
+        if (llistatMecanics.remove(numeroDocument) == null) {
+            throw new DadesIncorrectesException();
+        }
+    }
+
+    public void afegirPatro(Patro p) {
+        llistatPatrons.put(p.getNumeroDocument(), p);
+
+    }
+
+    public void eliminarPatro(String numeroDocument) throws DadesIncorrectesException {
+        if (llistatPatrons.remove(numeroDocument) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirLloguer(Lloguer lloguer) {
         lloguers.put(lloguer.getId(), lloguer);
+        lloguer.getPatro().afegirLloguer(lloguer);
     }
 
-    public void eliminarLloguer(int idOperacio) {
-        lloguers.remove(idOperacio);
+    public void eliminarLloguer(int idOperacio) throws DadesIncorrectesException {
+        if (lloguers.remove(idOperacio) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirVenda(Venda venda) {
         vendes.put(venda.getId(), venda);
+
     }
 
-    public void eliminarVenda(int idOperacio) {
-        vendes.remove(idOperacio);
+    public void eliminarVenda(int idOperacio) throws DadesIncorrectesException {
+        if (vendes.remove(idOperacio) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
     public void afegirReparacio(Reparacio reparacio) {
         reparacions.put(reparacio.getId(), reparacio);
-    
+
     }
 
-    public void eliminarReparacio(int idOperacio) {
-        reparacions.remove(idOperacio);
+    public void eliminarReparacio(int idOperacio) throws DadesIncorrectesException {
+        if (reparacions.remove(idOperacio) == null) {
+            throw new DadesIncorrectesException();
+        }
     }
 
+    /*
+    Per el catàleg web necessitam tornar una llista amb tots els models que tenim disponible, 
+    una altra filtrada per tipus d'embarcació i un altre per interval de preu.
+
+     */
     public HashMap<String, Model> llistarModelsDisponibles() {
         return this.modelsCataleg;
     }
@@ -152,44 +210,123 @@ public class Boats {
         return filtrats;
     }
 
-    public Model tornaModel(String referencia) {
+    /*
+    Per a la gestió del taller ha de poder tornar una llista de les reparacions pendents, 
+    una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
+    les reparacions que ha sofert una determinada embarcació.
+     */
+    public ArrayList tornarLlistaReparacionsPendents() {
+        ArrayList<Reparacio> pendents = new ArrayList<>();
+        Iterator it = reparacions.entrySet().iterator();
+        while (it.hasNext()) {
+            Reparacio nova = (Reparacio) it.next();
+            if (nova.getEstat().equals(Estat.TRAMITANT)) {
+                pendents.add(nova);
+            }
+        }
+        return pendents;
+    }
 
+    public ArrayList tornarLlistaReparacionsAturades() {
+        ArrayList<Reparacio> aturades = new ArrayList<>();
+        Iterator it = reparacions.entrySet().iterator();
+        while (it.hasNext()) {
+            Reparacio nova = (Reparacio) it.next();
+            if (!nova.getEstat().equals(Estat.FINALITZAT)) {
+                aturades.add(nova);
+            }
+        }
+        return aturades;
+    }
+
+    public ArrayList tornarLlistaReparacionsVaixell(Vaixell v) {
+        ArrayList<Reparacio> reparacionsVaixell = new ArrayList<>();
+        Iterator it = reparacions.entrySet().iterator();
+        while (it.hasNext()) {
+            Reparacio nova = (Reparacio) it.next();
+            if (nova.getVaixell().equals(v)) {
+                reparacionsVaixell.add(nova);
+            }
+        }
+        return reparacionsVaixell;
+    }
+
+    /*
+    Per els lloguers necessitam que el sistema ens torni les embarcacions 
+    disponibles entre unes determinades dates.
+     */
+    public ArrayList embarcacionsDisponiblesDates(Date data1, Date data2) {
+        ArrayList<Vaixell> disponibles = new ArrayList<>();
+        Iterator it = lloguers.entrySet().iterator();
+        while (it.hasNext()) {
+            Lloguer l = (Lloguer) it.next();
+
+        }
+        return disponibles;
+    }
+
+    public Model tornaModel(String referencia) throws DadesIncorrectesException {
+        if (modelsCataleg.containsKey(referencia) == false) {
+            throw new DadesIncorrectesException();
+        }
         return modelsCataleg.get(referencia);
 
     }
 
-    public Vaixell tornaVaixell(String matricula) {
-
+    public Vaixell tornaVaixell(String matricula) throws DadesIncorrectesException {
+        if (vaixells.containsKey(matricula) == false) {
+            throw new DadesIncorrectesException();
+        }
         return vaixells.get(matricula);
 
     }
 
-    public Client tornaClient(String numeroDocument) {
-
+    public Client tornaClient(String numeroDocument) throws DadesIncorrectesException {
+        if (clients.containsKey(numeroDocument) == false) {
+            throw new DadesIncorrectesException();
+        }
         return clients.get(numeroDocument);
 
     }
 
-    public Empleat tornaEmpleat(String numeroDocument) {
+    public Venedor tornaVenedor(String numeroDocument) {
 
-        return empleats.get(numeroDocument);
+        return llistatVenedors.get(numeroDocument);
 
     }
 
-    public Reparacio tornaReparacio(int id) {
+    public Mecanic tornaMecanic(String numeroDocument) {
 
+        return llistatMecanics.get(numeroDocument);
+
+    }
+
+    public Patro tornaPatro(String numeroDocument) {
+
+        return llistatPatrons.get(numeroDocument);
+
+    }
+
+    public Reparacio tornaReparacio(int id) throws DadesIncorrectesException {
+        if (reparacions.containsKey(id) == false) {
+            throw new DadesIncorrectesException();
+        }
         return reparacions.get(id);
 
     }
 
-    public Lloguer tornaLloguer(int id) {
-
+    public Lloguer tornaLloguer(int id) throws DadesIncorrectesException {
+        if (lloguers.containsKey(id) == false) {
+            throw new DadesIncorrectesException();
+        }
         return lloguers.get(id);
 
     }
 
-    public Venda tornaVenda(int id) {
-
+    public Venda tornaVenda(int id) throws DadesIncorrectesException {
+        if (vendes.containsKey(id) == false) {
+            throw new DadesIncorrectesException();
+        }
         return vendes.get(id);
 
     }

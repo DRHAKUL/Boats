@@ -14,6 +14,7 @@ import java.util.HashMap;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.TargetaException;
+import java.util.zip.DataFormatException;
 
 /**
  *
@@ -33,21 +34,21 @@ public class Client extends Persona {
         }
     }
 
-    public void crearPagamentTargeta(int numero, String caducitat, int verificacio) throws DadesIncorrectesException, TargetaException {
+    public void crearPagamentTargeta(int numero, String caducitat, int verificacio) throws DadesIncorrectesException, DataFormatException, TargetaException {
         if (numero == 0) {
-            throw new TargetaException();
+            throw new DadesIncorrectesException();
         } else {
             Targeta targeta = new Targeta(numero, caducitat, verificacio);
         pagament.add(targeta);
         }
-        if (caducitat == null) {
-            throw new TargetaException();
-        } else {
+        if (caducitat.matches("^[0-1]{1}[0-9]{1}/[0-2]{1}[0-9]{1}")) {
             Targeta targeta = new Targeta(numero, caducitat, verificacio);
         pagament.add(targeta);
+        } else {
+            throw new DataFormatException();
         }
         if (verificacio < 99 || verificacio > 999) {
-            throw new TargetaException();
+            throw new DadesIncorrectesException();
         } else {
             Targeta targeta = new Targeta(numero, caducitat, verificacio);
         pagament.add(targeta);

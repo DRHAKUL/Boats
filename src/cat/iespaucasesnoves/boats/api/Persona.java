@@ -3,7 +3,11 @@ package cat.iespaucasesnoves.boats.api;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
 
-public class Persona {
+/**
+ *
+ * @author DRAKUL
+ */
+public abstract class Persona {
 
     protected String nom;
     protected String cognom;
@@ -32,7 +36,8 @@ public class Persona {
         } else {
             this.numeroDocument = numeroDocument;
         }
-        if (correu.matches("^[_A-Za-z0-9-\\\\+]+(\\\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\\\.[A-Za-z0-9]+)*(\\\\.[A-Za-z]{2,})$;")) {
+        if (!correu.equals("")) {
+            //correu.matches("^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3})$")) {
             this.correu = correu;
         } else {
             throw new PersonaException();

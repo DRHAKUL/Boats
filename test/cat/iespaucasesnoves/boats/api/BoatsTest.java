@@ -49,9 +49,9 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarVaixell() throws ModelException, PersonaException {
+    public void eliminarVaixell() throws ModelException, PersonaException, DadesIncorrectesException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", propietari, model, true);
         Vaixell esperat = vaixell;
@@ -77,7 +77,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarModelCataleg() throws ModelException {
+    public void eliminarModelCataleg() throws ModelException, DadesIncorrectesException {
         Boats trucar = new Boats();
         Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         trucar.eliminarModelCataleg("133");
@@ -102,7 +102,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarClient() throws ModelException, PersonaException {
+    public void eliminarClient() throws ModelException, PersonaException, DadesIncorrectesException {
         Boats trucar = new Boats();
         Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
@@ -115,12 +115,12 @@ public class BoatsTest {
     }
 
     @Test
-    public void afegirEmpleat() throws DadesIncorrectesException, PersonaException, EmpleatException {
+    public void afegirVenedor() throws DadesIncorrectesException, PersonaException, EmpleatException {
         Boats trucar = new Boats();
         java.util.Date data = new java.util.Date();
         Venedor empleat = new Venedor(3.5,"Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
-        trucar.afegirEmpleat(empleat);
-        if (trucar.getEmpleats().containsKey(empleat)) {
+        trucar.afegirVenedor(empleat);
+        if (trucar.getLlistatVenedors().containsKey(empleat)) {
             System.out.println("S'ha afegit.");
         } else {
             System.out.println("No s'ha afegit.");
@@ -128,12 +128,12 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarEmpleat() throws DadesIncorrectesException, PersonaException, EmpleatException {
+    public void eliminarVenedor() throws DadesIncorrectesException, PersonaException, EmpleatException {
         Boats trucar = new Boats();
         java.util.Date data = new java.util.Date();
         Venedor empleat = new Venedor(3.5,"Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
-        trucar.eliminarEmpleat("432898898");
-        if (trucar.getEmpleats().containsKey(empleat)) {
+        trucar.eliminarVenedor("432898898");
+        if (trucar.getLlistatVenedors().containsKey(empleat)) {
             System.out.println("No s'ha eliminat.");
         } else {
             System.out.println("S'ha eliminat.");
@@ -158,7 +158,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarLloguer() throws ModelException, PersonaException, LloguerExeption {
+    public void eliminarLloguer() throws ModelException, PersonaException, LloguerExeption, DadesIncorrectesException {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataFi = new java.util.Date();
@@ -228,7 +228,7 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarReparacio() throws ModelException, PersonaException, ReparacioException {
+    public void eliminarReparacio() throws ModelException, PersonaException, ReparacioException, DadesIncorrectesException {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataPrevFinal = new java.util.Date();
