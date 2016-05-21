@@ -54,10 +54,10 @@ public class Proves {
             principal.afegirVenedor(venedor4);
 
             // ---- Mecanics
-            Mecanic mecanic1 = new Mecanic(Habilitat.FONTANERIA, "Maria", "Alvarez", Document.DNI, "C\\Rosal 4", "971212211", "alvarez@gmail.com", "16611441111", dataAlta3, 1700.00);
-            Mecanic mecanic2 = new Mecanic(Habilitat.ELECTRICITAT, "Javier", "Lopez", Document.DNI, "C\\Marina 4", "971812211", "lopez@gmail.com", "11611441111", dataAlta3, 1120.00);
-            Mecanic mecanic3 = new Mecanic(Habilitat.MECANICA, "Tomas", "Coll", Document.DNI, "C\\Mar 4", "971562211", "coll@gmail.com", "116611441111", dataAlta3, 1220.00);
-            Mecanic mecanic4 = new Mecanic(Habilitat.VELES, "Jacobo", "Salva", Document.DNI, "C\\Marina 4", "971112211", "salva@gmail.com", "116611441611", dataAlta3, 1410.00);
+            Mecanic mecanic1 = new Mecanic(Habilitat.FONTANERIA, "Maria", "Alvarez", Document.DNI,"16611441111", "C\\Rosal 4", "971212211", "alvarez@gmail.com",  dataAlta3, 1700.00);
+            Mecanic mecanic2 = new Mecanic(Habilitat.ELECTRICITAT, "Javier", "Lopez", Document.DNI,"16611441112", "C\\Marina 4", "971812211", "lopez@gmail.com", dataAlta3, 1120.00);
+            Mecanic mecanic3 = new Mecanic(Habilitat.MECANICA, "Tomas", "Coll", Document.DNI,"16611441113", "C\\Mar 4", "971562211", "coll@gmail.com", dataAlta3, 1220.00);
+            Mecanic mecanic4 = new Mecanic(Habilitat.VELES, "Jacobo", "Salva", Document.DNI,"16611441114", "C\\Marina 4", "971112211", "salva@gmail.com", dataAlta3, 1410.00);
             principal.afegirMecanic(mecanic1);
             principal.afegirMecanic(mecanic2);
             principal.afegirMecanic(mecanic3);
@@ -132,7 +132,7 @@ public class Proves {
         } catch (VendaException ex) {
             System.out.println("Dades Venda incorrectes");
         } catch (ReparacioException ex) {
-            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Dades Reparacio incorrectes");
         }
 
     }
@@ -157,8 +157,8 @@ public class Proves {
         */
         
         //Tornam llistes d'elements
-            System.out.println(principal.getClients());
-           //System.out.println(principal.getLlistatMecanics());
+            //System.out.println(principal.getClients());
+           System.out.println(principal.getLlistatMecanics());
             
            
             
@@ -210,6 +210,6 @@ public class Proves {
     public static void main(String[] args) {
         Proves p = new Proves();
         //lectura de fitxer guardat
-        p.lletgirFitxer();
+       p.lletgirFitxer();
     }
 }

@@ -40,7 +40,7 @@ public class Mecanic extends Empleat {
         return habilitat;
     }
 
-    
+      
 
     @Override
     public String generarNomina() {
