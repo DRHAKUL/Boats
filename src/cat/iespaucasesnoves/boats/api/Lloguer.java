@@ -135,4 +135,9 @@ public class Lloguer extends Operacio {
         return preuTotalLloguer;
     }
 
+    @Override
+    public String toString() {
+        return "id = " + id + " estat= " + estat + " ambPatro= " + ambPatro + " iniciLloguer= " + iniciLloguer + " fiLloguer= " + fiLloguer + "\n client\n" + client + "\n vaixell\n" + vaixell + "\n patro\n " + patro + "\n preuTotalLloguer=" + preuTotalLloguer;
+    }
+
 }

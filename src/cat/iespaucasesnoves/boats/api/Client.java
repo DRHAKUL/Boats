@@ -91,4 +91,9 @@ public class Client extends Persona {
         return pagament;
     }
 
+    @Override
+    public String toString() {
+        return " nom= " + nom + " " + "cognom= " + cognom + " " + "adreça= " + adreca + " " + "tipus de document= " + tipusDocument + " " + "numero de document= " + numeroDocument + " " + "telefon= " + telefon + " " + "Correu electronic= " + correu + " " + "pagament= " + pagament + "\n";
+    }
+
 }

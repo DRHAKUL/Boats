@@ -71,4 +71,9 @@ public class Venda extends Operacio {
         }
     }
 
+    @Override
+    public String toString() {
+        return "vaixell\n" + vaixell + "dataVenda= " + dataVenda + " preu= " + preu + "\ncomprador\n " + comprador + "\nvenedor\n " + venedor + '}';
+    }
+
 }

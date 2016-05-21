@@ -79,6 +79,11 @@ public class Patro extends Empleat {
     }
 
     @Override
+    public String toString() {
+        return " nom= " + nom + " " + "cognom= " + cognom + " " + "adreça= " + adreca + " " + "tipus de document= " + tipusDocument + " " + "numero de document= " + numeroDocument + " " + "telefon= " + telefon + " " + "Correu electronic= " + correu + " titulacio= " + titulacio + " preuDia= " + preuDia;
+    }
+
+    @Override
     public String generarNomina() {
         return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + ",preuDia" + preuDia + "}";
     }

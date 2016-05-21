@@ -8,6 +8,7 @@ package cat.iespaucasesnoves.boats.api;
 import java.util.HashMap;
 import java.util.Iterator;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -15,7 +16,7 @@ import java.util.Date;
  *
  * @author Carlos
  */
-public class Boats {
+public class Boats implements Serializable {
 
     private HashMap<String, Model> modelsCataleg;
     private HashMap<String, Vaixell> vaixells;

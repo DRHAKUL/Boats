@@ -84,4 +84,9 @@ public class Venedor extends Empleat {
         llistaVendes.remove(id);
     }
 
+    @Override
+    public String toString() {
+        return " nom= " + nom + " " + "cognom= " + cognom + " " + "adreça= " + adreca + " " + "tipus de document= " + tipusDocument + " " + "numero de document= " + numeroDocument + " " + "telefon= " + telefon + " " + "Correu electronic= " + correu +" sou= "+sou+ "comissio=" + comissio + ", souTotal=" + souTotal + ", llistaVendes=" + llistaVendes;
+    }
+
 }

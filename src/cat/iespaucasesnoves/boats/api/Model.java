@@ -1,12 +1,13 @@
 package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.ModelException;
+import java.io.Serializable;
 
 /**
  *
  * @author Carlos
  */
-public abstract class Model {
+public abstract class Model implements Serializable {
 
     protected String referencia;
     protected String marca;
