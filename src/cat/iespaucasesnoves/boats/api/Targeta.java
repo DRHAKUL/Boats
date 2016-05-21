@@ -12,7 +12,7 @@ public class Targeta implements Pagable {
 
     private int numero;
     private String caducitat;
-    private String verificacio;
+    private int verificacio;
 
     public Targeta(int numero, String caducitat, int verificacio) throws TargetaException {
         this.numero = numero;
@@ -43,7 +43,7 @@ public class Targeta implements Pagable {
         return caducitat;
     }
 
-    public String getVerificacio() {
+    public int getVerificacio() {
         return verificacio;
     }
 
