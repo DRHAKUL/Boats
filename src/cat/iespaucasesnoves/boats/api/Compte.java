@@ -7,12 +7,13 @@ package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.CompteException;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import java.io.Serializable;
 
 /**
  *
  * @author jorge
  */
-public class Compte implements Pagable {
+public class Compte implements Pagable,Serializable {
 
     private String iban;
 
@@ -36,6 +37,11 @@ public class Compte implements Pagable {
         } else {
             this.iban = iban;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Compte{" + "iban=" + iban + '}';
     }
 
 }

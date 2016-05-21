@@ -15,6 +15,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.zip.DataFormatException;
 
 /**
  *
@@ -40,8 +41,8 @@ public class Proves {
             Date dataLloguer3 = plantilla.parse("14-08-2016");
             Date dataLloguer4 = plantilla.parse("19-08-2016");
             Date dataVenda1 = plantilla.parse("14-03-2015");
-            Date dataIniciRep1 = plantilla.parse("14-05-2016");
-            Date dataPrevFinal1 = plantilla.parse("20-05-2016");
+            Date dataIniciRep1 = plantilla.parse("03-14-2016");
+            Date dataPrevFinal1 = plantilla.parse("03-20-2016");
 
             // --- Venedors
             Venedor venedor1 = new Venedor(5.00, "Miquel", "Coll", Document.DNI, "11113199111", "C/rosa 2", "971111111", "coll@gmail.com", dataAlta1, 430.00);
@@ -73,12 +74,18 @@ public class Proves {
             principal.afegirPatro(patro3);
             principal.afegirPatro(patro4);
 
-            // -- Clients
+            // -- Clients y pagaments
             Client empresa = new Client("Boats Inc", "Boats", Document.DNI, "42542323E", "Sol 45", "871949393", "Direccio@BoatsInc.com");
             Client client1 = new Client("Pablo", "Perez", Document.PASSAPORT, "143423423521", "Miro 23", "871334455", "perez@yahoo.com");
             Client client2 = new Client("Oscar", "Calafat", Document.DNI, "24423423521", "Del riu 56", "971335475", "cala@yahoo.com");
             Client client3 = new Client("Marcos", "Pons", Document.NIE, "34323423526", "Del pou 56", "971635475", "maso@yahoo.com");
             Client client4 = new Client("Teresa", "Pou", Document.DNI, "44423423521", "Del mar 6", "871335475", "pou@yahoo.com");
+            client1.crearPagamentTargeta(1479454999,"05/16",532);
+            client1.crearPagamentCompte("ES34-542789-454322");
+            client2.crearPagamentTargeta(1439454979,"05/16",232);
+            client3.crearPagamentCompte("ES34-142489-414722");
+            client4.crearPagamentTargeta(1279454969,"05/16",472);
+            client4.crearPagamentCompte("ES34-942189-452392");
             principal.afegirClient(client1);
             principal.afegirClient(client2);
             principal.afegirClient(client3);
@@ -110,6 +117,7 @@ public class Proves {
             // ---Reparacions
             Reparacio reparacio1 = new Reparacio(client1, vaixell2, "Port de Soller", dataIniciRep1, dataPrevFinal1, "Motor no arranca", 1500, Estat.INICIAT);
             principal.afegirReparacio(reparacio1);
+            reparacio1.assignarMecanic(mecanic3);
 
             // guardam la inicialitzacio al fitxer i executam les gestions
             guardarFitxer();
@@ -133,13 +141,15 @@ public class Proves {
             System.out.println("Dades Venda incorrectes");
         } catch (ReparacioException ex) {
             System.out.println("Dades Reparacio incorrectes");
+        } catch (DataFormatException ex) {
+            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
         }
      
     }
 
     public void gestionarBoats() {
 
-        /*
+        
         try {
         //Tornam elements individuals
             //System.out.println(principal.tornaClient("24423423521"));
@@ -147,13 +157,13 @@ public class Proves {
             //System.out.println(principal.tornaModel("B894487"));
             //System.out.println(principal.tornaVaixell("ABC4570"));
                 // Tornam operacions individuals(Lloguers,Vendes o reparacions) individuals
-            //System.out.println(principal.tornaLloguer(1));
-            System.out.println(principal.tornaVenda(2));
-            //System.out.println(principal.tornaReparacio(3));
+           //System.out.println(principal.tornaLloguer(1));
+            //System.out.println(principal.tornaVenda(2));
+            System.out.println(principal.tornaReparacio(3));
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
         }
-         */
+         
         //Tornam llistes d'elements
             //System.out.println(principal.getClients());
             //System.out.println(principal.getLlistatMecanics());
@@ -165,7 +175,7 @@ public class Proves {
         //Metodes especifics de l'enunciat
             //System.out.println(principal.llistarModelsDisponibles());
             //System.out.println(principal.llistarPerTipusEmbarcacio("Motor"));
-            System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
+            //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
             
         
             // guardam tots els canvis

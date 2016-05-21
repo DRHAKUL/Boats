@@ -37,14 +37,8 @@ public class Client extends Persona {
     public void crearPagamentTargeta(int numero, String caducitat, int verificacio) throws DadesIncorrectesException, DataFormatException, TargetaException {
         if (numero == 0) {
             throw new DadesIncorrectesException();
-        } else {
-            Targeta targeta = new Targeta(numero, caducitat, verificacio);
-        pagament.add(targeta);
-        }
-        if (caducitat.matches("^[0-1]{1}[0-9]{1}/[0-2]{1}[0-9]{1}")) {
-            Targeta targeta = new Targeta(numero, caducitat, verificacio);
-        pagament.add(targeta);
-        } else {
+        } 
+        if (caducitat.matches("^[0-1]{1}[0-9]{1}/[0-2]{1}[0-9]{1}")== false) {
             throw new DataFormatException();
         }
         if (verificacio < 99 || verificacio > 999) {
