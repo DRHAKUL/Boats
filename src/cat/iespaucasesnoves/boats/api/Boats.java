@@ -187,7 +187,7 @@ public class Boats implements Serializable {
 
         HashMap<String, Model> filtrats = new HashMap<>();
 
-        Iterator it = modelsCataleg.entrySet().iterator();
+        Iterator it = modelsCataleg.values().iterator();
         while (it.hasNext()) {
             Model nou = (Model) it.next();
             if (nou.getTipus().equals(tipus)) {
@@ -197,17 +197,15 @@ public class Boats implements Serializable {
         return filtrats;
     }
 
-    public HashMap<String, Model> llistarEmbarcacionsPreu(double minim, double maxim) {
+    public HashMap llistarEmbarcacionsPreu(double minim, double maxim) {
 
         HashMap<String, Model> filtrats = new HashMap<>();
-
-        Iterator it = modelsCataleg.entrySet().iterator();
-        while (it.hasNext()) {
-            Model nou = (Model) it.next();
-            if (nou.getPreu() >= minim && nou.getPreu() <= maxim) {
-                filtrats.put(nou.getReferencia(), nou);
+        for (Model f : modelsCataleg.values()) {
+            if (f.getPreu() >= minim && f.getPreu() <= maxim) {
+                filtrats.put(f.getReferencia(), f);
             }
         }
+
         return filtrats;
     }
 
