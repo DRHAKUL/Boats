@@ -11,20 +11,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import cat.iespaucasesnoves.boats.api.Boats;
-import cat.iespaucasesnoves.boats.api.Model;
-import cat.iespaucasesnoves.boats.api.Client;
-import cat.iespaucasesnoves.boats.api.Vaixell;
-import cat.iespaucasesnoves.boats.api.Document;
-import cat.iespaucasesnoves.boats.api.Empleat;
-import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
-import cat.iespaucasesnoves.boats.exepcions.EmpleatException;
-import cat.iespaucasesnoves.boats.exepcions.LloguerExeption;
-import cat.iespaucasesnoves.boats.exepcions.ModelException;
-import cat.iespaucasesnoves.boats.exepcions.PersonaException;
-import cat.iespaucasesnoves.boats.exepcions.ReparacioException;
-import cat.iespaucasesnoves.boats.exepcions.VendaException;
-import cat.iespaucasesnoves.boats.exepcions.VenedorException;
+import cat.iespaucasesnoves.boats.api.*;
+import cat.iespaucasesnoves.boats.exepcions.*;
 import java.util.HashMap;
 import org.junit.Assert;
 
@@ -48,7 +36,7 @@ public class BoatsTest {
     @Test
     public void afegirVaixeill() throws ModelException, PersonaException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", propietari, model, true);
         Vaixell esperat = vaixell;
@@ -63,7 +51,7 @@ public class BoatsTest {
     @Test
     public void eliminarVaixell() throws ModelException, PersonaException, DadesIncorrectesException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", propietari, model, true);
         Vaixell esperat = vaixell;
@@ -79,7 +67,7 @@ public class BoatsTest {
     @Test
     public void afegirModelCataleg() throws ModelException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         trucar.afegirModelCataleg(model);
         if (trucar.getModelsCataleg().containsKey(model)) {
             System.out.println("S'ha afegit.");
@@ -91,8 +79,8 @@ public class BoatsTest {
     @Test
     public void eliminarModelCataleg() throws ModelException, DadesIncorrectesException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
-        trucar.eliminarModelCataleg("1");
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
+        trucar.eliminarModelCataleg("133");
         if (trucar.getModelsCataleg().containsKey(model)) {
             System.out.println("No s'ha eliminat.");
         } else {
@@ -103,7 +91,7 @@ public class BoatsTest {
     @Test
     public void afegirClient() throws ModelException, PersonaException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         trucar.afegirClient(propietari);
         if (trucar.getClients().containsKey(propietari)) {
@@ -116,7 +104,7 @@ public class BoatsTest {
     @Test
     public void eliminarClient() throws ModelException, PersonaException, DadesIncorrectesException {
         Boats trucar = new Boats();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client propietari = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         trucar.eliminarClient("43186404T");
         if (trucar.getClients().containsKey(propietari)) {
@@ -127,12 +115,12 @@ public class BoatsTest {
     }
 
     @Test
-    public void afegirEmpleat() throws DadesIncorrectesException, PersonaException, EmpleatException {
+    public void afegirVenedor() throws DadesIncorrectesException, PersonaException, EmpleatException {
         Boats trucar = new Boats();
         java.util.Date data = new java.util.Date();
-        Empleat empleat = new Empleat("Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
-        trucar.afegirEmpleat(empleat);
-        if (trucar.getEmpleats().containsKey(empleat)) {
+        Venedor empleat = new Venedor(3.5,"Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
+        trucar.afegirVenedor(empleat);
+        if (trucar.getLlistatVenedors().containsKey(empleat)) {
             System.out.println("S'ha afegit.");
         } else {
             System.out.println("No s'ha afegit.");
@@ -140,12 +128,12 @@ public class BoatsTest {
     }
 
     @Test
-    public void eliminarEmpleat() throws DadesIncorrectesException, PersonaException, EmpleatException {
+    public void eliminarVenedor() throws DadesIncorrectesException, PersonaException, EmpleatException {
         Boats trucar = new Boats();
         java.util.Date data = new java.util.Date();
-        Empleat empleat = new Empleat("Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
-        trucar.eliminarEmpleat("432898898");
-        if (trucar.getEmpleats().containsKey(empleat)) {
+        Venedor empleat = new Venedor(3.5,"Antonio", "Machín", Document.NIE, "432898898", "Carrer Blanc", "971435261", "antonio@gmail.com", data, 1499.50);
+        trucar.eliminarVenedor("432898898");
+        if (trucar.getLlistatVenedors().containsKey(empleat)) {
             System.out.println("No s'ha eliminat.");
         } else {
             System.out.println("S'ha eliminat.");
@@ -157,7 +145,7 @@ public class BoatsTest {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataFi = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", client, model, true);
         Lloguer lloguer = new Lloguer(dataInici, dataFi, client, vaixell, 349.90, Estat.TRAMITANT);
@@ -174,7 +162,7 @@ public class BoatsTest {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataFi = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", client, model, true);
         Lloguer lloguer = new Lloguer(dataInici, dataFi, client, vaixell, 349.90, Estat.TRAMITANT);
@@ -191,7 +179,7 @@ public class BoatsTest {
         Boats trucar = new Boats();
         java.util.Date dataVenda = new java.util.Date();
         java.util.Date dataAlta = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client comprador = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", comprador, model, true);
         Venedor venedor = new Venedor(4.5, "Miguel", "Hernandez", Document.DNI, "43176453T", "Avinguda Palou", "971546347", "miguel@gmail.com", dataAlta, 1358.37);
@@ -209,7 +197,7 @@ public class BoatsTest {
         Boats trucar = new Boats();
         java.util.Date dataVenda = new java.util.Date();
         java.util.Date dataAlta = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client comprador = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", comprador, model, true);
         Venedor venedor = new Venedor(4.5, "Miguel", "Hernandez", Document.DNI, "43176453T", "Avinguda Palou", "971546347", "miguel@gmail.com", dataAlta, 1358.37);
@@ -227,7 +215,7 @@ public class BoatsTest {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataPrevFinal = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", client, model, true);
         Reparacio reparacio = new Reparacio(client, vaixell, "Hangar 5", dataInici, dataPrevFinal, "Falla motor", 1499.99, Estat.FINALITZAT);
@@ -244,7 +232,7 @@ public class BoatsTest {
         Boats trucar = new Boats();
         java.util.Date dataInici = new java.util.Date();
         java.util.Date dataPrevFinal = new java.util.Date();
-        Model model = new Model("1", "QuicSilver", "JK89", 3.3, 5.5, 6.5, 18999.99);
+        Iot model = new Iot(3,450,45.5,true,"133","Hoover","XV78",24.5,50.6,13.5,45999.99);        
         Client client = new Client("Pepito", "Palotes", Document.DNI, "43186404T", "Carrer Vent", "971786858", "juas@gmail.com");
         Vaixell vaixell = new Vaixell("X330", client, model, true);
         Reparacio reparacio = new Reparacio(client, vaixell, "Hangar 5", dataInici, dataPrevFinal, "Falla motor", 1499.99, Estat.FINALITZAT);
