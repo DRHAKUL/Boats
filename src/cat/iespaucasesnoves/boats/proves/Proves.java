@@ -173,14 +173,20 @@ public class Proves {
             
             
         //Metodes especifics de l'enunciat
-            //System.out.println(principal.llistarModelsDisponibles());
-            //System.out.println(principal.llistarPerTipusEmbarcacio("Motor"));
-            //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-            
-        
-            // guardam tots els canvis
-            //guardarFitxer();
-        
+        //System.out.println(principal.llistarModelsDisponibles());
+        //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
+        //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
+        SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
+        try {
+            Date dataLloguer3 = plantilla.parse("14-08-2016");
+            Date dataLloguer4 = plantilla.parse("16-08-2016");
+            System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
+
+        } catch (ParseException ex) {
+            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // guardam tots els canvis
+        guardarFitxer();
 
     }
 

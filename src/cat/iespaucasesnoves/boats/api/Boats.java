@@ -10,6 +10,7 @@ import java.util.Iterator;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -256,12 +257,22 @@ public class Boats implements Serializable {
      */
     public ArrayList embarcacionsDisponiblesDates(Date data1, Date data2) {
         ArrayList<Vaixell> disponibles = new ArrayList<>();
-        Iterator it = lloguers.entrySet().iterator();
-        while (it.hasNext()) {
-            Lloguer l = (Lloguer) it.next();
+        ArrayList<Date> diesDematats = new ArrayList<>();
+        ArrayList<Date> diesLlogat = new ArrayList<>();
+        Calendar inici = Calendar.getInstance();
+        inici.setTime(data1);
+        Calendar fi = Calendar.getInstance();
+        fi.setTime(data2);
 
+        while (!inici.after(fi)) {
+            Date targetDay = inici.getTime();
+
+            inici.add(Calendar.DATE, 1);
+            diesDematats.add(targetDay);
+            System.out.println(targetDay);
         }
-        return disponibles;
+
+        return diesDematats;
     }
 
     public Model tornaModel(String referencia) throws DadesIncorrectesException {
