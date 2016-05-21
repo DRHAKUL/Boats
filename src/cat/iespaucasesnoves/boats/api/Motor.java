@@ -19,8 +19,6 @@ public class Motor extends Model {
             throw new MotorException();
         } else if (capDeposit < 1 || capDeposit > 10000) {
             throw new MotorException();
-        } else if (motAuxiliar != true || motAuxiliar != false) {
-            throw new MotorException();
         }
         this.potencia = potencia;
         this.capDeposit = capDeposit;
@@ -68,7 +66,7 @@ public class Motor extends Model {
 
     @Override
     public String toString() {
-        return "Motor{" + "potencia=" + potencia + ", capDeposit=" + capDeposit + ", motAuxiliar=" + motAuxiliar + '}';
+        return "referencia= " + referencia + " " + "marca= " + marca + " " + "model= " + model + " " + "tipus= " + tipus + " " + "manega= " + manega + "m " + "eslora= " + eslora + "m " + "calat= " + calat + "m " + "preu= " + preu + "€ " + "potencia= " + potencia +"cv "+"capDeposit= " + capDeposit +"l "+ "motorAuxiliar= " + motAuxiliar + "\n";
     }
 
 }

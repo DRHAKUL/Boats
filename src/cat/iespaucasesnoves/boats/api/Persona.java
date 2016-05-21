@@ -2,8 +2,9 @@ package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
+import java.io.Serializable;
 
-public abstract class Persona {
+public abstract class Persona implements Serializable {
 
     protected String nom;
     protected String cognom;

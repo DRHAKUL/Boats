@@ -10,6 +10,7 @@ import cat.iespaucasesnoves.boats.api.Pagable;
 import cat.iespaucasesnoves.boats.api.Targeta;
 import java.util.HashMap;
 import cat.iespaucasesnoves.boats.exepcions.PersonaException;
+import java.io.Serializable;
 
 /**
  *
@@ -35,11 +36,11 @@ public class Client extends Persona {
         pagament.remove(numero);
 
     }
-    
+
     public ArrayList<Pagable> llistarPagament() {
         return pagament;
     }
-    
+
     public void crearPagamentCompte(String iban) {
         Compte compte = new Compte(iban);
         pagament.add(compte);
@@ -51,6 +52,11 @@ public class Client extends Persona {
 
     public ArrayList<Pagable> getPagament() {
         return pagament;
+    }
+
+    @Override
+    public String toString() {
+        return " nom= " + nom + " " + "cognom= " + cognom + " " + "adreça= " + adreca + " " + "tipus de document= " + tipusDocument + " " + "numero de document= " + numeroDocument + " " + "telefon= " + telefon + " " + "Correu electronic= " + correu + " " + "pagament= " + pagament + "\n";
     }
 
 }

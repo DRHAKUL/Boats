@@ -27,8 +27,6 @@ public class Iot extends Model {
             throw new IotException();
         } else if (autonomia < 1 || autonomia > 2000) {
             throw new IotException();
-        } else if (bodega != true || bodega != false) {
-            throw new IotException();
         }
         this.camarots = camarots;
         this.potencia = potencia;
@@ -88,7 +86,7 @@ public class Iot extends Model {
 
     @Override
     public String toString() {
-        return "Iot{" + "camarots=" + camarots + ", potencia=" + potencia + ", autonomia=" + autonomia + ", bodega=" + bodega + '}';
+        return "referencia= " + referencia + " " + "marca= " + marca + " " + "model= " + model + " " + "tipus= " + tipus + " " + "manega= " + manega + "m " + "eslora= " + eslora + "m " + "calat= " + calat + "m " + "preu= " + preu + "€ " +"camarots= " + camarots +" "+ "potencia= " + potencia +"cv "+ "autonomia= " + autonomia +"mi "+ "bodega= " + bodega + "\n";
     }
 
 }

@@ -116,4 +116,9 @@ public class Reparacio extends Operacio {
         mecanics.remove(m);
     }
 
+    @Override
+    public String toString() {
+        return "propietari\n" + propietari + "\nvaixell\n" + vaixell + "\nmecanics\n" + mecanics + "\nllocReparacio= " + llocReparacio + "\ndataInici= " + dataInici + " dataPrevFinal= " + dataPrevFinal + "\ndescAveria= " + descAveria + "\npreuPresupost= " + preuPresupost + " preuExtras= " + preuExtras + " preuFinal= " + preuFinal + "\nnotes= " + notes + '}';
+    }
+
 }

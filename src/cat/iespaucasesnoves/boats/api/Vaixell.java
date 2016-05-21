@@ -1,10 +1,12 @@
 package cat.iespaucasesnoves.boats.api;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Carlos
  */
-public class Vaixell {
+public class Vaixell implements Serializable {
 
     private String matricula;
     private final Client propietari;
@@ -12,19 +14,19 @@ public class Vaixell {
     private boolean perLloguar;
     private double preuDia;
 
-    public Vaixell(String matricula, Client propietari, Model model, boolean perLloguar) {
+    public Vaixell(String matricula, Client propietari, Model model) {
         this.matricula = matricula;
         this.propietari = propietari;
         this.model = model;
-        this.perLloguar = perLloguar;
+        this.perLloguar = false;
         this.preuDia = 0;
     }
 
-    public Vaixell(String matricula, Client propietari, Model model, boolean perLloguar, double preuDia) {
+    public Vaixell(String matricula, Client propietari, Model model, double preuDia) {
         this.matricula = matricula;
         this.propietari = propietari;
         this.model = model;
-        this.perLloguar = perLloguar;
+        this.perLloguar = true;
         this.preuDia = preuDia;
     }
 
@@ -59,6 +61,11 @@ public class Vaixell {
 
     public void setPreuDia(double preuDia) {
         this.preuDia = preuDia;
+    }
+
+    @Override
+    public String toString() {
+        return "matricula= " + matricula + " \npropietari\n " + propietari + "\n model= " + model + "\n perLloguar=" + perLloguar + " preuDia=" + preuDia + "\n";
     }
 
 }
