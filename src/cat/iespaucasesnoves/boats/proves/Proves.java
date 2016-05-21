@@ -54,10 +54,10 @@ public class Proves {
             principal.afegirVenedor(venedor4);
 
             // ---- Mecanics
-            Mecanic mecanic1 = new Mecanic(Habilitat.FONTANERIA, "Maria", "Alvarez", Document.DNI,"16611441111", "C\\Rosal 4", "971212211", "alvarez@gmail.com",  dataAlta3, 1700.00);
-            Mecanic mecanic2 = new Mecanic(Habilitat.ELECTRICITAT, "Javier", "Lopez", Document.DNI,"16611441112", "C\\Marina 4", "971812211", "lopez@gmail.com", dataAlta3, 1120.00);
-            Mecanic mecanic3 = new Mecanic(Habilitat.MECANICA, "Tomas", "Coll", Document.DNI,"16611441113", "C\\Mar 4", "971562211", "coll@gmail.com", dataAlta3, 1220.00);
-            Mecanic mecanic4 = new Mecanic(Habilitat.VELES, "Jacobo", "Salva", Document.DNI,"16611441114", "C\\Marina 4", "971112211", "salva@gmail.com", dataAlta3, 1410.00);
+            Mecanic mecanic1 = new Mecanic(Habilitat.FONTANERIA, "Maria", "Alvarez", Document.DNI, "16611441111", "C\\Rosal 4", "971212211", "alvarez@gmail.com", dataAlta3, 1700.00);
+            Mecanic mecanic2 = new Mecanic(Habilitat.ELECTRICITAT, "Javier", "Lopez", Document.DNI, "16611441112", "C\\Marina 4", "971812211", "lopez@gmail.com", dataAlta3, 1120.00);
+            Mecanic mecanic3 = new Mecanic(Habilitat.MECANICA, "Tomas", "Coll", Document.DNI, "16611441113", "C\\Mar 4", "971562211", "coll@gmail.com", dataAlta3, 1220.00);
+            Mecanic mecanic4 = new Mecanic(Habilitat.VELES, "Jacobo", "Salva", Document.DNI, "16611441114", "C\\Marina 4", "971112211", "salva@gmail.com", dataAlta3, 1410.00);
             principal.afegirMecanic(mecanic1);
             principal.afegirMecanic(mecanic2);
             principal.afegirMecanic(mecanic3);
@@ -106,11 +106,11 @@ public class Proves {
             // -- Vendes
             Venda venda1 = new Venda(vaixell2, dataVenda1, vaixell2.getModel().getPreu(), client3, venedor3, Estat.INICIAT);
             principal.afegirVenda(venda1);
-            
+
             // ---Reparacions
-            Reparacio reparacio1 = new Reparacio(client1,vaixell2,"Port de Soller",dataIniciRep1,dataPrevFinal1,"Motor no arranca",1500,Estat.INICIAT);
+            Reparacio reparacio1 = new Reparacio(client1, vaixell2, "Port de Soller", dataIniciRep1, dataPrevFinal1, "Motor no arranca", 1500, Estat.INICIAT);
             principal.afegirReparacio(reparacio1);
-            
+
             // guardam la inicialitzacio al fitxer i executam les gestions
             guardarFitxer();
             gestionarBoats();
@@ -138,8 +138,7 @@ public class Proves {
     }
 
     public void gestionarBoats() {
-        
-        
+
         /*
         try {
         //Tornam elements individuals
@@ -154,24 +153,16 @@ public class Proves {
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
         }
-        */
-        
+         */
         //Tornam llistes d'elements
-            //System.out.println(principal.getClients());
-           System.out.println(principal.getLlistatMecanics());
-            
-           
-            
-            
+        //System.out.println(principal.getClients());
+        //System.out.println(principal.getLlistatMecanics());
         //Metodes especifics de l'enunciat
-            //System.out.println(principal.llistarModelsDisponibles());
-            //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
-            //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-        
-        
-            // guardam tots els canvis
-            guardarFitxer();
-        
+        //System.out.println(principal.llistarModelsDisponibles());
+        //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
+        //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
+        // guardam tots els canvis
+        guardarFitxer();
 
     }
 
@@ -190,7 +181,7 @@ public class Proves {
         try (ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream("./Boats.boa")))) {
             principal = (Boats) in.readObject();
             gestionarBoats();
-          
+
         } catch (FileNotFoundException e) {
             //si no existeix el fitxer executarem la inicialitzacio
             inicialitzarBoats();
@@ -199,7 +190,7 @@ public class Proves {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-       
+
     }
 
     /**
@@ -210,6 +201,9 @@ public class Proves {
     public static void main(String[] args) {
         Proves p = new Proves();
         //lectura de fitxer guardat
-       p.lletgirFitxer();
+        p.lletgirFitxer();
+        p.gestionarBoats();
+//       p.inicialitzarBoats();
+//       p.guardarFitxer();
     }
 }
