@@ -158,14 +158,14 @@ public class Proves {
             //System.out.println(principal.getClients());
             //System.out.println(principal.getLlistatMecanics());
             //System.out.println(principal.getLlistatVenedors()); 
-            System.out.println(principal.getLloguers());        
+            //System.out.println(principal.getLloguers());        
            
             
             
         //Metodes especifics de l'enunciat
             //System.out.println(principal.llistarModelsDisponibles());
-            //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
-            //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
+            //System.out.println(principal.llistarPerTipusEmbarcacio("Motor"));
+            System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
             
         
             // guardam tots els canvis
@@ -210,8 +210,6 @@ public class Proves {
         Proves p = new Proves();
         //lectura de fitxer guardat
         p.lletgirFitxer();
-        p.gestionarBoats();
-//       p.inicialitzarBoats();
-//       p.guardarFitxer();
+        
     }
 }
