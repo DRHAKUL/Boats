@@ -43,6 +43,8 @@ public class Proves {
             Date dataVenda1 = plantilla.parse("14-03-2015");
             Date dataIniciRep1 = plantilla.parse("03-14-2016");
             Date dataPrevFinal1 = plantilla.parse("03-20-2016");
+            Date dataIniciRep2 = plantilla.parse("08-14-2015");
+            Date dataPrevFinal2 = plantilla.parse("08-20-2015");
 
             // --- Venedors
             Venedor venedor1 = new Venedor(5.00, "Miquel", "Coll", Document.DNI, "11113199111", "C/rosa 2", "971111111", "coll@gmail.com", dataAlta1, 430.00);
@@ -80,11 +82,11 @@ public class Proves {
             Client client2 = new Client("Oscar", "Calafat", Document.DNI, "24423423521", "Del riu 56", "971335475", "cala@yahoo.com");
             Client client3 = new Client("Marcos", "Pons", Document.NIE, "34323423526", "Del pou 56", "971635475", "maso@yahoo.com");
             Client client4 = new Client("Teresa", "Pou", Document.DNI, "44423423521", "Del mar 6", "871335475", "pou@yahoo.com");
-            client1.crearPagamentTargeta(1479454999,"05/16",532);
+            client1.crearPagamentTargeta(1479454999, "05/16", 532);
             client1.crearPagamentCompte("ES34-542789-454322");
-            client2.crearPagamentTargeta(1439454979,"05/16",232);
+            client2.crearPagamentTargeta(1439454979, "05/16", 232);
             client3.crearPagamentCompte("ES34-142489-414722");
-            client4.crearPagamentTargeta(1279454969,"05/16",472);
+            client4.crearPagamentTargeta(1279454969, "05/16", 472);
             client4.crearPagamentCompte("ES34-942189-452392");
             principal.afegirClient(client1);
             principal.afegirClient(client2);
@@ -115,7 +117,8 @@ public class Proves {
             principal.afegirVenda(venda1);
 
             // ---Reparacions
-            Reparacio reparacio1 = new Reparacio(client1, vaixell2, "Port de Soller", dataIniciRep1, dataPrevFinal1, "Motor no arranca", 1500, Estat.INICIAT);
+            Reparacio reparacio1 = new Reparacio(client1, vaixell2, "Port de Soller", dataIniciRep1, dataPrevFinal1, "Motor no arranca", 1500, Estat.TRAMITANT);
+            Reparacio reparacio2 = new Reparacio(client2, vaixell1, "Port d'Andratx", dataIniciRep2, dataPrevFinal2, "Fuga de combustible", 1500, Estat.FINALITZAT);
             principal.afegirReparacio(reparacio1);
             reparacio1.assignarMecanic(mecanic3);
 
@@ -127,7 +130,6 @@ public class Proves {
         } catch (EmpleatException ex) {
             System.out.println("Dades empleat incorrectes");
         } catch (PersonaException ex) {
-            ex.printStackTrace();
             System.out.println("Dades persona incorrectes");
         } catch (VelerException ex) {
             System.out.println("Dades veler incorrectes");
@@ -142,14 +144,14 @@ public class Proves {
         } catch (ReparacioException ex) {
             System.out.println("Dades Reparacio incorrectes");
         } catch (DataFormatException ex) {
-            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Dades Data incorrectes");
         }
-     
+
     }
 
     public void gestionarBoats() {
 
-        
+        /*
         try {
         //Tornam elements individuals
             //System.out.println(principal.tornaClient("24423423521"));
@@ -163,15 +165,12 @@ public class Proves {
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
         }
-         
+         */
         //Tornam llistes d'elements
-            //System.out.println(principal.getClients());
-            //System.out.println(principal.getLlistatMecanics());
-            //System.out.println(principal.getLlistatVenedors()); 
-            //System.out.println(principal.getLloguers());        
-           
-            
-            
+        //System.out.println(principal.getClients());
+        //System.out.println(principal.getLlistatMecanics());
+        //System.out.println(principal.getLlistatVenedors()); 
+        //System.out.println(principal.getLloguers());        
         //Metodes especifics de l'enunciat
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
@@ -183,7 +182,7 @@ public class Proves {
             System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
 
         } catch (ParseException ex) {
-            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("error de data");
         }
         // guardam tots els canvis
         guardarFitxer();
@@ -226,6 +225,6 @@ public class Proves {
         Proves p = new Proves();
         //lectura de fitxer guardat
         p.lletgirFitxer();
-        
+
     }
 }
