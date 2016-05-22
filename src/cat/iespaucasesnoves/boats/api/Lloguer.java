@@ -33,7 +33,7 @@ public class Lloguer extends Operacio {
         }
         this.client = client;
         this.vaixell = vaixell;
-        if (preuDia <= 0) {
+        if (preuDia < 0) {
             throw new LloguerExeption();
 
         } else {
@@ -133,6 +133,11 @@ public class Lloguer extends Operacio {
 
     public double getPreuTotalLloguer() {
         return preuTotalLloguer;
+    }
+
+    @Override
+    public String toString() {
+        return "id = " + id + " estat= " + estat + " ambPatro= " + ambPatro + " iniciLloguer= " + iniciLloguer + " fiLloguer= " + fiLloguer + "\n client\n" + client + "\n vaixell\n" + vaixell + "\n patro\n " + patro + "\n preuTotalLloguer=" + preuTotalLloguer;
     }
 
 }

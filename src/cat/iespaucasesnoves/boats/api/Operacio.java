@@ -1,10 +1,12 @@
 package cat.iespaucasesnoves.boats.api;
 
+import java.io.Serializable;
+
 /**
  *
  * @author DRAKUL
  */
-public class Operacio {
+public abstract class Operacio implements Serializable {
 
     protected int id;
     protected Estat estat;

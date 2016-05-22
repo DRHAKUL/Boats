@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ *
+ * @author DRAKUL
+ */
 public class Venedor extends Empleat {
 
     private double comissio;
@@ -78,6 +82,11 @@ public class Venedor extends Empleat {
 
     public void eliminarVenda(int id) {
         llistaVendes.remove(id);
+    }
+
+    @Override
+    public String toString() {
+        return "{ venedor "+"nom= " + nom + " " + "cognom= " + cognom + " " + "adreça= " + adreca + " " + "tipus de document= " + tipusDocument + " " + "numero de document= " + numeroDocument + " " + "telefon= " + telefon + " " + "Correu electronic= " + correu +" sou= "+sou+ "comissio=" + comissio + ", souTotal=" + souTotal + ", llistaVendes=" + llistaVendes + "}\n";
     }
 
 }

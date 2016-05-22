@@ -4,6 +4,10 @@ import cat.iespaucasesnoves.boats.exepcions.ReparacioException;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ *
+ * @author DRAKUL
+ */
 public class Reparacio extends Operacio {
 
     private final Client propietari;
@@ -108,12 +112,17 @@ public class Reparacio extends Operacio {
         this.notes = notes;
     }
 
-    private void assignarMecanic(Mecanic m) {
+    public void assignarMecanic(Mecanic m) {
         mecanics.add(m);
     }
 
-    private void eliminarMecanic(Mecanic m) {
+    public void eliminarMecanic(Mecanic m) {
         mecanics.remove(m);
+    }
+
+    @Override
+    public String toString() {
+        return "propietari\n" + propietari + "\nvaixell\n" + vaixell + "\nmecanics\n" + mecanics + "\nllocReparacio= " + llocReparacio + "\ndataInici= " + dataInici + " dataPrevFinal= " + dataPrevFinal + "\ndescAveria= " + descAveria + "\npreuPresupost= " + preuPresupost + " preuExtras= " + preuExtras + " preuFinal= " + preuFinal + "\nnotes= " + notes + '}';
     }
 
 }

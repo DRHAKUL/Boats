@@ -1,11 +1,13 @@
 package cat.iespaucasesnoves.boats.api;
+
 import cat.iespaucasesnoves.boats.exepcions.ModelException;
+import java.io.Serializable;
 
 /**
  *
  * @author Carlos
  */
-public class Model {
+public abstract class Model implements Serializable {
 
     protected String referencia;
     protected String marca;
@@ -15,14 +17,15 @@ public class Model {
     protected double eslora;
     protected double calat;
     protected double preu;
-    public Model (String referencia,String marca,String model,double manega,double eslora,double calat,double preu)throws ModelException{
-        if(referencia.equals("")){
+
+    public Model(String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws ModelException {
+        if (referencia.equals("")) {
             throw new ModelException();
-        }else if(marca.equals("")){
+        } else if (marca.equals("")) {
             throw new ModelException();
-        }else if(model.equals("")){
+        } else if (model.equals("")) {
             throw new ModelException();
-        }else if (manega < 1 || manega > 300) {
+        } else if (manega < 1 || manega > 300) {
             throw new ModelException();
         } else if (eslora < 1 || eslora > 300) {
             throw new ModelException();

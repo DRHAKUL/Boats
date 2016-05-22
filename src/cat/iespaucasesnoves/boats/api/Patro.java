@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class Patro extends Empleat {
 
-    private ArrayList<Lloguer> llistatLloguers;
+    private final ArrayList<Lloguer> llistatLloguers;
     private String titulacio;
     private double preuDia;
 
@@ -58,6 +58,7 @@ public class Patro extends Empleat {
             if (l.getId() == idLloguer) {
                 llistatLloguers.remove(l);
             }
+
         }
     }
 
@@ -75,6 +76,11 @@ public class Patro extends Empleat {
             totalDies = totalDies + dias;
         }
         sou = totalDies * preuDia;
+    }
+
+    @Override
+    public String toString() {
+        return " nom= " + nom + " " + "cognom= " + cognom + " " + "adreça= " + adreca + " " + "tipus de document= " + tipusDocument + " " + "numero de document= " + numeroDocument + " " + "telefon= " + telefon + " " + "Correu electronic= " + correu + " titulacio= " + titulacio + " preuDia= " + preuDia;
     }
 
     @Override

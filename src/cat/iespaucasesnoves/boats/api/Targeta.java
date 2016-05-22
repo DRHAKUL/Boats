@@ -1,21 +1,39 @@
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
+import cat.iespaucasesnoves.boats.exepcions.TargetaException;
+import java.io.Serializable;
 import java.util.zip.DataFormatException;
 
 /**
  *
  * @author jorge
  */
-public class Targeta implements Pagable {
+public class Targeta implements Pagable,Serializable {
 
     private int numero;
     private String caducitat;
-    private String verificacio;
+    private int verificacio;
 
-    public Targeta(int numero, String caducitat, String verificacio) {
+    public Targeta(int numero, String caducitat, int verificacio) throws TargetaException {
         this.numero = numero;
         this.caducitat = caducitat;
         this.verificacio = verificacio;
+        if (numero == 0) {
+            throw new TargetaException();
+        } else {
+            this.numero = numero;
+        }
+        if (caducitat == null) {
+            throw new TargetaException();
+        } else {
+            this.caducitat = caducitat;
+        }
+        if (verificacio < 100 || verificacio > 999) {
+            throw new TargetaException();
+        } else {
+            this.verificacio = verificacio;
+        }
     }
 
     public int getNumero() {
@@ -26,27 +44,40 @@ public class Targeta implements Pagable {
         return caducitat;
     }
 
-    public String getVerificacio() {
+    public int getVerificacio() {
         return verificacio;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(int numero) throws DadesIncorrectesException {
         this.numero = numero;
+        if (numero == 0) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.numero = numero;
+        }
     }
 
-    public void setCaducitat(String caducitat) {
-        this.caducitat = caducitat;
-    }
-
-    public void setVerificacio(String verificacio) throws DataFormatException {
-        if (verificacio.matches("^[0-3]{1}[0-9]{1}/[0-1]{1}[0-2]{1}")) {
-            this.verificacio = verificacio;
+    public void setCaducitat(String caducitat) throws DataFormatException {
+        if (caducitat.matches("^[0-1]{1}[0-9]{1}/[0-2]{1}[0-9]{1}")) {
+            this.caducitat = caducitat;
 
         } else {
             throw new DataFormatException();
         }
+    }
 
+    public void setVerificacio(int verificacio) throws DadesIncorrectesException {
         this.verificacio = verificacio;
+        if (verificacio < 99 || verificacio > 999) {
+            throw new DadesIncorrectesException();
+        } else {
+            this.verificacio = verificacio;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Targeta{" + "numero=" + numero + ", caducitat=" + caducitat + ", verificacio=" + verificacio + '}';
     }
 
 }

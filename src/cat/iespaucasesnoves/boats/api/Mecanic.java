@@ -41,6 +41,13 @@ public class Mecanic extends Empleat {
     }
 
     @Override
+    public String toString() {
+        return "Mecanic{" +"nom = "+nom+" cognom= "+cognom+ " habilitat=" + habilitat + "}\n";
+    }
+
+      
+
+    @Override
     public String generarNomina() {
         return "{nom:" + nom + ",cognom:" + cognom + ",tipusDocument:" + tipusDocument + ",numeroDocument:" + numeroDocument + ",adreca:" + adreca + ",telefon:" + telefon + ",correu:" + correu + ",dataAlta:" + dataAlta + ",sou:" + sou + "}";
     }
