@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.DataFormatException;
@@ -27,7 +28,7 @@ public class Proves {
 
     public void inicialitzarBoats() {
         principal = new Boats();
-        SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
+        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
 
         try {
             // --- Dates necesaries per la creacio d'objectes (patro,lloguer,venda,...)
@@ -82,11 +83,11 @@ public class Proves {
             Client client2 = new Client("Oscar", "Calafat", Document.DNI, "24423423521", "Del riu 56", "971335475", "cala@yahoo.com");
             Client client3 = new Client("Marcos", "Pons", Document.NIE, "34323423526", "Del pou 56", "971635475", "maso@yahoo.com");
             Client client4 = new Client("Teresa", "Pou", Document.DNI, "44423423521", "Del mar 6", "871335475", "pou@yahoo.com");
-            client1.crearPagamentTargeta(1479454999,"05/16",532);
+            client1.crearPagamentTargeta(1479454999, "05/16", 532);
             client1.crearPagamentCompte("ES34-542789-454322");
-            client2.crearPagamentTargeta(1439454979,"05/16",232);
+            client2.crearPagamentTargeta(1439454979, "05/16", 232);
             client3.crearPagamentCompte("ES34-142489-414722");
-            client4.crearPagamentTargeta(1279454969,"05/16",472);
+            client4.crearPagamentTargeta(1279454969, "05/16", 472);
             client4.crearPagamentCompte("ES34-942189-452392");
             principal.afegirClient(client1);
             principal.afegirClient(client2);
@@ -151,21 +152,19 @@ public class Proves {
 
     public void gestionarBoats() {
 
-        
-        try {
+//        try {
         //Tornam elements individuals
-            //System.out.println(principal.tornaClient("24423423521"));
-            //System.out.println(principal.tornaModel("A28987"));
-            //System.out.println(principal.tornaModel("B894487"));
-            //System.out.println(principal.tornaVaixell("ABC4570"));
-                // Tornam operacions individuals(Lloguers,Vendes o reparacions) individuals
-           //System.out.println(principal.tornaLloguer(1));
-            //System.out.println(principal.tornaVenda(2));
-            System.out.println(principal.tornaReparacio(3));
-        } catch (DadesIncorrectesException ex) {
-            System.out.println("Dades incorrectes");
-        }
-         
+        //System.out.println(principal.tornaClient("24423423521"));
+        //System.out.println(principal.tornaModel("A28987"));
+        //System.out.println(principal.tornaModel("B894487"));
+        //System.out.println(principal.tornaVaixell("ABC4570"));
+        // Tornam operacions individuals(Lloguers,Vendes o reparacions) individuals
+        //System.out.println(principal.tornaLloguer(1));
+        //System.out.println(principal.tornaVenda(2));
+//            System.out.println(principal.tornaReparacio(3));
+//        } catch (DadesIncorrectesException ex) {
+//            System.out.println("Dades incorrectes");
+//        }
         //Tornam llistes d'elements
         //System.out.println(principal.getClients());
         //System.out.println(principal.getLlistatMecanics());
@@ -175,11 +174,12 @@ public class Proves {
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
         //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-        SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
+        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
         try {
-            Date dataLloguer3 = plantilla.parse("14-08-2016");
-            Date dataLloguer4 = plantilla.parse("16-08-2016");
-            System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
+            Date dataLloguer3 = plantilla.parse("14-09-2016");
+            Date dataLloguer4 = plantilla.parse("16-09-2016");
+            ArrayList<Vaixell> disponibles = new ArrayList<>();
+            disponibles = (principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
 
         } catch (ParseException ex) {
             Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);

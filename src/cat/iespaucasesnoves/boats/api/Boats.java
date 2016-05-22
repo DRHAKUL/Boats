@@ -255,10 +255,11 @@ public class Boats implements Serializable {
     Per els lloguers necessitam que el sistema ens torni les embarcacions 
     disponibles entre unes determinades dates.
      */
-    public ArrayList embarcacionsDisponiblesDates(Date data1, Date data2) {
-        ArrayList<Vaixell> disponibles = new ArrayList<>();
-        ArrayList<Date> diesDematats = new ArrayList<>();
-        ArrayList<Date> diesLlogat = new ArrayList<>();
+ /*
+    * Aixo retorna un array amb els dies entre dues dates.
+     */
+    public ArrayList diesEntreDates(Date data1, Date data2) {
+        ArrayList<Date> rangDies = new ArrayList<>();
         Calendar inici = Calendar.getInstance();
         inici.setTime(data1);
         Calendar fi = Calendar.getInstance();
@@ -266,13 +267,46 @@ public class Boats implements Serializable {
 
         while (!inici.after(fi)) {
             Date d = inici.getTime();
-
             inici.add(Calendar.DATE, 1);
-            diesDematats.add(d);
-            System.out.println(d);
+            rangDies.add(d);
         }
 
-        return diesDematats;
+        return rangDies;
+    }
+
+    /*
+    Ficam els dies de cada lloguer a un array i el comparam amb l'array de dies demanats.
+    Si algun dia coincideix, el vaixell d'aquests lloger no el tornam a la llista de vaixells lliures.
+     */
+    public ArrayList embarcacionsDisponiblesDates(Date dia1, Date dia2) {
+        ArrayList<Date> diesDemanats = new ArrayList<>();
+        ArrayList<Date> diesLlogat = new ArrayList<>();
+        ArrayList<Vaixell> ocupats = new ArrayList<>();
+        ArrayList<Vaixell> lliures = new ArrayList<>();
+        diesDemanats = diesEntreDates(dia1, dia2);
+        for (Lloguer l : lloguers.values()) {
+            diesLlogat = (diesEntreDates(l.getIniciLloguer(), l.getFiLloguer()));
+            // comparam els dos arrays
+            for (Date d : diesLlogat) {
+
+                for (Date d2 : diesDemanats) {
+                    if (d.equals(d2)) {
+                        ocupats.add(l.getVaixell());
+                    }
+                }
+
+            }
+
+        }
+        // Comparam ocupats amb lliures.
+        for (Vaixell v : vaixells.values()) {
+            for (Vaixell o : ocupats) {
+                if (v.equals(o)) {
+                    lliures.add(o);
+                }
+            }
+        }
+        return lliures;
     }
 
     public Model tornaModel(String referencia) throws DadesIncorrectesException {
