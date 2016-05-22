@@ -265,11 +265,11 @@ public class Boats implements Serializable {
         fi.setTime(data2);
 
         while (!inici.after(fi)) {
-            Date targetDay = inici.getTime();
+            Date d = inici.getTime();
 
             inici.add(Calendar.DATE, 1);
-            diesDematats.add(targetDay);
-            System.out.println(targetDay);
+            diesDematats.add(d);
+            System.out.println(d);
         }
 
         return diesDematats;

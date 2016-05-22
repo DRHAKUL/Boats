@@ -36,6 +36,8 @@ public class Proves {
             Date dataAlta4 = plantilla.parse("14-06-1944");
             Date dataLloguer1Inici = plantilla.parse("14-06-2016");
             Date dataLloguer1Fi = plantilla.parse("15-06-2016");
+            Date dataLloguer1Inici2 = plantilla.parse("14-06-2016");
+            Date dataLloguer1Fi2 = plantilla.parse("15-06-2016");
             Date dataLloguer2 = plantilla.parse("20-06-2016");
             Date dataLloguer3 = plantilla.parse("14-08-2016");
             Date dataLloguer4 = plantilla.parse("19-08-2016");
@@ -134,7 +136,7 @@ public class Proves {
         } catch (ReparacioException ex) {
             System.out.println("Dades Reparacio incorrectes");
         }
-     
+
     }
 
     public void gestionarBoats() {
@@ -155,13 +157,10 @@ public class Proves {
         }
          */
         //Tornam llistes d'elements
-            //System.out.println(principal.getClients());
-            //System.out.println(principal.getLlistatMecanics());
-            //System.out.println(principal.getLlistatVenedors()); 
-            //System.out.println(principal.getLloguers());        
-           
-            
-            
+        //System.out.println(principal.getClients());
+        //System.out.println(principal.getLlistatMecanics());
+        //System.out.println(principal.getLlistatVenedors()); 
+        //System.out.println(principal.getLloguers());        
         //Metodes especifics de l'enunciat
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
@@ -216,6 +215,6 @@ public class Proves {
         Proves p = new Proves();
         //lectura de fitxer guardat
         p.lletgirFitxer();
-        
+
     }
 }
