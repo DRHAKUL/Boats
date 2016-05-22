@@ -176,8 +176,8 @@ public class Boats implements Serializable {
     }
 
     /*
-    Per el catàleg web necessitam tornar una llista amb tots els models que tenim disponible, 
-    una altra filtrada per tipus d'embarcació i un altre per interval de preu.
+     Per el catàleg web necessitam tornar una llista amb tots els models que tenim disponible, 
+     una altra filtrada per tipus d'embarcació i un altre per interval de preu.
 
      */
     public HashMap<String, Model> llistarModelsDisponibles() {
@@ -211,9 +211,9 @@ public class Boats implements Serializable {
     }
 
     /*
-    Per a la gestió del taller ha de poder tornar una llista de les reparacions pendents, 
-    una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
-    les reparacions que ha sofert una determinada embarcació.
+     Per a la gestió del taller ha de poder tornar una llista de les reparacions pendents, 
+     una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
+     les reparacions que ha sofert una determinada embarcació.
      */
     public ArrayList tornarLlistaReparacionsPendents() {
         ArrayList<Reparacio> pendents = new ArrayList<>();
@@ -252,11 +252,11 @@ public class Boats implements Serializable {
     }
 
     /*
-    Per els lloguers necessitam que el sistema ens torni les embarcacions 
-    disponibles entre unes determinades dates.
+     Per els lloguers necessitam que el sistema ens torni les embarcacions 
+     disponibles entre unes determinades dates.
      */
- /*
-    * Aixo retorna un array amb els dies entre dues dates.
+    /*
+     * Aixo retorna un array amb els dies entre dues dates.
      */
     public ArrayList diesEntreDates(Date data1, Date data2) {
         ArrayList<Date> rangDies = new ArrayList<>();
@@ -275,20 +275,19 @@ public class Boats implements Serializable {
     }
 
     /*
-    Ficam els dies de cada lloguer a un array i el comparam amb l'array de dies demanats.
-    Si algun dia coincideix, el vaixell d'aquests lloger no el tornam a la llista de vaixells lliures.
+     Ficam els dies de cada lloguer a un array i el comparam amb l'array de dies demanats.
+     Si algun dia coincideix, el vaixell d'aquests lloger no el tornam a la llista de vaixells lliures.
      */
     public ArrayList embarcacionsDisponiblesDates(Date dia1, Date dia2) {
         ArrayList<Date> diesDemanats = new ArrayList<>();
-        ArrayList<Date> diesLlogat = new ArrayList<>();
+        ArrayList<Date> diesLlogat = new ArrayList<Date>();
         ArrayList<Vaixell> ocupats = new ArrayList<>();
-        ArrayList<Vaixell> lliures = new ArrayList<>();
+        ArrayList<Vaixell> lliures = new ArrayList<Vaixell>();
         diesDemanats = diesEntreDates(dia1, dia2);
         for (Lloguer l : lloguers.values()) {
-            diesLlogat = (diesEntreDates(l.getIniciLloguer(), l.getFiLloguer()));
+            diesLlogat = diesEntreDates(l.getIniciLloguer(), l.getFiLloguer());
             // comparam els dos arrays
             for (Date d : diesLlogat) {
-
                 for (Date d2 : diesDemanats) {
                     if (d.equals(d2)) {
                         ocupats.add(l.getVaixell());
@@ -296,11 +295,13 @@ public class Boats implements Serializable {
                 }
             }
         }
-        // Comparam ocupats amb lliures.
+        // Comparam ocupats amb llistat general.
         for (Vaixell v : vaixells.values()) {
             for (Vaixell o : ocupats) {
-                if (v.equals(o)) {
-                    lliures.add(o);
+                if (v != o) {
+                    if (o.isPerLloguar()) {
+                        lliures.add(o);
+                    }
                 }
             }
         }

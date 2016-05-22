@@ -108,13 +108,15 @@ public class Proves {
             Vaixell vaixell1 = new Vaixell("ABC4570", empresa, model1, 150);
             Vaixell vaixell2 = new Vaixell("ABC4571", client1, model1);
             principal.afegirVaixell(vaixell1);
+            principal.afegirVaixell(vaixell2);
 
             // -- Lloguers
             Lloguer lloguer1 = new Lloguer(true, dataLloguer1Inici, dataLloguer1Fi, client1, vaixell1, 150, patro1, Estat.INICIAT);
             principal.afegirLloguer(lloguer1);
 
             // -- Vendes
-            Venda venda1 = new Venda(vaixell2, dataVenda1, vaixell2.getModel().getPreu(), client3, venedor3, Estat.INICIAT);
+            Venda venda1 = new Venda(principal.tornaVaixell("ABC4571"), dataVenda1, principal.tornaModel("A28987").getPreu(), principal.tornaClient("24423423521"), principal.tornaVenedor("111131153311"), Estat.INICIAT);
+            Venda venda2 = new Venda(principal.tornaVaixell("ABC4571"), dataVenda1, principal.tornaModel("C892987").getPreu(), principal.tornaClient("34323423526"), principal.tornaVenedor("111131153311"), Estat.FINALITZAT);
             principal.afegirVenda(venda1);
 
             // ---Reparacions
@@ -127,6 +129,7 @@ public class Proves {
             gestionarBoats();
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
+            ex.printStackTrace();
         } catch (EmpleatException ex) {
             System.out.println("Dades empleat incorrectes");
         } catch (PersonaException ex) {
@@ -145,7 +148,7 @@ public class Proves {
         } catch (ReparacioException ex) {
             System.out.println("Dades Reparacio incorrectes");
         } catch (DataFormatException ex) {
-            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
 
     }
@@ -178,8 +181,12 @@ public class Proves {
         try {
             Date dataLloguer3 = plantilla.parse("14-09-2016");
             Date dataLloguer4 = plantilla.parse("16-09-2016");
-            //System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
-
+            ArrayList<Date> datesDisponibles = new ArrayList<>();
+            datesDisponibles = (principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
+            for (Date d : datesDisponibles) {
+                System.out.println(d);
+                System.out.println("hola");
+            }
         } catch (ParseException ex) {
             Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -223,7 +230,7 @@ public class Proves {
     public static void main(String[] args) {
         Proves p = new Proves();
         //lectura de fitxer guardat
-        p.lletgirFitxer();
-
+        //p.lletgirFitxer();
+        p.inicialitzarBoats();
     }
 }
