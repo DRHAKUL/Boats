@@ -2,13 +2,14 @@ package cat.iespaucasesnoves.boats.api;
 
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import cat.iespaucasesnoves.boats.exepcions.TargetaException;
+import java.io.Serializable;
 import java.util.zip.DataFormatException;
 
 /**
  *
  * @author jorge
  */
-public class Targeta implements Pagable {
+public class Targeta implements Pagable,Serializable {
 
     private int numero;
     private String caducitat;
@@ -28,7 +29,7 @@ public class Targeta implements Pagable {
         } else {
             this.caducitat = caducitat;
         }
-        if (verificacio < 99 || verificacio > 999) {
+        if (verificacio < 100 || verificacio > 999) {
             throw new TargetaException();
         } else {
             this.verificacio = verificacio;
@@ -72,6 +73,11 @@ public class Targeta implements Pagable {
         } else {
             this.verificacio = verificacio;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Targeta{" + "numero=" + numero + ", caducitat=" + caducitat + ", verificacio=" + verificacio + '}';
     }
 
 }

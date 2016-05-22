@@ -40,6 +40,11 @@ public class Mecanic extends Empleat {
         return habilitat;
     }
 
+    @Override
+    public String toString() {
+        return "Mecanic{" +"nom = "+nom+" cognom= "+cognom+ " habilitat=" + habilitat + "}\n";
+    }
+
       
 
     @Override
