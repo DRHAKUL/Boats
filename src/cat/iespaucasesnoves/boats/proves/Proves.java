@@ -178,8 +178,7 @@ public class Proves {
         try {
             Date dataLloguer3 = plantilla.parse("14-09-2016");
             Date dataLloguer4 = plantilla.parse("16-09-2016");
-            ArrayList<Vaixell> disponibles = new ArrayList<>();
-            disponibles = (principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
+            //System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
 
         } catch (ParseException ex) {
             Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);

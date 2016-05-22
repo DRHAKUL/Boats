@@ -294,9 +294,7 @@ public class Boats implements Serializable {
                         ocupats.add(l.getVaixell());
                     }
                 }
-
             }
-
         }
         // Comparam ocupats amb lliures.
         for (Vaixell v : vaixells.values()) {
