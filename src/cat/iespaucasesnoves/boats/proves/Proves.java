@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.zip.DataFormatException;
@@ -27,7 +28,7 @@ public class Proves {
 
     public void inicialitzarBoats() {
         principal = new Boats();
-        SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
+        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
 
         try {
             // --- Dates necesaries per la creacio d'objectes (patro,lloguer,venda,...)
@@ -37,6 +38,8 @@ public class Proves {
             Date dataAlta4 = plantilla.parse("14-06-1944");
             Date dataLloguer1Inici = plantilla.parse("14-06-2016");
             Date dataLloguer1Fi = plantilla.parse("15-06-2016");
+            Date dataLloguer1Inici2 = plantilla.parse("14-06-2016");
+            Date dataLloguer1Fi2 = plantilla.parse("15-06-2016");
             Date dataLloguer2 = plantilla.parse("20-06-2016");
             Date dataLloguer3 = plantilla.parse("14-08-2016");
             Date dataLloguer4 = plantilla.parse("19-08-2016");
@@ -175,11 +178,11 @@ public class Proves {
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
         //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-        SimpleDateFormat plantilla = new SimpleDateFormat("mm-dd-yyyy");
+        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
         try {
-            Date dataLloguer3 = plantilla.parse("14-08-2016");
-            Date dataLloguer4 = plantilla.parse("16-08-2016");
-            System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
+            Date dataLloguer3 = plantilla.parse("14-09-2016");
+            Date dataLloguer4 = plantilla.parse("16-09-2016");
+            //System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
 
         } catch (ParseException ex) {
             System.out.println("error de data");
