@@ -62,13 +62,21 @@ public class Venda extends Operacio {
             this.dataVenda = dataVenda;
         }
     }
+    /*
+     Si el preu d'una venda canvia se suposa que s'esta tramitant
+     */
 
     public void setPreu(double preu) throws DadesIncorrectesException {
         if (preu <= 0) {
             throw new DadesIncorrectesException();
         } else {
             this.preu = preu;
+            estat = Estat.TRAMITANT;
         }
+    }
+
+    public void tancarVenda() {
+        estat = Estat.FINALITZAT;
     }
 
     @Override

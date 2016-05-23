@@ -87,6 +87,7 @@ public class Lloguer extends Operacio {
             throw new DadesIncorrectesException();
         } else {
             this.iniciLloguer = iniciLloguer;
+            estat = Estat.INICIAT;
         }
     }
 
@@ -95,6 +96,7 @@ public class Lloguer extends Operacio {
             throw new DadesIncorrectesException();
         } else {
             this.fiLloguer = fiLloguer;
+            estat = Estat.FINALITZAT;
         }
     }
 

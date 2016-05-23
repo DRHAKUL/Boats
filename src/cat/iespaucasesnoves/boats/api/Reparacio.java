@@ -101,11 +101,17 @@ public class Reparacio extends Operacio {
             throw new ReparacioException();
         } else {
             this.dataPrevFinal = dataPrevFinal;
+            if (!estat.equals(Estat.TRAMITANT)) {
+                estat = Estat.TRAMITANT;
+            }
         }
     }
 
     public void setPreuFinal(double preuFinal) {
         this.preuFinal = preuFinal + preuExtras;
+        if (!estat.equals(Estat.FINALITZAT)) {
+            estat = Estat.FINALITZAT;
+        }
     }
 
     public void setNotes(String notes) {
@@ -114,10 +120,16 @@ public class Reparacio extends Operacio {
 
     public void assignarMecanic(Mecanic m) {
         mecanics.add(m);
+        if (!estat.equals(Estat.TRAMITANT)) {
+            estat = Estat.TRAMITANT;
+        }
     }
 
     public void eliminarMecanic(Mecanic m) {
         mecanics.remove(m);
+        if (!estat.equals(Estat.TRAMITANT)) {
+            estat = Estat.TRAMITANT;
+        }
     }
 
     @Override

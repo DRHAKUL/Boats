@@ -279,17 +279,17 @@ public class Boats implements Serializable {
      Si algun dia coincideix, el vaixell d'aquests lloger no el tornam a la llista de vaixells lliures.
      */
     public ArrayList embarcacionsDisponiblesDates(Date dia1, Date dia2) {
-        ArrayList<Date> diesDemanats = new ArrayList<>();
-        ArrayList<Date> diesLlogat = new ArrayList<Date>();
+        ArrayList<Date> diesDemanats = diesEntreDates(dia1, dia2);
+        ArrayList<Date> diesLlogat;
         ArrayList<Vaixell> ocupats = new ArrayList<>();
-        ArrayList<Vaixell> lliures = new ArrayList<Vaixell>();
-        diesDemanats = diesEntreDates(dia1, dia2);
+        ArrayList<Vaixell> lliures = new ArrayList<>();
+
         for (Lloguer l : lloguers.values()) {
             diesLlogat = diesEntreDates(l.getIniciLloguer(), l.getFiLloguer());
             // comparam els dos arrays
             for (Date d : diesLlogat) {
                 for (Date d2 : diesDemanats) {
-                    if (d.equals(d2)) {
+                    if (d.compareTo(d2) == 0) {
                         ocupats.add(l.getVaixell());
                     }
                 }
