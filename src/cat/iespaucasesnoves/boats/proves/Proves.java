@@ -43,6 +43,8 @@ public class Proves {
             Date dataLloguer2 = plantilla.parse("20-06-2016");
             Date dataLloguer3 = plantilla.parse("14-08-2016");
             Date dataLloguer4 = plantilla.parse("19-08-2016");
+            Date dataLloguerInici = plantilla.parse("14-05-2016");
+            Date dataLloguerfi = plantilla.parse("17-05-2016");
             Date dataVenda1 = plantilla.parse("14-03-2015");
             Date dataIniciRep1 = plantilla.parse("03-14-2016");
             Date dataPrevFinal1 = plantilla.parse("03-20-2016");
@@ -107,9 +109,17 @@ public class Proves {
             principal.afegirModelCataleg(model4);
 
             //Vaixells
-            Vaixell vaixell1 = new Vaixell("ABC4570", empresa, model1, 150);
+            Vaixell vaixell1 = new Vaixell("ABC4570", empresa, model1, 130);
             Vaixell vaixell2 = new Vaixell("ABC4571", client1, model1);
+            Vaixell vaixell3 = new Vaixell("ABC4572", empresa, model3, 160);
+            Vaixell vaixell4 = new Vaixell("ABC4573", empresa, model4, 140);
+            Vaixell vaixell5 = new Vaixell("ABC4574", empresa, model2, 110);
+            
             principal.afegirVaixell(vaixell1);
+            principal.afegirVaixell(vaixell2);
+            principal.afegirVaixell(vaixell3);
+            principal.afegirVaixell(vaixell4);
+            principal.afegirVaixell(vaixell5);
 
             // -- Lloguers
             Lloguer lloguer1 = new Lloguer(true, dataLloguer1Inici, dataLloguer1Fi, client1, vaixell1, 150, patro1, Estat.INICIAT);
@@ -178,17 +188,19 @@ public class Proves {
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
         //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
+        
+        try{
         SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
-        try {
-            Date dataLloguer3 = plantilla.parse("14-09-2016");
-            Date dataLloguer4 = plantilla.parse("16-09-2016");
-            //System.out.println(principal.embarcacionsDisponiblesDates(dataLloguer3, dataLloguer4));
-
+        Date dataLloguerInici = plantilla.parse("14-06-2016");
+        Date dataLloguerFi = plantilla.parse("15-06-2016");
+        System.out.println(principal.tornarVaixellsLliures(dataLloguerInici,dataLloguerFi));
         } catch (ParseException ex) {
-            System.out.println("error de data");
+            System.out.println("error de parseig de data");
         }
+        
+        
         // guardam tots els canvis
-        guardarFitxer();
+        //guardarFitxer();
 
     }
 
