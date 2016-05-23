@@ -126,7 +126,8 @@ public class Proves {
             principal.afegirLloguer(lloguer1);
 
             // -- Vendes
-            Venda venda1 = new Venda(vaixell2, dataVenda1, vaixell2.getModel().getPreu(), client3, venedor3, Estat.INICIAT);
+            Venda venda1 = new Venda(principal.tornaVaixell("ABC4571"), dataVenda1, principal.tornaModel("A28987").getPreu(), principal.tornaClient("24423423521"), principal.tornaVenedor("111131153311"), Estat.INICIAT);
+            Venda venda2 = new Venda(principal.tornaVaixell("ABC4571"), dataVenda1, principal.tornaModel("C892987").getPreu(), principal.tornaClient("34323423526"), principal.tornaVenedor("111131153311"), Estat.FINALITZAT);
             principal.afegirVenda(venda1);
 
             // ---Reparacions
@@ -140,6 +141,7 @@ public class Proves {
             gestionarBoats();
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
+            ex.printStackTrace();
         } catch (EmpleatException ex) {
             System.out.println("Dades empleat incorrectes");
         } catch (PersonaException ex) {
@@ -239,7 +241,7 @@ public class Proves {
     public static void main(String[] args) {
         Proves p = new Proves();
         //lectura de fitxer guardat
-        p.lletgirFitxer();
-
+        //p.lletgirFitxer();
+        p.inicialitzarBoats();
     }
 }

@@ -176,8 +176,8 @@ public class Boats implements Serializable {
     }
 
     /*
-    Per el catàleg web necessitam tornar una llista amb tots els models que tenim disponible, 
-    una altra filtrada per tipus d'embarcació i un altre per interval de preu.
+     Per el catàleg web necessitam tornar una llista amb tots els models que tenim disponible, 
+     una altra filtrada per tipus d'embarcació i un altre per interval de preu.
 
      */
     public HashMap<String, Model> llistarModelsDisponibles() {
@@ -211,9 +211,9 @@ public class Boats implements Serializable {
     }
 
     /*
-    Per a la gestió del taller ha de poder tornar una llista de les reparacions pendents, 
-    una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
-    les reparacions que ha sofert una determinada embarcació.
+     Per a la gestió del taller ha de poder tornar una llista de les reparacions pendents, 
+     una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
+     les reparacions que ha sofert una determinada embarcació.
      */
     //tornar les reparacions pendents
     public ArrayList tornarLlistaReparacionsPendents() {
