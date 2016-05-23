@@ -270,8 +270,9 @@ public class Boats implements Serializable {
             for (Date data : rangDessitjat) {
                 for (Date dataLloguer : rangLloguer) {
                     if (data.equals(dataLloguer)) {
-                        if(vaixellsOcupats.contains(d.getVaixell())==false)
-                        vaixellsOcupats.add(d.getVaixell());
+                        if (vaixellsOcupats.contains(d.getVaixell()) == false) {
+                            vaixellsOcupats.add(d.getVaixell());
+                        }
                     }
 
                 }
@@ -282,25 +283,18 @@ public class Boats implements Serializable {
         //afegim a la llista de no ocupats els que no siguin ocupats
         boolean ocupat = false;
         for (Vaixell d : vaixells.values()) {
-            
+
             for (Vaixell o : vaixellsOcupats) {
-                if (d.equals(o)||!d.isPerLloguar()) { // si esta ocupat o no es per lloguer no l'afegim a la llista de no ocupats
+                if (d.equals(o) || !d.isPerLloguar()) { // si esta ocupat o no es per lloguer no l'afegim a la llista de no ocupats
                     ocupat = true;
                 }
-                
+
             }
-            if(!ocupat){
+            if (!ocupat) {
                 vaixellsNoOcupats.add(d);
             }
-            ocupat=false;
+            ocupat = false;
         }
-        //eliminam de la llista els que no son per lloguar
-        /*for (Vaixell e : vaixellsNoOcupats) {
-            if (e.isPerLloguar() == false) {
-                vaixellsNoOcupats.remove(e);
-            }
-        }
-           */
         return vaixellsNoOcupats;
 
     }
@@ -319,40 +313,6 @@ public class Boats implements Serializable {
         }
 
         return rangDies;
-    }
-
-    /*
-     Ficam els dies de cada lloguer a un array i el comparam amb l'array de dies demanats.
-     Si algun dia coincideix, el vaixell d'aquests lloger no el tornam a la llista de vaixells lliures.
-     */
-    public ArrayList embarcacionsDisponiblesDates(Date dia1, Date dia2) {
-        ArrayList<Date> diesDemanats = diesEntreDates(dia1, dia2);
-        ArrayList<Date> diesLlogat;
-        ArrayList<Vaixell> ocupats = new ArrayList<>();
-        ArrayList<Vaixell> lliures = new ArrayList<>();
-
-        for (Lloguer l : lloguers.values()) {
-            diesLlogat = diesEntreDates(l.getIniciLloguer(), l.getFiLloguer());
-            // comparam els dos arrays
-            for (Date d : diesLlogat) {
-                for (Date d2 : diesDemanats) {
-                    if (d.compareTo(d2) == 0) {
-                        ocupats.add(l.getVaixell());
-                    }
-                }
-            }
-        }
-        // Comparam ocupats amb llistat general.
-        for (Vaixell v : vaixells.values()) {
-            for (Vaixell o : ocupats) {
-                if (v != o) {
-                    if (o.isPerLloguar()) {
-                        lliures.add(o);
-                    }
-                }
-            }
-        }
-        return lliures;
     }
 
     public Model tornaModel(String referencia) throws DadesIncorrectesException {
