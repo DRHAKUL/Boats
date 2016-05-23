@@ -215,6 +215,7 @@ public class Boats implements Serializable {
      una altra de les que estan aturades per qualsevol motiu i finalment un històric de 
      les reparacions que ha sofert una determinada embarcació.
      */
+    //tornar les reparacions pendents
     public ArrayList tornarLlistaReparacionsPendents() {
         ArrayList<Reparacio> pendents = new ArrayList<>();
         Iterator it = reparacions.entrySet().iterator();
@@ -226,6 +227,7 @@ public class Boats implements Serializable {
         }
         return pendents;
     }
+//tornar les reparacions acabades
 
     public ArrayList tornarLlistaReparacionsAturades() {
         ArrayList<Reparacio> aturades = new ArrayList<>();
@@ -238,6 +240,7 @@ public class Boats implements Serializable {
         }
         return aturades;
     }
+//torna totes les reparacions d'un vaixell
 
     public ArrayList tornarLlistaReparacionsVaixell(Vaixell v) {
         ArrayList<Reparacio> reparacionsVaixell = new ArrayList<>();
@@ -251,14 +254,58 @@ public class Boats implements Serializable {
         return reparacionsVaixell;
     }
 
-    /*
-     Per els lloguers necessitam que el sistema ens torni les embarcacions 
-     disponibles entre unes determinades dates.
-     */
-    /*
-     * Aixo retorna un array amb els dies entre dues dates.
-     */
-    public ArrayList diesEntreDates(Date data1, Date data2) {
+    public ArrayList<Vaixell> tornarVaixellsLliures(Date dataInici, Date dataFinal) {
+        //llistat de vaixells filtrats com a ocupats
+        ArrayList<Vaixell> vaixellsOcupats = new ArrayList<>();
+        //llistat de vaixells no Ocupats despres de comparar els que estan ocupats
+        ArrayList<Vaixell> vaixellsNoOcupats = new ArrayList<>();
+        //rang de dies dessitjats
+        ArrayList<Date> rangDessitjat = diesEntreDates(dataInici, dataFinal);
+        //recorrem tots els lloguers
+        for (Lloguer d : lloguers.values()) {
+            //si colque dia del rang de dies del lloguer coincideix amb colque dia del rang dessitjat tornam el vaixell com a ocupat
+
+            //rang de dies lloguer
+            ArrayList<Date> rangLloguer = diesEntreDates(d.getIniciLloguer(), d.getFiLloguer());
+            for (Date data : rangDessitjat) {
+                for (Date dataLloguer : rangLloguer) {
+                    if (data.equals(dataLloguer)) {
+                        if(vaixellsOcupats.contains(d.getVaixell())==false)
+                        vaixellsOcupats.add(d.getVaixell());
+                    }
+
+                }
+            }
+
+        }
+
+        //afegim a la llista de no ocupats els que no siguin ocupats
+        boolean ocupat = false;
+        for (Vaixell d : vaixells.values()) {
+            
+            for (Vaixell o : vaixellsOcupats) {
+                if (d.equals(o)||!d.isPerLloguar()) { // si esta ocupat o no es per lloguer no l'afegim a la llista de no ocupats
+                    ocupat = true;
+                }
+                
+            }
+            if(!ocupat){
+                vaixellsNoOcupats.add(d);
+            }
+            ocupat=false;
+        }
+        //eliminam de la llista els que no son per lloguar
+        /*for (Vaixell e : vaixellsNoOcupats) {
+            if (e.isPerLloguar() == false) {
+                vaixellsNoOcupats.remove(e);
+            }
+        }
+           */
+        return vaixellsNoOcupats;
+
+    }
+
+    public ArrayList<Date> diesEntreDates(Date data1, Date data2) {
         ArrayList<Date> rangDies = new ArrayList<>();
         Calendar inici = Calendar.getInstance();
         inici.setTime(data1);
