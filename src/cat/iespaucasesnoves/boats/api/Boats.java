@@ -74,6 +74,11 @@ public class Boats implements Serializable {
         return vendes;
     }
 
+    public Venda getVenda(int v) {
+        return vendes.get(v);
+
+    }
+
     public HashMap<Integer, Lloguer> getLloguers() {
         return lloguers;
     }

@@ -114,7 +114,7 @@ public class Proves {
             Vaixell vaixell3 = new Vaixell("ABC4572", empresa, model3, 160);
             Vaixell vaixell4 = new Vaixell("ABC4573", empresa, model4, 140);
             Vaixell vaixell5 = new Vaixell("ABC4574", empresa, model2, 110);
-            
+
             principal.afegirVaixell(vaixell1);
             principal.afegirVaixell(vaixell2);
             principal.afegirVaixell(vaixell3);
@@ -164,7 +164,7 @@ public class Proves {
 
     }
 
-    public void gestionarBoats() {
+    public void gestionarBoats() throws VendaException {
 
         /*
         try {
@@ -181,12 +181,12 @@ public class Proves {
             System.out.println("Dades incorrectes");
         }
          */
-            //Tornam llistes d'elements
+        //Tornam llistes d'elements
         //System.out.println(principal.getClients());
         //System.out.println(principal.getLlistatMecanics());
         //System.out.println(principal.getLlistatVenedors()); 
         //System.out.println(principal.getLloguers());        
-            //Metodes especifics de l'enunciat
+        //Metodes especifics de l'enunciat
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
         //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
@@ -201,11 +201,13 @@ public class Proves {
         } catch (ParseException ex) {
             System.out.println("error de parseig de data");
         }
-        */
-        
+         */
+        //Probam el metode de setSouTotal() de venedor
+//      
+//        System.out.println(principal.tornaVenedor("111131153311").getLlistaVendes());
+//        System.out.println(principal.tornaVenedor("111131153311").getSouTotal());
         // guardam tots els canvis
         //guardarFitxer();
-
     }
 
     public void guardarFitxer() {
@@ -231,14 +233,15 @@ public class Proves {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        } catch (VendaException ex) {
+            System.out.println("Dades Venda incorrectes");
 
+        }
     }
 
     /**
      * Comprova si tenim un fitxer dessat amb anterioritat i en cas de no
-     * tenirlo s'inicialitzen els objectes per defecte.
-     *
+     * tenirlo s'inicialitzen els objectes per defecte. *
      */
     public static void main(String[] args) {
         Proves p = new Proves();
