@@ -10,11 +10,11 @@ import java.util.Date;
  */
 public class Venda extends Operacio {
 
-    private final Vaixell vaixell;
+    private Vaixell vaixell;
     private Date dataVenda;
     private double preu;
-    private final Client comprador;
-    private final Venedor venedor;
+    private Client comprador;
+    private Venedor venedor;
 
     public Venda(Vaixell vaixell, Date dataVenda, double preu, Client comprador, Venedor venedor, Estat estat) throws VendaException {
         super(estat);
@@ -52,7 +52,7 @@ public class Venda extends Operacio {
     }
 
     public Venedor getVenedor() {
-        return venedor;
+        return this.venedor;
     }
 
     public void setDataVenda(Date dataVenda) throws DadesIncorrectesException {
@@ -62,10 +62,10 @@ public class Venda extends Operacio {
             this.dataVenda = dataVenda;
         }
     }
+
     /*
      Si el preu d'una venda canvia se suposa que s'esta tramitant
      */
-
     public void setPreu(double preu) throws DadesIncorrectesException {
         if (preu <= 0) {
             throw new DadesIncorrectesException();

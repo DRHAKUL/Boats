@@ -115,8 +115,8 @@ public class Lloguer extends Operacio {
     public int calcularDies(Date inci, Date fi) {
         double data1 = inci.getTime();
         double data2 = fi.getTime();
-        double diferencia = data1 - data2;
-        int dias = (int) Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        double diferencia = data2 - data1;
+        int dias = (int) Math.floor(diferencia / (1000 * 60 * 60 * 24) + 1);
         return dias;
     }
 

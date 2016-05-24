@@ -7,7 +7,6 @@ import cat.iespaucasesnoves.boats.exepcions.VenedorException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  *
@@ -17,7 +16,7 @@ public class Venedor extends Empleat {
 
     private double comissio;
     private double souTotal;
-    private final HashMap<Integer, Venda> llistaVendes;
+    private HashMap<Integer, Venda> llistaVendes;
 
     public Venedor(double comissio, String nom, String cognom, Document tipusDocument, String numeroDocument, String adreca, String telefon, String correu, Date dataAlta, Double sou) throws VenedorException, DadesIncorrectesException, PersonaException, EmpleatException {
         super(nom, cognom, tipusDocument, numeroDocument, adreca, telefon, correu, dataAlta, sou);
@@ -48,10 +47,10 @@ public class Venedor extends Empleat {
      */
     public ArrayList llistarVendes() {
         ArrayList llistatVendes = new ArrayList();
-        Iterator it = llistaVendes.entrySet().iterator();
-        while (it.hasNext()) {
-            Venda nova = (Venda) it.next();
-            llistatVendes.add(nova);
+
+        for (Venda l : llistaVendes.values()) {
+            llistatVendes.add(l);
+
         }
         return llistatVendes;
     }
@@ -67,7 +66,7 @@ public class Venedor extends Empleat {
             totalVendes = totalVendes + v.getPreu();
         }
 
-        souTotal = sou + (totalVendes * 100 / comissio);
+        souTotal = sou + (totalVendes * comissio / 100);
 
     }
 

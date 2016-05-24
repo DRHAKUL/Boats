@@ -37,7 +37,7 @@ public class Proves {
             Date dataAlta3 = plantilla.parse("14-05-1999");
             Date dataAlta4 = plantilla.parse("14-06-1944");
             Date dataLloguer1Inici = plantilla.parse("14-06-2016");
-            Date dataLloguer1Fi = plantilla.parse("15-06-2016");
+            Date dataLloguer1Fi = plantilla.parse("16-06-2016");
             Date dataLloguer1Inici2 = plantilla.parse("14-06-2016");
             Date dataLloguer1Fi2 = plantilla.parse("15-06-2016");
             Date dataLloguer2 = plantilla.parse("20-06-2016");
@@ -164,7 +164,7 @@ public class Proves {
 
     }
 
-    public void gestionarBoats() throws VendaException {
+    public void gestionarBoats() throws VendaException, DadesIncorrectesException {
 
         /*
         try {
@@ -203,11 +203,41 @@ public class Proves {
         }
          */
         //Probam el metode de setSouTotal() de venedor
-//      
-//        System.out.println(principal.tornaVenedor("111131153311").getLlistaVendes());
-//        System.out.println(principal.tornaVenedor("111131153311").getSouTotal());
-        // guardam tots els canvis
-        //guardarFitxer();
+//        try {
+//            SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
+//            Date d = plantilla.parse("14-06-2016");
+//            Venedor ven = new Venedor(0.3, "Jo", "Tu", Document.PASSAPORT, "324235", "agdfaf", "43252345", "nou@ozu.es", d, 3000.00);
+//            Venda v = new Venda(principal.tornaVaixell("ABC4571"), d, 100000, null, ven, Estat.INICIAT);
+//            principal.afegirVenedor(ven);
+//            principal.afegirVenda(v);
+//            ven.afegirVenda(v);
+//            ven.setSouTotal();
+//            System.out.println(ven.getSouTotal());
+//        } catch (ParseException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PersonaException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (EmpleatException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        //Probam el calcularNomina() de Patro
+//        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
+//        try {
+//            Date d = plantilla.parse("14-06-2016");
+//            Date d2 = plantilla.parse("16-06-2016");
+//            Patro p = new Patro("Titulin", 50, "Pedro", "Piedra", Document.PASSAPORT, "111111111", "gfsfg", "1111111122", "ddfd@ozu.es", d, 0.00);
+//            Lloguer l = principal.tornaLloguer(1);
+//            p.afegirLloguer(l);
+//            p.calcularNomina();
+//            System.out.println(p.getSou());
+//            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PersonaException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (EmpleatException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public void guardarFitxer() {
@@ -235,6 +265,8 @@ public class Proves {
             e.printStackTrace();
         } catch (VendaException ex) {
             System.out.println("Dades Venda incorrectes");
+
+        } catch (DadesIncorrectesException ex) {
 
         }
     }

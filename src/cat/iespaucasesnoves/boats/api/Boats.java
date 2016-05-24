@@ -158,8 +158,8 @@ public class Boats implements Serializable {
         }
     }
 
-    public void afegirVenda(Venda venda) {
-        vendes.put(venda.getId(), venda);
+    public void afegirVenda(Venda v) {
+        vendes.put(v.getId(), v);
 
     }
 
