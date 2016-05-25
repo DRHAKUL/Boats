@@ -164,7 +164,7 @@ public class Proves {
 
     }
 
-    public void gestionarBoats() throws VendaException, DadesIncorrectesException {
+    public void gestionarBoats() {
 
         /*
         try {
@@ -219,6 +219,10 @@ public class Proves {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (EmpleatException ex) {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (DadesIncorrectesException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (VendaException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
 //        }
         //Probam el calcularNomina() de Patro
 //        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
@@ -236,6 +240,8 @@ public class Proves {
 //        } catch (PersonaException ex) {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (EmpleatException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (DadesIncorrectesException ex) {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
 //        }
     }
@@ -263,12 +269,8 @@ public class Proves {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        } catch (VendaException ex) {
-            System.out.println("Dades Venda incorrectes");
-
-        } catch (DadesIncorrectesException ex) {
-
         }
+
     }
 
     /**
