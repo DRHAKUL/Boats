@@ -137,7 +137,7 @@ public class Proves {
             reparacio1.assignarMecanic(mecanic3);
 
             // guardam la inicialitzacio al fitxer i executam les gestions
-            guardarFitxer();
+            //guardarFitxer();//comentar despues de la primera execucio
             gestionarBoats();
         } catch (DadesIncorrectesException ex) {
             System.out.println("Dades incorrectes");
@@ -166,42 +166,41 @@ public class Proves {
 
     public void gestionarBoats() {
 
-        /*
-        try {
         //Tornam elements individuals
-            //System.out.println(principal.tornaClient("24423423521"));
-            //System.out.println(principal.tornaModel("A28987"));
-            //System.out.println(principal.tornaModel("B894487"));
-            //System.out.println(principal.tornaVaixell("ABC4570"));
-                // Tornam operacions individuals(Lloguers,Vendes o reparacions) individuals
-           //System.out.println(principal.tornaLloguer(1));
-            //System.out.println(principal.tornaVenda(2));
-            System.out.println(principal.tornaReparacio(3));
-        } catch (DadesIncorrectesException ex) {
-            System.out.println("Dades incorrectes");
-        }
-         */
+//        try {        
+//            //System.out.println(principal.tornaClient("24423423521"));
+//            //System.out.println(principal.tornaModel("A28987"));
+//            //System.out.println(principal.tornaModel("B894487"));
+//            //System.out.println(principal.tornaVaixell("ABC4570"));
+//        // Tornam operacions individuals(Lloguers,Vendes o reparacions) individuals
+//           //System.out.println(principal.tornaLloguer(1));
+//            //System.out.println(principal.tornaVenda(2));
+//            System.out.println(principal.tornaReparacio(3));
+//        } catch (DadesIncorrectesException ex) {
+//            System.out.println("Dades incorrectes");
+//        }
+        
         //Tornam llistes d'elements
-        //System.out.println(principal.getClients());
-        //System.out.println(principal.getLlistatMecanics());
-        //System.out.println(principal.getLlistatVenedors()); 
-        //System.out.println(principal.getLloguers());        
+//        System.out.println(principal.getClients());
+//        System.out.println(principal.getLlistatMecanics());
+//        System.out.println(principal.getLlistatVenedors()); 
+//        System.out.println(principal.getLloguers());        
         //Metodes especifics de l'enunciat
-        //System.out.println(principal.llistarModelsDisponibles());
-        //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
-        //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-        /*
+//        System.out.println(principal.llistarModelsDisponibles());
+//        System.out.println(principal.llistarPerTipusEmbarcacio("Motor"));
+//        System.out.println(principal.llistarEmbarcacionsPreu(399999, 400000));
+        
         //Probam el metode que torna les embarcacions lliures a unes determinades dates
-        try{
-        //generam les dates per fer la prova
-        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
-        Date dataLloguerDessitjatInici = plantilla.parse("14-06-2016");
-        Date dataLloguerDessitjatFi = plantilla.parse("15-06-2016");
-        System.out.println(principal.tornarVaixellsLliures(dataLloguerDessitjatInici,dataLloguerDessitjatFi));
-        } catch (ParseException ex) {
-            System.out.println("error de parseig de data");
-        }
-         */
+//        try{
+//        //generam les dates per fer la prova
+//        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
+//        Date dataLloguerDessitjatInici = plantilla.parse("14-06-2016");
+//        Date dataLloguerDessitjatFi = plantilla.parse("15-06-2016");
+//        System.out.println(principal.tornarVaixellsLliures(dataLloguerDessitjatInici,dataLloguerDessitjatFi));
+//        } catch (ParseException ex) {
+//            System.out.println("error de parseig de data");
+//        }
+        
         //Probam el metode de setSouTotal() de venedor
 //        try {
 //            SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
@@ -212,7 +211,7 @@ public class Proves {
 //            principal.afegirVenda(v);
 //            ven.afegirVenda(v);
 //            ven.setSouTotal();
-//            System.out.println(ven.getSouTotal());
+//            System.out.println("sou: " + ven.getSouTotal() + " €");
 //        } catch (ParseException ex) {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
 //        } catch (PersonaException ex) {
@@ -233,7 +232,7 @@ public class Proves {
 //            Lloguer l = principal.tornaLloguer(1);
 //            p.afegirLloguer(l);
 //            p.calcularNomina();
-//            System.out.println(p.getSou());
+//            System.out.println("cost servei:"+p.getSou()+" €");
 //            
 //        } catch (ParseException ex) {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
