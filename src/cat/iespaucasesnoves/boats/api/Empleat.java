@@ -21,7 +21,7 @@ public abstract class Empleat extends Persona {
         } else {
             this.dataAlta = dataAlta;
         }
-        if (sou <= 0) {
+        if (sou < 0) {
             throw new EmpleatException();
 
         } else {

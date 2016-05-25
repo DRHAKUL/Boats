@@ -37,7 +37,7 @@ public class Proves {
             Date dataAlta3 = plantilla.parse("14-05-1999");
             Date dataAlta4 = plantilla.parse("14-06-1944");
             Date dataLloguer1Inici = plantilla.parse("14-06-2016");
-            Date dataLloguer1Fi = plantilla.parse("15-06-2016");
+            Date dataLloguer1Fi = plantilla.parse("16-06-2016");
             Date dataLloguer1Inici2 = plantilla.parse("14-06-2016");
             Date dataLloguer1Fi2 = plantilla.parse("15-06-2016");
             Date dataLloguer2 = plantilla.parse("20-06-2016");
@@ -114,7 +114,7 @@ public class Proves {
             Vaixell vaixell3 = new Vaixell("ABC4572", empresa, model3, 160);
             Vaixell vaixell4 = new Vaixell("ABC4573", empresa, model4, 140);
             Vaixell vaixell5 = new Vaixell("ABC4574", empresa, model2, 110);
-            
+
             principal.afegirVaixell(vaixell1);
             principal.afegirVaixell(vaixell2);
             principal.afegirVaixell(vaixell3);
@@ -164,7 +164,7 @@ public class Proves {
 
     }
 
-    public void gestionarBoats() {
+    public void gestionarBoats() throws VendaException, DadesIncorrectesException {
 
         /*
         try {
@@ -190,20 +190,54 @@ public class Proves {
         //System.out.println(principal.llistarModelsDisponibles());
         //System.out.println(principal.llistarPerTipusEmbarcacio("Veler"));
         //System.out.println(principal.llistarEmbarcacionsPreu(234000, 236000));
-        
+        /*
+        //Probam el metode que torna les embarcacions lliures a unes determinades dates
         try{
+        //generam les dates per fer la prova
         SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
-        Date dataLloguerInici = plantilla.parse("14-06-2016");
-        Date dataLloguerFi = plantilla.parse("15-06-2016");
-        System.out.println(principal.tornarVaixellsLliures(dataLloguerInici,dataLloguerFi));
+        Date dataLloguerDessitjatInici = plantilla.parse("14-06-2016");
+        Date dataLloguerDessitjatFi = plantilla.parse("15-06-2016");
+        System.out.println(principal.tornarVaixellsLliures(dataLloguerDessitjatInici,dataLloguerDessitjatFi));
         } catch (ParseException ex) {
             System.out.println("error de parseig de data");
         }
-        
-        
-        // guardam tots els canvis
-        //guardarFitxer();
-
+         */
+        //Probam el metode de setSouTotal() de venedor
+//        try {
+//            SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
+//            Date d = plantilla.parse("14-06-2016");
+//            Venedor ven = new Venedor(0.3, "Jo", "Tu", Document.PASSAPORT, "324235", "agdfaf", "43252345", "nou@ozu.es", d, 3000.00);
+//            Venda v = new Venda(principal.tornaVaixell("ABC4571"), d, 100000, null, ven, Estat.INICIAT);
+//            principal.afegirVenedor(ven);
+//            principal.afegirVenda(v);
+//            ven.afegirVenda(v);
+//            ven.setSouTotal();
+//            System.out.println(ven.getSouTotal());
+//        } catch (ParseException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PersonaException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (EmpleatException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+        //Probam el calcularNomina() de Patro
+//        SimpleDateFormat plantilla = new SimpleDateFormat("dd-MM-yyyy");
+//        try {
+//            Date d = plantilla.parse("14-06-2016");
+//            Date d2 = plantilla.parse("16-06-2016");
+//            Patro p = new Patro("Titulin", 50, "Pedro", "Piedra", Document.PASSAPORT, "111111111", "gfsfg", "1111111122", "ddfd@ozu.es", d, 0.00);
+//            Lloguer l = principal.tornaLloguer(1);
+//            p.afegirLloguer(l);
+//            p.calcularNomina();
+//            System.out.println(p.getSou());
+//            
+//        } catch (ParseException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (PersonaException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (EmpleatException ex) {
+//            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public void guardarFitxer() {
@@ -229,14 +263,17 @@ public class Proves {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
+        } catch (VendaException ex) {
+            System.out.println("Dades Venda incorrectes");
 
+        } catch (DadesIncorrectesException ex) {
+
+        }
     }
 
     /**
      * Comprova si tenim un fitxer dessat amb anterioritat i en cas de no
-     * tenirlo s'inicialitzen els objectes per defecte.
-     *
+     * tenirlo s'inicialitzen els objectes per defecte. *
      */
     public static void main(String[] args) {
         Proves p = new Proves();
