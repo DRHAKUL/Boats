@@ -244,8 +244,6 @@ public class Proves {
 //        } catch (DadesIncorrectesException ex) {
 //            Logger.getLogger(Proves.class.getName()).log(Level.SEVERE, null, ex);
 //        }
-
-
     }
 
     public void guardarFitxer() {
@@ -273,7 +271,7 @@ public class Proves {
             e.printStackTrace();
         }
 
-        }
+    }
 
     /**
      * Comprova si tenim un fitxer dessat amb anterioritat i en cas de no

@@ -66,7 +66,7 @@ public class Motor extends Model {
 
     @Override
     public String toString() {
-        return "referencia= " + referencia + " " + "marca= " + marca + " " + "model= " + model + " " + "tipus= " + tipus + " " + "manega= " + manega + "m " + "eslora= " + eslora + "m " + "calat= " + calat + "m " + "preu= " + preu + "€ " + "potencia= " + potencia +"cv "+"capDeposit= " + capDeposit +"l "+ "motorAuxiliar= " + motAuxiliar + "\n";
+        return "referencia= " + referencia + " " + "marca= " + marca + " " + "model= " + model + " " + "tipus= " + tipus + " " + "manega= " + manega + "m " + "eslora= " + eslora + "m " + "calat= " + calat + "m " + "preu= " + preu + "€ " + "potencia= " + potencia + "cv " + "capDeposit= " + capDeposit + "l " + "motorAuxiliar= " + motAuxiliar + "\n";
     }
 
 }

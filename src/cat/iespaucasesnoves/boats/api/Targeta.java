@@ -9,7 +9,7 @@ import java.util.zip.DataFormatException;
  *
  * @author jorge
  */
-public class Targeta implements Pagable,Serializable {
+public class Targeta implements Pagable, Serializable {
 
     private int numero;
     private String caducitat;

@@ -13,7 +13,7 @@ import java.io.Serializable;
  *
  * @author jorge
  */
-public class Compte implements Pagable,Serializable {
+public class Compte implements Pagable, Serializable {
 
     private String iban;
 
