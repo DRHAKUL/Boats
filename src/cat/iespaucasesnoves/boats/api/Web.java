@@ -5,6 +5,7 @@
  */
 package cat.iespaucasesnoves.boats.api;
 
+import cat.iespaucasesnoves.boats.api.Iot.*;
 import cat.iespaucasesnoves.boats.exepcions.DadesIncorrectesException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,9 +24,10 @@ public class Web {
         Boats boatWeb = new Boats();
         try {
             String info = boatWeb.tornaModel("A28987").tornarInformacioGeneral();
-
+            Iot iot1 = (Iot) boatWeb.tornaVaixell("ABC4570").getModel();
+            String info2 = iot1.tornarInformaciodetallada();
         } catch (DadesIncorrectesException ex) {
-            Logger.getLogger(Web.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Dades incorrectes.");
         }
     }
 
