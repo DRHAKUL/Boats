@@ -61,7 +61,7 @@ public class Motor extends Model {
 
     public String tornarInformaciodetallada() {
 
-        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu + ", potencia:" + potencia + ",capDeposit:" + capDeposit + ", motorAuxiliar:" + motAuxiliar + "}";
+        return "{referencia:" + referencia + ",marca:" + marca + ",model:" + model + ",manega:" + manega + ",eslora:" + eslora + ",calat:" + calat + ",preu:" + preu + ",potencia:" + potencia + ",capDeposit:" + capDeposit + ",motorAuxiliar:" + motAuxiliar + "}";
     }
 
     @Override

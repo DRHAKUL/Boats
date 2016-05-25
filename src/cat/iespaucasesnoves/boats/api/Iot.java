@@ -81,7 +81,7 @@ public class Iot extends Model {
 
     public String tornarInformaciodetallada() {
 
-        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu + ", camarots:" + camarots + ", potencia:" + potencia + ", autonomia:" + autonomia + ", bodega:" + bodega + "}";
+        return "{referencia:" + referencia + ",marca:" + marca + ",model:" + model + ",manega:" + manega + ",eslora:" + eslora + ",calat:" + calat + ",preu:" + preu + ",camarots:" + camarots + ",potencia:" + potencia + ",autonomia:" + autonomia + ",bodega:" + bodega + "}";
     }
 
     @Override

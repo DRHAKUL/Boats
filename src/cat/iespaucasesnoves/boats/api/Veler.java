@@ -14,7 +14,7 @@ public class Veler extends Model {
     private int cabines;
 
     public Veler(int cascs, int mastils, int cabines, String referencia, String marca, String model, double manega, double eslora, double calat, double preu) throws VelerException, ModelException {
-        super(referencia, marca, model,manega, eslora, calat, preu);
+        super(referencia, marca, model, manega, eslora, calat, preu);
         if (cascs < 1 || cascs > 3) {
             throw new VelerException();
         } else if (mastils < 1 || mastils > 5) {
@@ -63,7 +63,7 @@ public class Veler extends Model {
 
     public String tornarInformaciodetallada() {
 
-        return "Model{" + "referencia=" + referencia + ", marca=" + marca + ", model=" + model + ", manega=" + manega + ", eslora=" + eslora + ", calat=" + calat + ", preu=" + preu + ", cascs:" + cascs + ", mastils:" + mastils + ", cabines:" + cabines + "}";
+        return "{referencia:" + referencia + ",marca:" + marca + ",model:" + model + ",manega:" + manega + ",eslora:" + eslora + ",calat:" + calat + ",preu:" + preu + ",cascs:" + cascs + ",mastils:" + mastils + ",cabines:" + cabines + "}";
     }
 
     @Override
